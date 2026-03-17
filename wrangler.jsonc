@@ -1,6 +1,7 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "nbazaes-dev",
-  "compatibility_date": "2026-03-16",
-  "pages_build_output_dir": "dist"
+    "$schema": "node_modules/wrangler/config-schema.json",
+    // wrangler.jsonc
+    "name": "landing-astro",
+    "compatibility_date": "2026-03-16",
+    "pages_build_output_dir": "dist"
 }
