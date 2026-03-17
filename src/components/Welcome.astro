@@ -102,12 +102,12 @@ const promptDelay =
     const commands: Record<string, CommandHandler> = {
         help: () => [
             "Available commands:",
-            "- help",
-            "- clear",
-            "- readme",
-            "- github",
-            "- contact",
-            "- gui",
+            "- help: see available commands",
+            "- clear: clear the terminal output",
+            "- readme: display information about me",
+            "- github: view my GitHub portfolio",
+            "- contact: view contact information",
+            "- gui: switch to the traditional GUI version of the site",
         ],
         clear: () => {
             if (output) {
