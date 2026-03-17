@@ -1,0 +1,199 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const name = "Nicolas Bazaes";
+const role = "Fullstack developer and sysadmin";
+---
+
+<Layout>
+    <div class="page">
+        <!-- <header class="nav-wrap"></header>
+			<nav class="nav" aria-label="Main navigation">
+				<a class="brand" href="/">nbazaes.dev</a>
+				<div class="nav-links">
+					<a href="#about">About</a>
+					<a href="#projects">Projects</a>
+					<a href="#contact">Contact</a>
+				</div>
+			</nav>
+		</header>  -->
+
+        <main class="content">
+            <section class="hero" id="about">
+                <p class="kicker">Welcome to nbazaes.dev v1.0</p>
+                <h1>{name}</h1>
+                <p class="subtitle">{role}</p>
+                <p class="blurb">
+                    My name is Nicolás Bazaes, and I'm a fullstack developer and
+                    sysadmin based in Chile, with a passion for technology and
+                    problem-solving.
+                </p>
+                <p class="blurb">
+                    I build fullstack products with frameworks like React,
+                    Astro, and Django.
+                </p>
+                <p class="blurb">
+                    However, my true passion lies in backend development and
+                    system administration where I enjoy optimizing server
+                    performance and ensuring robust infrastructure. I like to
+                    use Docker to deploy my projects, and I love to host my own
+                    servers to tinker with different setups and configurations.
+                </p>
+                <p class="blurb">
+                    Also, I am a full Linux user and enthusiast, and I enjoy
+                    exploring the command line and all the powerful tools it
+                    offers.
+                </p>
+            </section>
+
+            <section class="card" id="projects">
+                <h2>Projects</h2>
+                <p>You can find my projects and contributions on GitHub.</p>
+                <a
+                    class="inline-link"
+                    href="https://github.com/nbazaes"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
+                    github.com/nbazaes
+                </a>
+            </section>
+
+            <section class="card" id="contact">
+                <h2>Contact</h2>
+                <p>
+                    Email: <a
+                        class="inline-link"
+                        href="mailto:contact@nbazaes.dev">contact@nbazaes.dev</a
+                    >
+                </p>
+            </section>
+            <p class="blurb">
+                -> Back to the <a href="/" class="inline-link">terminal</a>
+            </p>
+        </main>
+    </div>
+</Layout>
+
+<style>
+    .page {
+        min-height: 100vh;
+        padding: 24px clamp(20px, 6vw, 72px) 56px;
+    }
+
+    .nav-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        padding-top: 6px;
+    }
+
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(241, 240, 244, 0.2);
+        background: linear-gradient(
+            to bottom,
+            rgba(46, 44, 59, 0.94),
+            rgba(46, 44, 59, 0.72)
+        );
+        backdrop-filter: blur(4px);
+    }
+
+    .brand {
+        color: #f1f0f4;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-links a {
+        color: rgba(241, 240, 244, 0.88);
+        text-decoration: none;
+        font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+        color: #ffffff;
+    }
+
+    .content {
+        width: min(760px, 100%);
+        display: grid;
+        gap: 28px;
+        margin-top: 34px;
+    }
+
+    .hero h1 {
+        margin: 8px 0 6px;
+        font-size: clamp(2rem, 6vw, 3.2rem);
+        line-height: 1.1;
+        color: #f1f0f4;
+    }
+
+    .kicker {
+        margin: 0;
+        font-size: 0.92rem;
+        color: #c7b5ff;
+    }
+
+    .subtitle {
+        margin: 0;
+        font-size: 1.08rem;
+        color: #e6e0ff;
+    }
+
+    .blurb {
+        margin: 14px 0 0;
+        line-height: 1.65;
+        color: rgba(241, 240, 244, 0.9);
+    }
+
+    .card {
+        padding: 16px 18px;
+        border: 1px solid rgba(241, 240, 244, 0.2);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    .card h2 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: #f1f0f4;
+    }
+
+    .card p {
+        margin: 0;
+        line-height: 1.6;
+        color: rgba(241, 240, 244, 0.9);
+    }
+
+    .inline-link {
+        color: #c7b5ff;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+    }
+
+    .inline-link:hover {
+        color: #e3d8ff;
+    }
+
+    @media (max-width: 640px) {
+        .nav {
+            align-items: flex-start;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        .nav-links {
+            gap: 14px;
+        }
+    }
+</style>

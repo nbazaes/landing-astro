@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="164.73615mm"
+   height="164.73615mm"
+   viewBox="0 0 622.62481 622.62482"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <rect
+       x="125.03506"
+       y="304.43317"
+       width="142.43124"
+       height="101.11531"
+       id="rect8" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-291.03044,-89.887033)">
+    <rect
+       style="fill:#1e1e2e;fill-opacity:1;stroke:#cdd6f4;stroke-width:34.6129;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect6"
+       width="588.0119"
+       height="588.0119"
+       x="308.33688"
+       y="107.19349"
+       ry="109.54254" />
+    <text
+       xml:space="preserve"
+       id="text7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:120.484px;line-height:0.4;font-family:'CaskaydiaCove Nerd Font Mono';-inkscape-font-specification:'CaskaydiaCove Nerd Font Mono';text-align:start;letter-spacing:-0.01px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect8);display:inline;fill:#cdd6f4;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       transform="matrix(2.9879516,0,0,2.9879516,31.508852,-583.20429)"><tspan
+         x="125.03516"
+         y="364.4731"
+         id="tspan1">nb</tspan></text>
+  </g>
+</svg>
