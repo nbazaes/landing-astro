@@ -28,9 +28,13 @@ const name = "Nicolas Bazaes";
 
         <main class="content">
             <section class="hero" id="about">
-                <p class="kicker" data-i18n="heroKicker">Welcome to nbazaes.dev v1.0</p>
+                <p class="kicker" data-i18n="heroKicker">
+                    Welcome to nbazaes.dev v1.0
+                </p>
                 <h1>{name}</h1>
-                <p class="subtitle" data-i18n="heroRole">Fullstack developer and sysadmin</p>
+                <p class="subtitle" data-i18n="heroRole">
+                    Fullstack developer and sysadmin
+                </p>
                 <p class="blurb" data-i18n="heroBlurb1">
                     My name is Nicolás Bazaes, and I'm a fullstack developer and
                     sysadmin based in Chile, with a passion for technology and
@@ -56,7 +60,9 @@ const name = "Nicolas Bazaes";
 
             <section class="card" id="projects">
                 <h2 data-i18n="projectsTitle">Projects</h2>
-                <p data-i18n="projectsIntro">You can find my projects and contributions on GitHub.</p>
+                <p data-i18n="projectsIntro">
+                    You can find my projects and contributions on GitHub.
+                </p>
                 <a
                     class="inline-link"
                     href="https://github.com/nbazaes"
@@ -99,7 +105,8 @@ const name = "Nicolas Bazaes";
                     webconstAD
                 </a>
                 <p data-i18n="webconstDesc">
-                    A full-stack Django prototype for a local artist to showcase and sell digital art.
+                    A full-stack Django prototype for a local artist to showcase
+                    and sell digital art.
                 </p>
                 <a
                     class="h3inline-link"
@@ -110,22 +117,26 @@ const name = "Nicolas Bazaes";
                     django-bazpos
                 </a>
                 <p data-i18n="bazposDesc">
-                    A full point-of-sale system built with Django and Bootstrap including inventory management, reports, user management, supplier management and invoicing.
+                    A full point-of-sale system built with Django and Bootstrap
+                    including inventory management, reports, user management,
+                    supplier management and invoicing.
                 </p>
             </section>
 
             <section class="card" id="contact">
                 <h2 data-i18n="contactTitle">Contact</h2>
                 <p>
-                    <span data-i18n="emailLabel">Email:</span> <a
-                        class="inline-link"
-                        href="mailto:contact@nbazaes.dev">contact@nbazaes.dev</a
+                    <span data-i18n="emailLabel">Email:</span>
+                    <a class="inline-link" href="mailto:contact@nbazaes.dev"
+                        >contact@nbazaes.dev</a
                     >
                 </p>
             </section>
-            <p class="blurb">
+            <p class="blurb" style="text-align: end;">
                 <span data-i18n="backToTerminalPrefix">-> Back to the</span>
-                <a href="/" class="inline-link" data-i18n="backToTerminalLink">terminal</a>
+                <a href="/" class="inline-link" data-i18n="backToTerminalLink"
+                    >terminal</a
+                >
             </p>
         </main>
     </div>
@@ -252,9 +263,8 @@ const name = "Nicolas Bazaes";
         document.title = t.documentTitle;
         document.documentElement.lang = locale === "es" ? "es-CL" : "en";
 
-        const localizedElements = document.querySelectorAll<HTMLElement>(
-            "[data-i18n]",
-        );
+        const localizedElements =
+            document.querySelectorAll<HTMLElement>("[data-i18n]");
 
         localizedElements.forEach((element) => {
             const key = element.dataset.i18n as TranslationKey | undefined;
@@ -262,9 +272,8 @@ const name = "Nicolas Bazaes";
             element.textContent = t[key];
         });
 
-        const toggleButton = document.querySelector<HTMLButtonElement>(
-            "#locale-toggle",
-        );
+        const toggleButton =
+            document.querySelector<HTMLButtonElement>("#locale-toggle");
         if (!toggleButton) return;
 
         toggleButton.textContent = locale === "es" ? "EN" : "ES";
@@ -272,9 +281,8 @@ const name = "Nicolas Bazaes";
         toggleButton.dataset.currentLocale = locale;
     };
 
-    const toggleButton = document.querySelector<HTMLButtonElement>(
-        "#locale-toggle",
-    );
+    const toggleButton =
+        document.querySelector<HTMLButtonElement>("#locale-toggle");
     const initialLocale = detectLocale();
     saveLocale(initialLocale);
     applyLocale(initialLocale);
@@ -291,8 +299,10 @@ const name = "Nicolas Bazaes";
 <style>
     .page {
         min-height: 100vh;
-        padding: 24px clamp(20px, 6vw, 72px) 56px;
-        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(20px, 5vw, 60px);
     }
 
     .locale-toggle {
@@ -361,7 +371,7 @@ const name = "Nicolas Bazaes";
     }
 
     .content {
-        width: min(760px, 100%);
+        width: min(1000px, 100%);
         display: grid;
         gap: 28px;
         margin-top: 34px;
