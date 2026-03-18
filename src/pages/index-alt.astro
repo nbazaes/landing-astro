@@ -2,11 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 
 const name = "Nicolas Bazaes";
-const role = "Fullstack developer and sysadmin";
 ---
 
 <Layout>
     <div class="page">
+        <button
+            id="locale-toggle"
+            class="locale-toggle"
+            type="button"
+            aria-label="Switch language"
+        >
+            ES
+        </button>
+
         <!-- <header class="nav-wrap"></header>
 			<nav class="nav" aria-label="Main navigation">
 				<a class="brand" href="/">nbazaes.dev</a>
@@ -20,26 +28,26 @@ const role = "Fullstack developer and sysadmin";
 
         <main class="content">
             <section class="hero" id="about">
-                <p class="kicker">Welcome to nbazaes.dev v1.0</p>
+                <p class="kicker" data-i18n="heroKicker">Welcome to nbazaes.dev v1.0</p>
                 <h1>{name}</h1>
-                <p class="subtitle">{role}</p>
-                <p class="blurb">
+                <p class="subtitle" data-i18n="heroRole">Fullstack developer and sysadmin</p>
+                <p class="blurb" data-i18n="heroBlurb1">
                     My name is Nicolás Bazaes, and I'm a fullstack developer and
                     sysadmin based in Chile, with a passion for technology and
                     problem-solving.
                 </p>
-                <p class="blurb">
+                <p class="blurb" data-i18n="heroBlurb2">
                     I build fullstack products with frameworks like React,
                     Astro, and Django.
                 </p>
-                <p class="blurb">
+                <p class="blurb" data-i18n="heroBlurb3">
                     However, my true passion lies in backend development and
                     system administration where I enjoy optimizing server
                     performance and ensuring robust infrastructure. I like to
                     use Docker to deploy my projects, and I love to host my own
                     servers to tinker with different setups and configurations.
                 </p>
-                <p class="blurb">
+                <p class="blurb" data-i18n="heroBlurb4">
                     Also, I am a full Linux user and enthusiast, and I enjoy
                     exploring the command line and all the powerful tools it
                     offers.
@@ -47,8 +55,8 @@ const role = "Fullstack developer and sysadmin";
             </section>
 
             <section class="card" id="projects">
-                <h2>Projects</h2>
-                <p>You can find my projects and contributions on GitHub.</p>
+                <h2 data-i18n="projectsTitle">Projects</h2>
+                <p data-i18n="projectsIntro">You can find my projects and contributions on GitHub.</p>
                 <a
                     class="inline-link"
                     href="https://github.com/nbazaes"
@@ -57,28 +65,256 @@ const role = "Fullstack developer and sysadmin";
                 >
                     github.com/nbazaes
                 </a>
+                <div></div>
+                <a
+                    class="h3inline-link"
+                    href="https://github.com/nbazaes/landing-astro"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
+                    landing-astro
+                </a>
+                <p data-i18n="landingAstroDesc">
+                    The source code for this very website, built with Astro and
+                    vanilla JS.
+                </p>
+                <a
+                    class="h3inline-link"
+                    href="https://github.com/nbazaes/discursantes_react"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
+                    discursantes_react
+                </a>
+                <p data-i18n="discursantesDesc">
+                    A fullstack web app built with React, Django, and Docker,
+                    built for the management of a local church's speakers.
+                </p>
+                <a
+                    class="h3inline-link"
+                    href="https://github.com/nbazaes/webconstAD"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
+                    webconstAD
+                </a>
+                <p data-i18n="webconstDesc">
+                    A full-stack Django prototype for a local artist to showcase and sell digital art.
+                </p>
+                <a
+                    class="h3inline-link"
+                    href="https://github.com/nbazaes/django-bazpos"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
+                    django-bazpos
+                </a>
+                <p data-i18n="bazposDesc">
+                    A full point-of-sale system built with Django and Bootstrap including inventory management, reports, user management, supplier management and invoicing.
+                </p>
             </section>
 
             <section class="card" id="contact">
-                <h2>Contact</h2>
+                <h2 data-i18n="contactTitle">Contact</h2>
                 <p>
-                    Email: <a
+                    <span data-i18n="emailLabel">Email:</span> <a
                         class="inline-link"
                         href="mailto:contact@nbazaes.dev">contact@nbazaes.dev</a
                     >
                 </p>
             </section>
             <p class="blurb">
-                -> Back to the <a href="/" class="inline-link">terminal</a>
+                <span data-i18n="backToTerminalPrefix">-> Back to the</span>
+                <a href="/" class="inline-link" data-i18n="backToTerminalLink">terminal</a>
             </p>
         </main>
     </div>
 </Layout>
 
+<script>
+    const localeStorageKey = "nbazaes-locale";
+
+    type Locale = "en" | "es";
+    type TranslationKey =
+        | "documentTitle"
+        | "heroKicker"
+        | "heroRole"
+        | "heroBlurb1"
+        | "heroBlurb2"
+        | "heroBlurb3"
+        | "heroBlurb4"
+        | "projectsTitle"
+        | "projectsIntro"
+        | "landingAstroDesc"
+        | "discursantesDesc"
+        | "webconstDesc"
+        | "bazposDesc"
+        | "contactTitle"
+        | "emailLabel"
+        | "backToTerminalPrefix"
+        | "backToTerminalLink"
+        | "toggleAria";
+
+    const translations: Record<Locale, Record<TranslationKey, string>> = {
+        en: {
+            documentTitle: "nbazaes.dev - GUI",
+            heroKicker: "Welcome to nbazaes.dev v1.0",
+            heroRole: "Fullstack developer and sysadmin",
+            heroBlurb1:
+                "My name is Nicolás Bazaes, and I'm a fullstack developer and sysadmin based in Chile, with a passion for technology and problem-solving.",
+            heroBlurb2:
+                "I build fullstack products with frameworks like React, Astro, and Django.",
+            heroBlurb3:
+                "However, my true passion lies in backend development and system administration where I enjoy optimizing server performance and ensuring robust infrastructure. I like to use Docker to deploy my projects, and I love to host my own servers to tinker with different setups and configurations.",
+            heroBlurb4:
+                "Also, I am a full Linux user and enthusiast, and I enjoy exploring the command line and all the powerful tools it offers.",
+            projectsTitle: "Projects",
+            projectsIntro:
+                "You can find my projects and contributions on GitHub.",
+            landingAstroDesc:
+                "The source code for this very website, built with Astro and vanilla JS.",
+            discursantesDesc:
+                "A fullstack web app built with React, Django, and Docker, built for the management of a local church's speakers.",
+            webconstDesc:
+                "A full-stack Django prototype for a local artist to showcase and sell digital art.",
+            bazposDesc:
+                "A full point-of-sale system built with Django and Bootstrap including inventory management, reports, user management, supplier management and invoicing.",
+            contactTitle: "Contact",
+            emailLabel: "Email:",
+            backToTerminalPrefix: "-> Back to the",
+            backToTerminalLink: "terminal",
+            toggleAria: "Switch language",
+        },
+        es: {
+            documentTitle: "nbazaes.dev - GUI",
+            heroKicker: "Bienvenido a nbazaes.dev v1.0",
+            heroRole: "Desarrollador fullstack y administrador de sistemas",
+            heroBlurb1:
+                "Mi nombre es Nicolás Bazaes y soy desarrollador fullstack y administrador de sistemas en Chile, con pasión por la tecnología y la resolución de problemas.",
+            heroBlurb2:
+                "Construyo productos fullstack con frameworks como React, Astro y Django.",
+            heroBlurb3:
+                "Sin embargo, mi verdadera pasión está en el desarrollo backend y la administración de sistemas, donde disfruto optimizando el rendimiento de servidores y asegurando una infraestructura robusta. Me gusta usar Docker para desplegar mis proyectos, y me encanta alojar mis propios servidores para experimentar con distintas configuraciones.",
+            heroBlurb4:
+                "También soy usuario y entusiasta de Linux, y disfruto explorar la línea de comandos y todas las herramientas poderosas que ofrece.",
+            projectsTitle: "Proyectos",
+            projectsIntro:
+                "Puedes encontrar mis proyectos y contribuciones en GitHub.",
+            landingAstroDesc:
+                "El código fuente de este mismo sitio, construido con Astro y JavaScript vanilla.",
+            discursantesDesc:
+                "Una aplicación web fullstack construida con React, Django y Docker para la gestión de predicadores de una iglesia local.",
+            webconstDesc:
+                "Un prototipo full-stack en Django para que un artista local muestre y venda arte digital.",
+            bazposDesc:
+                "Un sistema de punto de venta completo construido con Django y Bootstrap, con inventario, reportes, gestión de usuarios, proveedores y facturación.",
+            contactTitle: "Contacto",
+            emailLabel: "Correo:",
+            backToTerminalPrefix: "-> Volver a la",
+            backToTerminalLink: "terminal",
+            toggleAria: "Cambiar idioma",
+        },
+    };
+
+    const detectLocale = (): Locale => {
+        try {
+            const storedLocale = window.localStorage.getItem(localeStorageKey);
+            if (storedLocale === "en" || storedLocale === "es") {
+                return storedLocale;
+            }
+        } catch {
+            // Ignore storage access errors.
+        }
+
+        const browserLocales = [
+            ...(navigator.languages ?? []),
+            navigator.language,
+        ]
+            .filter(Boolean)
+            .map((value) => value.toLowerCase());
+
+        return browserLocales.some((value) => value.startsWith("es"))
+            ? "es"
+            : "en";
+    };
+
+    const saveLocale = (locale: Locale) => {
+        try {
+            window.localStorage.setItem(localeStorageKey, locale);
+        } catch {
+            // Ignore storage access errors.
+        }
+    };
+
+    const applyLocale = (locale: Locale) => {
+        const t = translations[locale];
+
+        document.title = t.documentTitle;
+        document.documentElement.lang = locale === "es" ? "es-CL" : "en";
+
+        const localizedElements = document.querySelectorAll<HTMLElement>(
+            "[data-i18n]",
+        );
+
+        localizedElements.forEach((element) => {
+            const key = element.dataset.i18n as TranslationKey | undefined;
+            if (!key) return;
+            element.textContent = t[key];
+        });
+
+        const toggleButton = document.querySelector<HTMLButtonElement>(
+            "#locale-toggle",
+        );
+        if (!toggleButton) return;
+
+        toggleButton.textContent = locale === "es" ? "EN" : "ES";
+        toggleButton.setAttribute("aria-label", t.toggleAria);
+        toggleButton.dataset.currentLocale = locale;
+    };
+
+    const toggleButton = document.querySelector<HTMLButtonElement>(
+        "#locale-toggle",
+    );
+    const initialLocale = detectLocale();
+    saveLocale(initialLocale);
+    applyLocale(initialLocale);
+
+    toggleButton?.addEventListener("click", () => {
+        const currentLocale =
+            toggleButton.dataset.currentLocale === "es" ? "es" : "en";
+        const nextLocale: Locale = currentLocale === "es" ? "en" : "es";
+        saveLocale(nextLocale);
+        applyLocale(nextLocale);
+    });
+</script>
+
 <style>
     .page {
         min-height: 100vh;
         padding: 24px clamp(20px, 6vw, 72px) 56px;
+        position: relative;
+    }
+
+    .locale-toggle {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 3;
+        border: 1px solid rgba(241, 240, 244, 0.35);
+        background: rgba(255, 255, 255, 0.08);
+        color: #f1f0f4;
+        border-radius: 999px;
+        font-family: inherit;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+        padding: 0.35rem 0.7rem;
+        cursor: pointer;
+        backdrop-filter: blur(4px);
+    }
+
+    .locale-toggle:hover {
+        background: rgba(255, 255, 255, 0.15);
     }
 
     .nav-wrap {
@@ -165,7 +401,7 @@ const role = "Fullstack developer and sysadmin";
 
     .card h2 {
         margin: 0 0 8px;
-        font-size: 1rem;
+        font-size: 2rem;
         color: #f1f0f4;
     }
 
@@ -185,7 +421,21 @@ const role = "Fullstack developer and sysadmin";
         color: #e3d8ff;
     }
 
+    .h3inline-link {
+        display: block;
+        color: #c7b5ff;
+        text-decoration-thickness: 2px;
+        text-decoration: none;
+        font-size: larger;
+        margin-top: 10px;
+    }
+
     @media (max-width: 640px) {
+        .locale-toggle {
+            top: 10px;
+            right: 10px;
+        }
+
         .nav {
             align-items: flex-start;
             gap: 10px;
