@@ -240,25 +240,22 @@ const promptDelay =
 
     // Template: add your commands here.
     const commands: Record<string, CommandHandler> = {
-        help: () => [
-            t.availableCommands,
-            ...t.helpLines,
-        ],
+        help: () => [t.availableCommands, ...t.helpLines],
         clear: () => {
             if (output) {
                 output.innerHTML = "";
             }
             return [];
         },
-        readme: () => [
-            t.aboutMe,
-            ...t.readmeLines,
-        ],
+        readme: () => [t.aboutMe, ...t.readmeLines],
         github: () => [
             link(t.githubPortfolio, "https://github.com/nbazaes"),
             link("landing-astro:", "https://github.com/nbazaes/landing-astro"),
             t.githubLandingDescription,
-            link("discursantes_react:", "https://github.com/nbazaes/discursantes_react"),
+            link(
+                "discursantes_react:",
+                "https://github.com/nbazaes/discursantes_react",
+            ),
             t.githubDiscursantesDescription,
             link("webconstAD:", "https://github.com/nbazaes/webconstAD"),
             t.githubWebconstDescription,
@@ -337,10 +334,7 @@ const promptDelay =
         }
 
         if (!handler) {
-            appendOutput([
-                `${t.commandNotFound} ${trimmed}`,
-                t.typeHelp,
-            ]);
+            appendOutput([`${t.commandNotFound} ${trimmed}`, t.typeHelp]);
             scrollToLatest();
             return;
         }
