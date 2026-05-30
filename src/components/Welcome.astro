@@ -122,6 +122,7 @@ const promptDelay =
             githubBazposDescription:
                 "A full point-of-sale system built with Django and Bootstrap including inventory management, reports, user management, supplier management and invoicing.",
             emailLabel: "email:",
+            linkedin: "LinkedIn profile:",
             openingGui: "Opening GUI view...",
             sudoMessage:
                 "guest is not in the sudoers file. This incident will be reported.",
@@ -166,6 +167,7 @@ const promptDelay =
             githubBazposDescription:
                 "Un sistema de punto de venta completo construido con Django y Bootstrap, con inventario, reportes, gestión de usuarios, proveedores y facturación.",
             emailLabel: "correo:",
+            linkedin: "Perfil de LinkedIn:",
             openingGui: "Abriendo vista GUI...",
             sudoMessage:
                 "guest no está en el archivo sudoers. Este incidente será reportado.",
@@ -265,6 +267,8 @@ const promptDelay =
         contact: () => [
             t.emailLabel,
         link("nbazaes@bazaes.cl","mailto:nbazaes@bazaes.cl"),
+            t.linkedin,
+            link("linkedin.com/in/nicolas-bazaes", "https://www.linkedin.com/in/nicolas-bazaes"),
         ],
         gui: () => {
             window.location.href = "/index-alt";
