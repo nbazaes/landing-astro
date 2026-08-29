@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Welcome from '../components/Welcome.astro';
+---
+
+<Layout title="Nicolás Bazaes | Interactive CLI Terminal">
+  <!-- Top Minimal Nav Bar -->
+  <div class="fixed top-4 left-4 z-50 flex items-center gap-3">
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium bg-[#16161a]/90 backdrop-blur-md text-[#ddb7ff] border border-white/10 hover:border-[#a855f7] hover:text-white transition-all shadow-lg group"
+    >
+      <span class="material-symbols-outlined text-sm text-[#a855f7] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+      <span>Back to Portfolio (GUI)</span>
+    </a>
+  </div>
+
+  <div class="pt-8 min-h-screen">
+    <Welcome />
+  </div>
+</Layout>

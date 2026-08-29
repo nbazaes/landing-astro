@@ -1,0 +1,183 @@
+---
+---
+
+<section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+  <!-- Subtle Background Glow Gradients -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-[#a855f7]/15 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+  <div class="absolute top-1/3 right-10 w-[300px] h-[250px] bg-[#4c3c7d]/20 rounded-full blur-[90px] pointer-events-none -z-10"></div>
+
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Left Column: Bio & Hero Content (7 cols) -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- Terminal Command Kicker Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#16161a] border border-[#a855f7]/30 text-xs font-mono shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-[#ddb7ff]" data-i18n="heroKicker">guest@nbazaes:~$ ./whoami.sh</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.15]" data-i18n="heroTitle">
+          Fullstack developer building pragmatic, high-performance systems and tooling.
+        </h1>
+
+        <!-- Biography Blurbs -->
+        <div class="space-y-3 text-base sm:text-lg text-[#cfc2d6] leading-relaxed max-w-2xl">
+          <p data-i18n="heroBio1">
+            My name is <strong class="text-white font-semibold">Nicolás Bazaes</strong>, a fullstack developer and sysadmin based in Chile with a passion for technology, server optimization, and robust architecture.
+          </p>
+          <p data-i18n="heroBio2">
+            I craft end-to-end products using frameworks like <span class="text-[#ddb7ff] font-medium">React, Astro, and Django</span>, coupled with Linux environments, Docker containerization, and self-hosted infrastructure.
+          </p>
+        </div>
+
+        <!-- Action CTAs & Socials -->
+        <div class="pt-4 flex flex-wrap items-center gap-4">
+          <!-- Primary CTA -->
+          <a
+            href="#projects"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm sm:text-base bg-[#a855f7] hover:bg-[#b76dff] text-white transition-all glow-primary font-semibold"
+          >
+            <span data-i18n="heroCtaProjects">Explore Projects</span>
+            <span class="material-symbols-outlined text-lg">arrow_downward</span>
+          </a>
+
+          <!-- Copy Email Button -->
+          <button
+            id="hero-copy-email-btn"
+            type="button"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-lg font-medium text-sm sm:text-base bg-[#16161a] border border-[#a855f7]/40 hover:border-[#a855f7] text-[#ddb7ff] hover:text-white transition-all cursor-pointer group"
+            data-email="nbazaes@bazaes.cl"
+          >
+            <span class="material-symbols-outlined text-lg text-[#a855f7] group-hover:scale-110 transition-transform">content_copy</span>
+            <span data-i18n="heroCtaCopyEmail">Copy Email</span>
+          </button>
+
+          <!-- Social Links Icons -->
+          <div class="flex items-center gap-2 pl-2">
+            <a
+              href="https://github.com/nbazaes"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="w-10 h-10 rounded-lg bg-[#16161a] border border-white/10 hover:border-[#a855f7]/60 flex items-center justify-center text-[#cfc2d6] hover:text-white hover:bg-white/5 transition-all"
+              title="GitHub Profile"
+              aria-label="GitHub"
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </a>
+            <a
+              href="mailto:nbazaes@bazaes.cl"
+              class="w-10 h-10 rounded-lg bg-[#16161a] border border-white/10 hover:border-[#a855f7]/60 flex items-center justify-center text-[#cfc2d6] hover:text-white hover:bg-white/5 transition-all"
+              title="Send Direct Email"
+              aria-label="Email"
+            >
+              <span class="material-symbols-outlined text-xl">mail</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Code / Server HUD Card (5 cols) -->
+      <div class="lg:col-span-5">
+        <div class="glass-panel rounded-xl overflow-hidden shadow-2xl border border-white/10">
+          
+          <!-- Window Titlebar -->
+          <div class="bg-[#16161a] px-4 py-3 border-b border-white/10 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+            </div>
+            <div class="text-xs font-mono text-[#94a3b8] flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-sm text-[#a855f7]">terminal</span>
+              <span>sysinfo.sh</span>
+            </div>
+            <div class="text-xs font-mono text-emerald-400">
+              ● live
+            </div>
+          </div>
+
+          <!-- Code / Terminal Body -->
+          <div class="p-5 font-mono text-xs sm:text-sm space-y-3 bg-[#0e0e10]/90 leading-relaxed text-[#e5e1e4]">
+            <div class="text-[#94a3b8]">
+              <span class="text-[#a855f7]">$</span> neofetch --developer
+            </div>
+            
+            <div class="grid grid-cols-1 gap-1.5 pt-1 text-xs">
+              <div class="flex justify-between border-b border-white/5 pb-1">
+                <span class="text-[#cfc2d6]">Engineer:</span>
+                <span class="text-white font-semibold">Nicolás Bazaes</span>
+              </div>
+              <div class="flex justify-between border-b border-white/5 pb-1">
+                <span class="text-[#cfc2d6]">Role:</span>
+                <span class="text-[#ddb7ff]">Fullstack &amp; Sysadmin</span>
+              </div>
+              <div class="flex justify-between border-b border-white/5 pb-1">
+                <span class="text-[#cfc2d6]">Location:</span>
+                <span class="text-white">Los Ángeles, Chile (CL)</span>
+              </div>
+              <div class="flex justify-between border-b border-white/5 pb-1">
+                <span class="text-[#cfc2d6]">Core Stack:</span>
+                <span class="text-[#fabc4e]">Python, React, Astro, Go</span>
+              </div>
+              <div class="flex justify-between border-b border-white/5 pb-1">
+                <span class="text-[#cfc2d6]">Infra / OS:</span>
+                <span class="text-emerald-400">Linux, Docker, Nginx</span>
+              </div>
+              <div class="flex justify-between pt-1">
+                <span class="text-[#cfc2d6]">Status:</span>
+                <span class="text-emerald-400 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  Ready for new projects
+                </span>
+              </div>
+            </div>
+
+            <!-- Terminal Quote Snippet -->
+            <div class="mt-4 pt-3 border-t border-white/10 text-xs text-[#94a3b8] italic">
+              "Building robust backends and clean architectures with zero unnecessary bloat."
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Email Copy with Toast
+  const copyBtn = document.getElementById('hero-copy-email-btn');
+  copyBtn?.addEventListener('click', async () => {
+    const email = copyBtn.getAttribute('data-email') || 'nbazaes@bazaes.cl';
+    try {
+      await navigator.clipboard.writeText(email);
+      showToast('Email copied to clipboard: ' + email);
+    } catch (err) {
+      console.error('Failed to copy', err);
+    }
+  });
+
+  function showToast(message: string) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'glass-panel bg-[#16161a]/95 text-white px-4 py-3 rounded-lg shadow-xl border border-[#a855f7]/50 text-xs sm:text-sm font-mono flex items-center gap-2 animate-toast pointer-events-auto';
+    toast.innerHTML = `
+      <span class="material-symbols-outlined text-[#a855f7] text-base">check_circle</span>
+      <span>${message}</span>
+    `;
+
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.remove();
+    }, 2300);
+  }
+</script>

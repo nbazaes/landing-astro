@@ -1,11 +1,673 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { realProjectsList } from '../data/translations';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Nicolás Bazaes | Human-Readable Console Portfolio">
+  <div class="tiling-layout">
+    
+    <!-- TopAppBar -->
+    <header class="console-pane col-span-full flex justify-between items-center px-4 h-12 border-b border-[#2d3139] bg-[#111319] sticky top-0 z-30">
+      <div class="flex items-center gap-4 sm:gap-6">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#a855f7] animate-pulse"></span>
+          <span class="text-xs sm:text-sm font-bold text-[#ddb7ff] tracking-tight" data-i18n="headerMode">
+            CONSOLE_MODE
+          </span>
+        </div>
+        <nav class="hidden md:flex items-center gap-4 text-xs">
+          <a href="#system-info" class="text-[#94a3b8] hover:text-[#a855f7] transition-colors" data-i18n="headerOverview">[1] OVERVIEW</a>
+          <a href="#projects-pane" class="text-[#94a3b8] hover:text-[#a855f7] transition-colors" data-i18n="headerProjects">[2] PROJECTS</a>
+          <a href="#stack-pane" class="text-[#94a3b8] hover:text-[#a855f7] transition-colors" data-i18n="headerStack">[3] STACK</a>
+          <a href="#philosophy-pane" class="text-[#94a3b8] hover:text-[#a855f7] transition-colors" data-i18n="headerPhilosophy">[4] PHILOSOPHY</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Terminal CLI Link -->
+        <a
+          href="/terminal"
+          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#191b22] border border-[#2d3139] hover:border-[#a855f7] text-[#ddb7ff] hover:text-white text-xs transition-colors"
+          title="Open Terminal Emulator"
+        >
+          <span class="text-[#a855f7] font-bold">&gt;_</span>
+          <span data-i18n="headerCli">CLI_MODE</span>
+        </a>
+
+        <!-- Language Switcher -->
+        <button
+          id="lang-toggle-btn"
+          type="button"
+          class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#191b22] border border-[#2d3139] hover:border-[#a855f7] text-xs text-white hover:text-[#ddb7ff] transition-colors cursor-pointer font-bold"
+          aria-label="Switch Language"
+        >
+          <span class="material-symbols-outlined text-[14px] text-[#a855f7]">translate</span>
+          <span id="lang-current-label">ES</span>
+        </button>
+
+        <!-- Copy Email Button -->
+        <button
+          id="top-copy-email-btn"
+          type="button"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#a855f7] hover:bg-[#b76dff] text-white text-xs font-bold transition-colors cursor-pointer"
+          data-email="nbazaes@bazaes.cl"
+        >
+          <span class="material-symbols-outlined text-sm">content_copy</span>
+          <span>EMAIL</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- SideNavBar (Desktop & Tablet) -->
+    <aside class="sidebar-nav console-pane flex flex-col border-r border-[#2d3139] bg-[#111319] p-5 justify-between">
+      <div class="space-y-6">
+        <!-- Developer Profile Card -->
+        <div class="p-4 rounded bg-[#191b22] border border-[#2d3139] space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded bg-[#0c0e14] border border-[#a855f7]/50 flex items-center justify-center text-[#a855f7] font-bold text-lg shadow-[0_0_12px_rgba(168,85,247,0.2)]">
+              NB
+            </div>
+            <div>
+              <h1 class="text-sm font-bold text-white tracking-tight" data-i18n="sidebarName">
+                NICOLAS_BAZAES
+              </h1>
+              <p class="text-xs text-[#94a3b8]" data-i18n="sidebarRole">
+                Fullstack &amp; Sysadmin
+              </p>
+            </div>
+          </div>
+
+          <div class="text-[11px] text-[#94a3b8] space-y-1 pt-2 border-t border-[#2d3139]">
+            <div class="flex justify-between">
+              <span>LOC:</span>
+              <span class="text-white" data-i18n="sidebarLocation">Los Ángeles, Chile (CL)</span>
+            </div>
+            <div class="flex justify-between">
+              <span>BUILD:</span>
+              <span class="text-[#ddb7ff]" data-i18n="sidebarVersion">v1.0-prod</span>
+            </div>
+            <div class="flex justify-between">
+              <span>STATE:</span>
+              <span class="text-emerald-400 font-bold" data-i18n="sidebarStatus">READY</span>
+            </div>
+          </div>
+
+          <button
+            id="sidebar-copy-email-btn"
+            type="button"
+            class="w-full py-1.5 px-2 rounded bg-[#a855f7]/15 border border-[#a855f7]/60 hover:bg-[#a855f7] text-[#ddb7ff] hover:text-white text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+            data-email="nbazaes@bazaes.cl"
+          >
+            <span class="material-symbols-outlined text-sm">content_copy</span>
+            <span data-i18n="sidebarContactBtn">COPY_EMAIL</span>
+          </button>
+        </div>
+
+        <!-- Navigation Tree -->
+        <nav class="space-y-1 text-xs">
+          <a
+            href="#system-info"
+            class="flex items-center gap-2.5 px-3 py-2 rounded text-[#ddb7ff] hover:text-white bg-[#191b22]/50 hover:bg-[#191b22] border-l-2 border-[#a855f7] transition-colors"
+          >
+            <span class="material-symbols-outlined text-sm text-[#a855f7]">terminal</span>
+            <span data-i18n="sidebarNavRoot">Root (Overview)</span>
+          </a>
+          <a
+            href="#projects-pane"
+            class="flex items-center gap-2.5 px-3 py-2 rounded text-[#94a3b8] hover:text-white hover:bg-[#191b22] border-l-2 border-transparent transition-colors"
+          >
+            <span class="material-symbols-outlined text-sm text-[#94a3b8]">folder_open</span>
+            <span data-i18n="sidebarNavProjects">Projects (~/projects)</span>
+          </a>
+          <a
+            href="#stack-pane"
+            class="flex items-center gap-2.5 px-3 py-2 rounded text-[#94a3b8] hover:text-white hover:bg-[#191b22] border-l-2 border-transparent transition-colors"
+          >
+            <span class="material-symbols-outlined text-sm text-[#94a3b8]">memory</span>
+            <span data-i18n="sidebarNavStack">Core Dependencies</span>
+          </a>
+          <a
+            href="#philosophy-pane"
+            class="flex items-center gap-2.5 px-3 py-2 rounded text-[#94a3b8] hover:text-white hover:bg-[#191b22] border-l-2 border-transparent transition-colors"
+          >
+            <span class="material-symbols-outlined text-sm text-[#94a3b8]">book</span>
+            <span data-i18n="sidebarNavPhilosophy">Philosophy</span>
+          </a>
+          <a
+            href="/terminal"
+            class="flex items-center gap-2.5 px-3 py-2 rounded text-[#94a3b8] hover:text-[#ddb7ff] hover:bg-[#191b22] border-l-2 border-transparent transition-colors"
+          >
+            <span class="material-symbols-outlined text-sm text-[#a855f7]">code</span>
+            <span data-i18n="sidebarNavTerminal">Interactive Terminal</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer Badges -->
+      <div class="pt-4 border-t border-[#2d3139] space-y-2 text-[11px] text-[#94a3b8]">
+        <div class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span>Docker / Linux Infrastructure</span>
+        </div>
+        <div class="text-[10px] text-[#6b7280]">
+          nbazaes.dev console runtime
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Tiling Grid Area -->
+    <main class="grid grid-cols-1 xl:grid-cols-3 gap-px bg-[#2d3139] overflow-y-auto">
+      
+      <!-- PANE 1: SYSTEM_INFO (Spans 2 cols on Desktop) -->
+      <section id="system-info" class="console-pane xl:col-span-2 flex flex-col min-h-[360px]">
+        <div class="pane-header">
+          <span class="text-[#94a3b8] flex items-center gap-2">
+            <span class="material-symbols-outlined text-[15px] text-[#a855f7]">info</span>
+            <span data-i18n="systemInfoTitle">SYSTEM_INFO</span>
+          </span>
+          <span class="text-[#94a3b8]" data-i18n="systemInfoPid">pid: 1024</span>
+        </div>
+
+        <div class="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-6">
+          <div class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center">
+              <span data-i18n="systemInfoHeadline">sys.init("Nicolás Bazaes")</span>
+              <span class="terminal-cursor"></span>
+            </h2>
+
+            <div class="space-y-3 text-xs sm:text-sm text-[#cfc2d6] leading-relaxed border-l-2 border-[#a855f7] pl-4 bg-[#191b22]/40 py-2 rounded-r">
+              <p data-i18n="systemInfoBio1">
+                Fullstack developer and sysadmin based in Chile, building pragmatic, high-performance web systems and robust server infrastructure.
+              </p>
+              <p data-i18n="systemInfoBio2">
+                Passionate about backend engineering (Python/Django, Node.js, Go), Linux server administration, Docker containerization, and self-hosted environments.
+              </p>
+            </div>
+          </div>
+
+          <!-- System Status Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2 text-xs">
+            <div class="p-2.5 rounded bg-[#191b22] border border-[#2d3139]">
+              <div class="text-[10px] text-[#94a3b8]" data-i18n="systemInfoStatusLabel">Status:</div>
+              <div class="text-emerald-400 font-bold mt-0.5" data-i18n="systemInfoStatusVal">READY FOR WORK</div>
+            </div>
+            <div class="p-2.5 rounded bg-[#191b22] border border-[#2d3139]">
+              <div class="text-[10px] text-[#94a3b8]" data-i18n="systemInfoOsLabel">OS:</div>
+              <div class="text-white font-bold mt-0.5" data-i18n="systemInfoOsVal">Linux / Arch &amp; Debian</div>
+            </div>
+            <div class="p-2.5 rounded bg-[#191b22] border border-[#2d3139]">
+              <div class="text-[10px] text-[#94a3b8]" data-i18n="systemInfoRoleLabel">Role:</div>
+              <div class="text-[#ddb7ff] font-bold mt-0.5" data-i18n="systemInfoRoleVal">Fullstack &amp; Sysadmin</div>
+            </div>
+            <div class="p-2.5 rounded bg-[#191b22] border border-[#2d3139]">
+              <div class="text-[10px] text-[#94a3b8]" data-i18n="systemInfoInfraLabel">Infra:</div>
+              <div class="text-[#fabc4e] font-bold mt-0.5" data-i18n="systemInfoInfraVal">Docker / Self-Hosted</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANE 2: CORE_DEPENDENCIES (Technical Matrix) -->
+      <section id="stack-pane" class="console-pane xl:col-span-1 flex flex-col min-h-[360px]">
+        <div class="pane-header">
+          <span class="text-[#94a3b8] flex items-center gap-2">
+            <span class="material-symbols-outlined text-[15px] text-[#a855f7]">memory</span>
+            <span data-i18n="dependenciesTitle">CORE_DEPENDENCIES</span>
+          </span>
+          <span class="text-emerald-400 border border-emerald-500/40 px-1.5 py-0.2 rounded text-[10px]" data-i18n="dependenciesStatus">ACTIVE</span>
+        </div>
+
+        <div class="p-5 flex flex-col gap-5 text-xs">
+          <!-- Backend Module -->
+          <div class="space-y-2">
+            <div class="text-[11px] font-bold text-white pb-1 border-b border-[#2d3139] flex items-center justify-between">
+              <span class="text-[#ddb7ff]" data-i18n="dependenciesBackendTitle">Backend.sh</span>
+              <span class="text-[10px] text-[#94a3b8]">Python / Django</span>
+            </div>
+            <div class="space-y-1 text-[#cfc2d6]">
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Python / Django</span>
+                <span class="text-[#a855f7] font-semibold">Primary</span>
+              </div>
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Node.js / Express</span>
+                <span class="text-[#94a3b8]">REST / APIs</span>
+              </div>
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Go / Microservices</span>
+                <span class="text-[#94a3b8]">High-Perf</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sysadmin Module -->
+          <div class="space-y-2">
+            <div class="text-[11px] font-bold text-white pb-1 border-b border-[#2d3139] flex items-center justify-between">
+              <span class="text-[#ddb7ff]" data-i18n="dependenciesSysadminTitle">Sysadmin.sh</span>
+              <span class="text-[10px] text-emerald-400">Linux / Docker</span>
+            </div>
+            <div class="space-y-1 text-[#cfc2d6]">
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Linux / Bash CLI</span>
+                <span class="text-emerald-400 font-semibold">Native</span>
+              </div>
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Docker / Containers</span>
+                <span class="text-emerald-400 font-semibold">Active</span>
+              </div>
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Nginx / Reverse Proxies</span>
+                <span class="text-[#94a3b8]">Production</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontend Module -->
+          <div class="space-y-2">
+            <div class="text-[11px] font-bold text-white pb-1 border-b border-[#2d3139] flex items-center justify-between">
+              <span class="text-[#ddb7ff]" data-i18n="dependenciesFrontendTitle">Frontend.sh</span>
+              <span class="text-[10px] text-[#fabc4e]">Astro / React</span>
+            </div>
+            <div class="space-y-1 text-[#cfc2d6]">
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Astro 6 / Static</span>
+                <span class="text-[#fabc4e] font-semibold">SSR &amp; SSG</span>
+              </div>
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">React / TypeScript</span>
+                <span class="text-[#fabc4e]">Fullstack</span>
+              </div>
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Tailwind CSS &amp; UI</span>
+                <span class="text-[#94a3b8]">Modular</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Databases Module -->
+          <div class="space-y-2">
+            <div class="text-[11px] font-bold text-white pb-1 border-b border-[#2d3139] flex items-center justify-between">
+              <span class="text-[#ddb7ff]" data-i18n="dependenciesDatabasesTitle">Databases.sh</span>
+              <span class="text-[10px] text-[#94a3b8]">PostgreSQL</span>
+            </div>
+            <div class="space-y-1 text-[#cfc2d6]">
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">PostgreSQL</span>
+                <span class="text-white font-semibold">Relational</span>
+              </div>
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Redis</span>
+                <span class="text-[#94a3b8]">Cache / Queues</span>
+              </div>
+              <div class="flex justify-between hover:bg-[#191b22] px-1 py-0.5 rounded">
+                <span class="text-white">Django ORM / SQLite</span>
+                <span class="text-[#94a3b8]">Schemas</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PANE 3: DIRECTORY_LISTING (Real Projects - Spans 2 cols) -->
+      <section id="projects-pane" class="console-pane xl:col-span-2 flex flex-col min-h-[400px]">
+        <div class="pane-header">
+          <span class="text-[#94a3b8] flex items-center gap-2">
+            <span class="material-symbols-outlined text-[15px] text-[#a855f7]">folder_open</span>
+            <span data-i18n="projectsTitle">DIRECTORY_LISTING</span>
+          </span>
+          <span class="text-[#94a3b8]" data-i18n="projectsPath">~/projects</span>
+        </div>
+
+        <div class="p-6 sm:p-8 space-y-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {realProjectsList.map((project) => (
+              <div class="p-4 rounded bg-[#0c0e14] border border-[#2d3139] hover:border-[#a855f7]/60 transition-all flex flex-col justify-between space-y-4 group">
+                
+                <div class="space-y-2">
+                  <div class="flex justify-between items-start">
+                    <div class="flex items-center gap-2">
+                      <span class="material-symbols-outlined text-[#a855f7] text-base">{project.iconName}</span>
+                      <h3 class="text-sm font-bold text-white group-hover:text-[#ddb7ff] transition-colors">
+                        <a href={project.githubUrl} target="_blank" rel="noreferrer noopener">
+                          {project.name}
+                        </a>
+                      </h3>
+                    </div>
+                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-[#191b22] text-[#ddb7ff] border border-[#2d3139]" data-i18n={`projectCat_${project.id}`}>
+                      {project.category.en}
+                    </span>
+                  </div>
+
+                  <p class="text-xs text-[#94a3b8] leading-relaxed" data-i18n={`projectDesc_${project.id}`}>
+                    {project.description.en}
+                  </p>
+
+                  <ul class="text-[11px] text-[#cfc2d6] space-y-1 list-disc list-inside pt-1">
+                    {project.metrics.en.map((metric, idx) => (
+                      <li data-i18n={`projectMetric_${project.id}_${idx}`}>{metric}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <!-- Tags & Links Footer -->
+                <div class="pt-2 border-t border-[#2d3139] flex flex-wrap items-center justify-between gap-2 text-[11px]">
+                  <div class="flex flex-wrap gap-1">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span class="px-1.5 py-0.5 rounded bg-[#191b22] text-[#94a3b8] text-[10px]">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      class="text-[#94a3b8] hover:text-white flex items-center gap-1 transition-colors"
+                    >
+                      <span class="material-symbols-outlined text-xs">code</span>
+                      <span data-i18n="projectsViewCode">Code</span>
+                    </a>
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="text-[#a855f7] hover:text-[#ddb7ff] font-semibold flex items-center gap-1 transition-colors"
+                      >
+                        <span class="material-symbols-outlined text-xs">open_in_new</span>
+                        <span data-i18n="projectsLiveDemo">Live</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- PANE 4: PRAGMATIC_PRINCIPLES (readonly) -->
+      <section id="philosophy-pane" class="console-pane xl:col-span-1 flex flex-col min-h-[400px]">
+        <div class="pane-header">
+          <span class="text-[#94a3b8] flex items-center gap-2">
+            <span class="material-symbols-outlined text-[15px] text-[#a855f7]">book</span>
+            <span data-i18n="philosophyTitle">PRAGMATIC_PRINCIPLES</span>
+          </span>
+          <span class="text-[#94a3b8]" data-i18n="philosophyMode">readonly</span>
+        </div>
+
+        <div class="p-5 flex flex-col justify-between flex-1 space-y-6 text-xs text-[#cfc2d6]">
+          
+          <div class="space-y-4">
+            <!-- 01 -->
+            <div class="flex gap-3 items-start border-b border-[#2d3139] pb-4">
+              <span class="text-[#a855f7] font-bold text-sm">01</span>
+              <div class="space-y-1">
+                <h4 class="text-white font-bold text-xs sm:text-sm" data-i18n="philosophyItem1Title">
+                  Clean code over clever code
+                </h4>
+                <p class="text-[11px] text-[#94a3b8] leading-relaxed" data-i18n="philosophyItem1Desc">
+                  Readability and predictable patterns supersede obscure micro-optimizations. Code is read far more often than written.
+                </p>
+              </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="flex gap-3 items-start border-b border-[#2d3139] pb-4">
+              <span class="text-[#a855f7] font-bold text-sm">02</span>
+              <div class="space-y-1">
+                <h4 class="text-white font-bold text-xs sm:text-sm" data-i18n="philosophyItem2Title">
+                  Minimal bloat &amp; purpose
+                </h4>
+                <p class="text-[11px] text-[#94a3b8] leading-relaxed" data-i18n="philosophyItem2Desc">
+                  Fewer dependencies mean fewer security vulnerabilities and zero maintenance overhead. Build what you need cleanly.
+                </p>
+              </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="flex gap-3 items-start">
+              <span class="text-[#a855f7] font-bold text-sm">03</span>
+              <div class="space-y-1">
+                <h4 class="text-white font-bold text-xs sm:text-sm" data-i18n="philosophyItem3Title">
+                  Terminal-first workflow
+                </h4>
+                <p class="text-[11px] text-[#94a3b8] leading-relaxed" data-i18n="philosophyItem3Desc">
+                  Maximum operational efficiency achieved through Linux mastery, automation scripts, and command-line tooling.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom CTA to Interactive Terminal -->
+          <div class="p-3 rounded bg-[#0c0e14] border border-[#a855f7]/30 text-center space-y-2">
+            <div class="text-[11px] text-white font-bold">Try the interactive CLI:</div>
+            <a
+              href="/terminal"
+              class="block w-full py-1.5 rounded bg-[#a855f7] hover:bg-[#b76dff] text-white text-xs font-bold transition-colors"
+            >
+              $ open /terminal
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Status Bar -->
+    <footer class="console-pane col-span-full bg-[#0c0e14] flex items-center justify-between px-3 h-9 border-t border-[#2d3139] text-xs font-mono sticky bottom-0 z-30">
+      <div class="flex items-center gap-1 sm:gap-2">
+        <a
+          href="https://github.com/nbazaes"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="text-[#94a3b8] hover:text-white px-2 py-1 hover:bg-[#191b22] rounded transition-colors flex items-center gap-1"
+          data-i18n="footerGithub"
+        >
+          [g] github
+        </a>
+        <a
+          href="https://www.linkedin.com/in/nicolas-bazaes"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="text-[#94a3b8] hover:text-white px-2 py-1 hover:bg-[#191b22] rounded transition-colors hidden sm:flex items-center gap-1"
+          data-i18n="footerLinkedin"
+        >
+          [l] linkedin
+        </a>
+        <button
+          id="footer-copy-email-btn"
+          type="button"
+          class="text-[#ddb7ff] hover:text-white px-2 py-1 hover:bg-[#191b22] rounded transition-colors cursor-pointer flex items-center gap-1"
+          data-email="nbazaes@bazaes.cl"
+          data-i18n="footerEmail"
+        >
+          [m] email: nbazaes@bazaes.cl
+        </button>
+        <a
+          href="/terminal"
+          class="text-[#a855f7] hover:text-[#ddb7ff] px-2 py-1 hover:bg-[#191b22] rounded transition-colors hidden md:flex items-center gap-1"
+          data-i18n="footerTerminal"
+        >
+          [t] cli terminal
+        </a>
+      </div>
+
+      <div class="flex items-center gap-3 text-[11px] text-[#94a3b8]">
+        <span class="hidden sm:inline">UTF-8</span>
+        <span class="hidden sm:inline text-[#2d3139]">|</span>
+        <span>Astro v6</span>
+        <span class="text-[#2d3139]">|</span>
+        <span class="text-emerald-400 font-bold">Ready</span>
+      </div>
+    </footer>
+
+  </div>
 </Layout>
+
+<script>
+  import { consoleTranslations, realProjectsList, type Locale } from '../data/translations';
+
+  const STORAGE_KEY = 'nbazaes-locale';
+
+  function getInitialLocale(): Locale {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY) as Locale | null;
+      if (stored === 'en' || stored === 'es') return stored;
+    } catch {}
+
+    const browserLocales = [...(navigator.languages || []), navigator.language]
+      .filter(Boolean)
+      .map(lang => lang.toLowerCase());
+
+    return browserLocales.some(lang => lang.startsWith('es')) ? 'es' : 'en';
+  }
+
+  function setLanguage(locale: Locale) {
+    try {
+      localStorage.setItem(STORAGE_KEY, locale);
+    } catch {}
+
+    document.documentElement.lang = locale === 'es' ? 'es-CL' : 'en';
+    const t = consoleTranslations[locale];
+
+    // Header
+    updateText('headerMode', t.header.mode);
+    updateText('headerOverview', t.header.overview);
+    updateText('headerProjects', t.header.projects);
+    updateText('headerStack', t.header.stack);
+    updateText('headerPhilosophy', t.header.philosophy);
+    updateText('headerCli', t.header.cli);
+
+    // Sidebar
+    updateText('sidebarName', t.sidebar.name);
+    updateText('sidebarRole', t.sidebar.role);
+    updateText('sidebarVersion', t.sidebar.version);
+    updateText('sidebarLocation', t.sidebar.location);
+    updateText('sidebarStatus', t.sidebar.status);
+    updateText('sidebarContactBtn', t.sidebar.contactBtn);
+    updateText('sidebarNavRoot', t.sidebar.navRoot);
+    updateText('sidebarNavProjects', t.sidebar.navProjects);
+    updateText('sidebarNavStack', t.sidebar.navStack);
+    updateText('sidebarNavPhilosophy', t.sidebar.navPhilosophy);
+    updateText('sidebarNavTerminal', t.sidebar.navTerminal);
+
+    // System Info
+    updateText('systemInfoTitle', t.systemInfo.title);
+    updateText('systemInfoPid', t.systemInfo.pid);
+    updateText('systemInfoHeadline', t.systemInfo.headline);
+    updateText('systemInfoBio1', t.systemInfo.bio1);
+    updateText('systemInfoBio2', t.systemInfo.bio2);
+    updateText('systemInfoStatusLabel', t.systemInfo.statusLabel);
+    updateText('systemInfoStatusVal', t.systemInfo.statusVal);
+    updateText('systemInfoOsLabel', t.systemInfo.osLabel);
+    updateText('systemInfoOsVal', t.systemInfo.osVal);
+    updateText('systemInfoRoleLabel', t.systemInfo.roleLabel);
+    updateText('systemInfoRoleVal', t.systemInfo.roleVal);
+    updateText('systemInfoInfraLabel', t.systemInfo.infraLabel);
+    updateText('systemInfoInfraVal', t.systemInfo.infraVal);
+
+    // Dependencies
+    updateText('dependenciesTitle', t.dependencies.title);
+    updateText('dependenciesStatus', t.dependencies.status);
+    updateText('dependenciesBackendTitle', t.dependencies.backendTitle);
+    updateText('dependenciesFrontendTitle', t.dependencies.frontendTitle);
+    updateText('dependenciesSysadminTitle', t.dependencies.sysadminTitle);
+    updateText('dependenciesDatabasesTitle', t.dependencies.databasesTitle);
+
+    // Projects
+    updateText('projectsTitle', t.projects.title);
+    updateText('projectsPath', t.projects.path);
+    updateText('projectsViewCode', t.projects.viewCode);
+    updateText('projectsLiveDemo', t.projects.liveDemo);
+
+    realProjectsList.forEach(p => {
+      updateText(`projectCat_${p.id}`, p.category[locale]);
+      updateText(`projectDesc_${p.id}`, p.description[locale]);
+      p.metrics[locale].forEach((m, idx) => {
+        updateText(`projectMetric_${p.id}_${idx}`, m);
+      });
+    });
+
+    // Philosophy
+    updateText('philosophyTitle', t.philosophy.title);
+    updateText('philosophyMode', t.philosophy.mode);
+    updateText('philosophyItem1Title', t.philosophy.item1Title);
+    updateText('philosophyItem1Desc', t.philosophy.item1Desc);
+    updateText('philosophyItem2Title', t.philosophy.item2Title);
+    updateText('philosophyItem2Desc', t.philosophy.item2Desc);
+    updateText('philosophyItem3Title', t.philosophy.item3Title);
+    updateText('philosophyItem3Desc', t.philosophy.item3Desc);
+
+    // Footer
+    updateText('footerGithub', t.footer.github);
+    updateText('footerLinkedin', t.footer.linkedin);
+    updateText('footerEmail', t.footer.email);
+    updateText('footerTerminal', t.footer.terminal);
+
+    // Language button label
+    const currentLabel = document.getElementById('lang-current-label');
+    if (currentLabel) {
+      currentLabel.textContent = locale === 'es' ? 'EN' : 'ES';
+    }
+  }
+
+  function updateText(key: string, content: string) {
+    const elements = document.querySelectorAll(`[data-i18n="${key}"]`);
+    elements.forEach(el => {
+      el.textContent = content;
+    });
+  }
+
+  // Initialize
+  let currentLocale = getInitialLocale();
+  setLanguage(currentLocale);
+
+  // Toggle button handler
+  const langToggleBtn = document.getElementById('lang-toggle-btn');
+  langToggleBtn?.addEventListener('click', () => {
+    currentLocale = currentLocale === 'es' ? 'en' : 'es';
+    setLanguage(currentLocale);
+  });
+
+  // Clipboard copy toast logic
+  const copyEmailButtons = [
+    document.getElementById('top-copy-email-btn'),
+    document.getElementById('sidebar-copy-email-btn'),
+    document.getElementById('footer-copy-email-btn')
+  ];
+
+  copyEmailButtons.forEach(btn => {
+    btn?.addEventListener('click', async () => {
+      const email = btn.getAttribute('data-email') || 'nbazaes@bazaes.cl';
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast('Email copied to clipboard: ' + email);
+      } catch (err) {
+        console.error('Failed to copy', err);
+      }
+    });
+  });
+
+  function showToast(message: string) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'bg-[#191b22] text-white px-4 py-2.5 rounded shadow-2xl border border-[#a855f7] text-xs font-mono flex items-center gap-2 animate-toast pointer-events-auto';
+    toast.innerHTML = `
+      <span class="material-symbols-outlined text-[#a855f7] text-sm">check_circle</span>
+      <span>${message}</span>
+    `;
+
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.remove();
+    }, 2200);
+  }
+</script>

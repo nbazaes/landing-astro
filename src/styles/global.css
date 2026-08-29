@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #111319;
+  --color-surface-dim: #111319;
+  --color-surface-bright: #373940;
+  --color-surface-container: #1d1f26;
+  --color-surface-container-high: #282a30;
+  --color-surface-container-low: #191b22;
+  --color-surface-container-lowest: #0c0e14;
+  --color-surface-container-highest: #33343b;
+  --color-border-primary: #2d3139;
+  --color-border-active: #a855f7;
+  --color-primary: #a855f7;
+  --color-primary-light: #ddb7ff;
+  --color-primary-fixed: #f0dbff;
+  --color-primary-container: #b76dff;
+  --color-on-primary: #490080;
+  --color-on-surface: #e2e2ea;
+  --color-on-surface-variant: #cfc2d6;
+  --color-text-dim: #94a3b8;
+  --color-text-bright: #ffffff;
+  --color-tertiary: #fabc4e;
+
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', ui-monospace, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #111319;
+  color: #e2e2ea;
+  font-family: var(--font-mono);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #111319;
+  color: #e2e2ea;
+  font-family: var(--font-mono);
+}
+
+/* Custom Scrollbar for terminal console feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0e14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #282a30;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a855f7;
+}
+
+/* Tiling Layout Grid */
+.tiling-layout {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  grid-template-rows: 48px minmax(calc(100vh - 84px), 1fr) 36px;
+  gap: 1px;
+  background-color: #2d3139;
+  min-height: 100vh;
+}
+
+@media (max-width: 1024px) {
+  .tiling-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+}
+
+/* Pane styling */
+.console-pane {
+  background-color: #111319;
+  overflow: auto;
+}
+
+.pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background-color: #191b22;
+  border-bottom: 1px solid #2d3139;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Terminal Cursor */
+.terminal-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 18px;
+  background-color: #a855f7;
+  animation: blinkCursor 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Toast animations */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.animate-toast {
+  animation: fadeInOut 2.2s ease-in-out forwards;
+}

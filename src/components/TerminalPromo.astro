@@ -1,0 +1,37 @@
+---
+---
+
+<section class="py-16 border-t border-white/10 relative">
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="glass-panel rounded-2xl p-8 sm:p-12 relative overflow-hidden bg-gradient-to-r from-[#16161a] to-[#201f21]/70 border border-[#a855f7]/30">
+      
+      <!-- Background Ambient Glow -->
+      <div class="absolute right-0 top-0 w-80 h-80 bg-[#a855f7]/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+        <div class="space-y-3 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#131315] border border-[#a855f7]/40 text-xs font-mono text-[#ddb7ff]">
+            <span class="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span>
+            <span data-i18n="terminalPromoBadge">Interactive CLI Mode</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight" data-i18n="terminalPromoTitle">
+            Prefer a keyboard-driven interface?
+          </h2>
+          <p class="text-sm sm:text-base text-[#cfc2d6] max-w-xl" data-i18n="terminalPromoDesc">
+            Try the built-in terminal emulator to explore my bio, projects, and contact info via command-line interface.
+          </p>
+        </div>
+
+        <a
+          href="/terminal"
+          class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl font-mono text-sm font-bold bg-[#131315] border border-[#a855f7] hover:bg-[#a855f7] text-white hover:text-white transition-all shadow-[0_0_20px_rgba(168,85,247,0.25)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] flex-shrink-0 group"
+        >
+          <span class="text-[#a855f7] group-hover:text-white">&gt;_</span>
+          <span data-i18n="terminalPromoCta">Launch Interactive Terminal</span>
+          <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

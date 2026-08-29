@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nicolas Bazaes - Human-Readable Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ddb7ff",
+                        "border-primary": "#2d3139",
+                        "on-surface": "#e2e2ea",
+                        "inverse-primary": "#842bd2",
+                        "surface": "#111319",
+                        "surface-container-high": "#282a30",
+                        "secondary-fixed-dim": "#c3c6d1",
+                        "surface-container": "#1d1f26",
+                        "error-container": "#93000a",
+                        "on-primary": "#490080",
+                        "text-dim": "#94a3b8",
+                        "on-surface-variant": "#cfc2d6",
+                        "on-tertiary-fixed-variant": "#604100",
+                        "primary-container": "#b76dff",
+                        "secondary": "#c3c6d1",
+                        "tertiary-fixed-dim": "#fabc4e",
+                        "on-background": "#e2e2ea",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#454952",
+                        "surface-bright": "#373940",
+                        "on-tertiary-fixed": "#281900",
+                        "primary": "#ddb7ff",
+                        "inverse-surface": "#e2e2ea",
+                        "outline": "#988d9f",
+                        "on-secondary-fixed": "#181c23",
+                        "on-secondary": "#2c3038",
+                        "surface-container-lowest": "#0c0e14",
+                        "primary-fixed": "#f0dbff",
+                        "on-primary-fixed-variant": "#6900b3",
+                        "text-bright": "#ffffff",
+                        "tertiary-container": "#bd871a",
+                        "on-secondary-container": "#b5b8c2",
+                        "secondary-fixed": "#dfe2ed",
+                        "surface-dim": "#111319",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#400071",
+                        "inverse-on-surface": "#2e3037",
+                        "on-error": "#690005",
+                        "surface-container-low": "#191b22",
+                        "on-secondary-fixed-variant": "#43474f",
+                        "on-tertiary-container": "#3a2600",
+                        "border-active": "#a855f7",
+                        "tertiary-fixed": "#ffdead",
+                        "surface-tint": "#ddb7ff",
+                        "tertiary": "#fabc4e",
+                        "on-tertiary": "#432c00",
+                        "surface-container-highest": "#33343b",
+                        "on-primary-fixed": "#2c0051",
+                        "outline-variant": "#4d4354",
+                        "background": "#111319",
+                        "surface-variant": "#33343b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "tile-gap": "1px",
+                        "margin-base": "1rem",
+                        "stack-space": "0.5rem",
+                        "container-padding": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "code-snippet": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "body-lg": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "code-snippet": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-surface'); margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+        
+        /* Tiling layout grid */
+        .tiling-layout {
+            display: grid;
+            grid-template-columns: 256px 1fr;
+            grid-template-rows: 48px 1fr 32px;
+            gap: 1px;
+            background-color: theme('colors.border-primary');
+            height: 100vh;
+        }
+        
+        @media (max-width: 768px) {
+            .tiling-layout {
+                grid-template-columns: 1fr;
+                grid-template-rows: 48px 1fr 32px;
+                overflow-y: auto;
+            }
+            .sidebar-nav { display: none; }
+        }
+
+        /* Pane styling */
+        .pane { background-color: theme('colors.surface'); overflow: auto; }
+        .pane-header { 
+            display: flex; align-items: center; justify-content: space-between; 
+            padding: 8px 16px; background-color: theme('colors.surface-container-low');
+            border-bottom: 1px solid theme('colors.border-primary');
+        }
+        
+        /* Terminal Cursor */
+        .cursor { display: inline-block; width: 8px; height: 16px; background-color: theme('colors.primary'); animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 4px; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+<div class="tiling-layout">
+<!-- TopAppBar (Mobile & Desktop) -->
+<header class="pane col-span-full md:col-span-2 bg-surface-dim flex justify-between items-center px-4 w-full h-12 border-b border-border-primary" style="background-color: theme('colors.surface-dim'); border-bottom: 1px solid theme('colors.border-primary');">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-primary tracking-tighter">INSPECTION_MODE</span>
+<nav class="hidden md:flex gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">ARCH</a>
+<a class="font-body-md text-body-md text-primary border-b border-border-active cursor-pointer" href="#">CODE</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">DOCS</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-text-bright hover:text-primary cursor-pointer">notifications_none</span>
+<span class="material-symbols-outlined text-text-bright hover:text-primary cursor-pointer">more_vert</span>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="sidebar-nav pane flex flex-col h-full border-r border-border-primary w-64 bg-surface dark:bg-surface">
+<div class="p-6 border-b border-border-primary">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest border border-border-primary mb-4 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stark, high-contrast, black and white portrait photo of a professional software engineer, styled like a gritty cyber-punk or terminal hacker profile picture. Deep shadows and bright highlights. 50-100 words." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBojN_Ko3zaw_IeF0SpfDkOjxAb0c8E4Vo4o5ot2_of6t8tjG25Va30ycjA9QP8WBptdYFPGjfDaypFDg9abFhURZ-CLzTcXjUicioZrDQHIfEwZrgn4WQMODgIg0Z8_HDQ2n6y1mBjyWlNIvY9BzK85lksW6FhFHmZRyZbyEVcheQVUoCDgidBs3s6mQZQuvGzj4UIo5RhiHDRCpMHcka8iij86Dz7Pd137E0777HhkDyx7H3yk9JD"/>
+</div>
+<h2 class="font-headline-md text-headline-md text-text-bright tracking-tighter">NICOLAS_BAZAES</h2>
+<p class="font-label-sm text-label-sm text-text-dim mt-1">v1.0.4-stable</p>
+<button class="mt-4 w-full py-2 bg-primary text-on-primary font-label-sm text-label-sm border border-primary hover:bg-transparent hover:text-primary transition-colors">BUILD_PROJECT</button>
+</div>
+<nav class="flex-1 py-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-primary font-bold border-l-2 border-border-active bg-surface-container-high px-4 py-2 hover:bg-surface-container transition-colors duration-100 scale-100 active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined text-primary">terminal</span>
+<span class="font-label-sm text-label-sm">Root</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant font-body-md px-4 py-2 hover:bg-surface-container transition-colors duration-100 scale-100 active:bg-surface-container-highest border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined">code</span>
+<span class="font-label-sm text-label-sm">Inspection</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant font-body-md px-4 py-2 hover:bg-surface-container transition-colors duration-100 scale-100 active:bg-surface-container-highest border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span class="font-label-sm text-label-sm">Stack</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant font-body-md px-4 py-2 hover:bg-surface-container transition-colors duration-100 scale-100 active:bg-surface-container-highest border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+<span class="font-label-sm text-label-sm">Contact</span>
+</a>
+</nav>
+<div class="border-t border-border-primary py-2 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-on-surface-variant font-body-md px-4 py-2 hover:bg-surface-container transition-colors duration-100 border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant font-body-md px-4 py-2 hover:bg-surface-container transition-colors duration-100 border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined">power_settings_new</span>
+<span class="font-label-sm text-label-sm">Power</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area (Tiling Container) -->
+<main class="pane grid grid-cols-1 xl:grid-cols-3 grid-rows-2 gap-px bg-border-primary p-0">
+<!-- Hero / System Info (Spans 2 columns) -->
+<section class="pane xl:col-span-2 xl:row-span-1 flex flex-col">
+<div class="pane-header">
+<span class="font-label-sm text-label-sm text-text-dim flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">info</span> SYSTEM_INFO</span>
+<span class="font-label-sm text-label-sm text-text-dim">pid: 1024</span>
+</div>
+<div class="p-8 flex flex-col justify-center flex-1">
+<h1 class="font-headline-lg text-headline-lg text-text-bright mb-4">sys.init("Nicolás Bazaes")<span class="cursor"></span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl border-l-2 border-primary pl-4 py-1 bg-surface-container-low">
+                        Full-stack developer building pragmatic, high-performance web systems. Specialized in creating scalable architectures that balance technical excellence with business reality.
+                    </p>
+<div class="mt-8 flex gap-4">
+<span class="px-3 py-1 bg-surface-container-high border border-border-primary text-text-dim font-label-sm text-label-sm">Status: READY</span>
+<span class="px-3 py-1 bg-surface-container-high border border-border-primary text-primary font-label-sm text-label-sm">Uptime: 5 yrs</span>
+</div>
+</div>
+</section>
+<!-- Technical Expertise / System Resources -->
+<section class="pane xl:col-span-1 xl:row-span-2 flex flex-col">
+<div class="pane-header">
+<span class="font-label-sm text-label-sm text-text-dim flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">memory</span> CORE_DEPENDENCIES</span>
+<span class="font-label-sm text-label-sm text-primary border border-primary px-1 rounded-sm text-[10px]">OK</span>
+</div>
+<div class="p-6 flex flex-col gap-6 overflow-y-auto">
+<div>
+<h3 class="font-headline-md text-headline-md text-text-bright mb-3 pb-1 border-b border-border-primary">Backend.sh</h3>
+<ul class="font-body-md text-body-md text-on-surface-variant flex flex-col gap-2">
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-primary">Node.js</span> <span>95%</span></li>
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-primary">Python</span> <span>88%</span></li>
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-primary">PostgreSQL</span> <span>92%</span></li>
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-primary">Redis</span> <span>80%</span></li>
+</ul>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-text-bright mb-3 pb-1 border-b border-border-primary">Frontend.sh</h3>
+<ul class="font-body-md text-body-md text-on-surface-variant flex flex-col gap-2">
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-tertiary">React</span> <span>90%</span></li>
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-tertiary">TypeScript</span> <span>95%</span></li>
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-tertiary">TailwindCSS</span> <span>98%</span></li>
+</ul>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-text-bright mb-3 pb-1 border-b border-border-primary">Infra.sh</h3>
+<ul class="font-body-md text-body-md text-on-surface-variant flex flex-col gap-2">
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-text-bright">Docker</span> <span>Active</span></li>
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-text-bright">AWS</span> <span>Active</span></li>
+<li class="flex justify-between hover:bg-surface-container p-1"><span class="text-text-bright">CI/CD</span> <span>Active</span></li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Featured Projects / Inspection -->
+<section class="pane xl:col-span-1 xl:row-span-1 flex flex-col">
+<div class="pane-header">
+<span class="font-label-sm text-label-sm text-text-dim flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">folder_open</span> DIRECTORY_LISTING</span>
+<span class="font-label-sm text-label-sm text-text-dim">~/projects</span>
+</div>
+<div class="p-6 flex flex-col gap-4 overflow-y-auto">
+<div class="border border-border-primary p-4 hover:border-border-active transition-colors bg-surface-container-lowest">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-headline-md text-primary">FinTech API Gateway</h4>
+<span class="material-symbols-outlined text-text-dim">api</span>
+</div>
+<ul class="font-code-snippet text-code-snippet text-on-surface-variant list-disc list-inside mb-3">
+<li>Handled 10k+ req/sec</li>
+<li>Reduced latency by 40%</li>
+</ul>
+<div class="flex gap-2 font-label-sm text-label-sm">
+<span class="bg-surface-container-high px-2 py-0.5 text-text-dim">Node.js</span>
+<span class="bg-surface-container-high px-2 py-0.5 text-text-dim">Redis</span>
+</div>
+</div>
+<div class="border border-border-primary p-4 hover:border-border-active transition-colors bg-surface-container-lowest">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-headline-md text-tertiary">Real-time Dashboard</h4>
+<span class="material-symbols-outlined text-text-dim">dashboard</span>
+</div>
+<ul class="font-code-snippet text-code-snippet text-on-surface-variant list-disc list-inside mb-3">
+<li>WebSocket integration</li>
+<li>Sub-second data sync</li>
+</ul>
+<div class="flex gap-2 font-label-sm text-label-sm">
+<span class="bg-surface-container-high px-2 py-0.5 text-text-dim">React</span>
+<span class="bg-surface-container-high px-2 py-0.5 text-text-dim">Socket.io</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Engineering Philosophy -->
+<section class="pane xl:col-span-1 xl:row-span-1 flex flex-col">
+<div class="pane-header">
+<span class="font-label-sm text-label-sm text-text-dim flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">book</span> PRAGMATIC_PRINCIPLES</span>
+<span class="font-label-sm text-label-sm text-text-dim">readonly</span>
+</div>
+<div class="p-6 flex flex-col gap-4 overflow-y-auto font-body-md text-body-md text-on-surface-variant">
+<div class="flex gap-3 items-start border-b border-border-primary pb-3">
+<span class="text-primary font-headline-md text-headline-md">01</span>
+<div>
+<p class="text-text-bright font-bold">Function over Form</p>
+<p class="text-text-dim">Code should solve real problems, not just look clever in a PR.</p>
+</div>
+</div>
+<div class="flex gap-3 items-start border-b border-border-primary pb-3">
+<span class="text-primary font-headline-md text-headline-md">02</span>
+<div>
+<p class="text-text-bright font-bold">Predictability &gt; Cleverness</p>
+<p class="text-text-dim">Boring tech choices usually lead to exciting business outcomes.</p>
+</div>
+</div>
+<div class="flex gap-3 items-start">
+<span class="text-primary font-headline-md text-headline-md">03</span>
+<div>
+<p class="text-text-bright font-bold">Measure First</p>
+<p class="text-text-dim">Optimization without instrumentation is just guessing.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar / Status Bar (Mobile & Desktop) -->
+<footer class="pane col-span-full bg-surface-container-lowest flex items-center justify-start gap-0 px-0 h-8 border-t border-border-primary fixed bottom-0 left-0 w-full z-50">
+<div class="flex h-full w-full">
+<!-- Active item logic applied based on intent - "code" is active as it's a developer portfolio -->
+<a class="text-on-primary-container bg-primary-container px-2 h-full flex items-center gap-2 hover:bg-surface-container-high hover:text-text-bright transition-colors cursor-pointer border-r border-border-primary" href="#">
+<span class="material-symbols-outlined text-[16px]">code</span>
+<span class="font-label-sm text-label-sm">[g] github</span>
+</a>
+<a class="text-text-dim px-2 h-full flex items-center gap-2 hover:bg-surface-container-high hover:text-text-bright transition-colors cursor-pointer border-r border-border-primary" href="#">
+<span class="material-symbols-outlined text-[16px]">link</span>
+<span class="font-label-sm text-label-sm">[l] linkedin</span>
+</a>
+<a class="text-text-dim px-2 h-full flex items-center gap-2 hover:bg-surface-container-high hover:text-text-bright transition-colors cursor-pointer border-r border-border-primary" href="#">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span class="font-label-sm text-label-sm">[m] mail</span>
+</a>
+<a class="text-text-dim px-2 h-full flex items-center gap-2 hover:bg-surface-container-high hover:text-text-bright transition-colors cursor-pointer border-r border-border-primary hidden sm:flex" href="#">
+<span class="material-symbols-outlined text-[16px]">memory</span>
+<span class="font-label-sm text-label-sm">[s] stack</span>
+</a>
+<div class="flex-grow bg-surface-container-lowest h-full border-r border-border-primary"></div>
+<a class="text-text-dim px-2 h-full flex items-center gap-2 hover:bg-surface-container-high hover:text-text-bright transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[16px]">help_outline</span>
+<span class="font-label-sm text-label-sm">[h] help</span>
+</a>
+</div>
+</footer>
+</div>
+</body></html>

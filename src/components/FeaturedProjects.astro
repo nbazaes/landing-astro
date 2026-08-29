@@ -1,0 +1,120 @@
+---
+import { projectsList } from '../data/translations';
+---
+
+<section id="projects" class="py-20 md:py-28 border-t border-white/10 relative">
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <div class="inline-flex items-center gap-1.5 text-xs font-mono text-[#a855f7] mb-2 uppercase tracking-wider font-semibold">
+          <span class="material-symbols-outlined text-sm">terminal</span>
+          <span data-i18n="projectsKicker">PORTFOLIO &amp; SYSTEMS</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight" data-i18n="projectsTitle">
+          Featured Projects
+        </h2>
+        <p class="text-sm sm:text-base text-[#cfc2d6] mt-2 max-w-2xl" data-i18n="projectsSubtitle">
+          Production applications, business tools, and open-source software built for reliability.
+        </p>
+      </div>
+
+      <a
+        href="https://github.com/nbazaes"
+        target="_blank"
+        rel="noreferrer noopener"
+        class="inline-flex items-center gap-1 text-xs sm:text-sm font-mono text-[#ddb7ff] hover:text-white transition-colors"
+      >
+        <span>github.com/nbazaes</span>
+        <span class="material-symbols-outlined text-sm">open_in_new</span>
+      </a>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      {projectsList.map((project) => (
+        <div class="glass-panel rounded-xl p-6 sm:p-8 flex flex-col justify-between group transition-all duration-300 relative overflow-hidden">
+          
+          <!-- Top subtle accent bar -->
+          <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#a855f7]/30 to-transparent group-hover:via-[#a855f7] transition-all"></div>
+
+          <div>
+            <!-- Card Header -->
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-[#16161a] border border-[#a855f7]/30 flex items-center justify-center text-[#a855f7] group-hover:border-[#a855f7] transition-colors">
+                  <span class="material-symbols-outlined text-lg">{project.iconName}</span>
+                </div>
+                <span class="text-xs font-mono font-medium text-[#ddb7ff]" data-i18n={`projectCategory_${project.id}`}>
+                  {project.category.en}
+                </span>
+              </div>
+
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                class="p-2 rounded-lg text-[#94a3b8] hover:text-white hover:bg-white/5 transition-colors"
+                title="View on GitHub"
+                aria-label={`View ${project.name} on GitHub`}
+              >
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Project Title -->
+            <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-[#ddb7ff] transition-colors">
+              <a href={project.githubUrl} target="_blank" rel="noreferrer noopener">
+                {project.name}
+              </a>
+            </h3>
+
+            <!-- Project Description -->
+            <p class="text-sm sm:text-base text-[#cfc2d6] leading-relaxed mb-6" data-i18n={`projectDesc_${project.id}`}>
+              {project.description.en}
+            </p>
+
+            <!-- Tech Badges -->
+            <div class="flex flex-wrap gap-2 mb-6">
+              {project.tags.map((tag) => (
+                <span class="text-xs font-mono px-2.5 py-1 rounded bg-[#16161a] border border-[#a855f7]/20 text-[#e5e1e4]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Actions Footer -->
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              class="inline-flex items-center gap-1.5 text-xs font-mono text-[#94a3b8] hover:text-[#a855f7] transition-colors"
+            >
+              <span class="material-symbols-outlined text-sm">code</span>
+              <span data-i18n="projectsViewCode">Source Code</span>
+            </a>
+
+            {project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                class="inline-flex items-center gap-1.5 text-xs font-mono text-[#a855f7] hover:text-[#ddb7ff] transition-colors font-semibold"
+              >
+                <span data-i18n="projectsLiveDemo">Live Site</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+            )}
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
