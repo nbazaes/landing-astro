@@ -44,6 +44,18 @@ const {
 		/>
 	</head>
 	<body class="bg-[#111319] text-[#e2e2ea] antialiased selection:bg-[#a855f7]/30 selection:text-[#f0dbff] overflow-x-hidden min-h-screen">
+		<!--
+		THESIS: The resume as a machine booting — the visitor watches the portfolio pass its own Power-On Self-Test, every check resolving to [ OK ], ending READY for hire; it refuses the hero-plus-floating-terminal-card scaffold.
+		OWN-WORLD: One full-width text-mode screen over Engineered Dark (#111319 ground, #0c0e14 recess, #2d3139 rules, #a855f7 violet accents, #ddb7ff highlights, #fabc4e amber, emerald OK), JetBrains Mono throughout, CRT scanline grain, tabular timestamp columns, character-by-character cascade resolves.
+		STORY: A recruiter, technical or not, sees the system prove itself — memory, stack, each repository mounting as a detected device — reads READY / OPEN FOR HIRE, and acts with one keyed action: copy email, open projects, or launch the interactive terminal.
+		FIRST VIEWPORT: A single boot screen. BIOS header line, status badge, headline, POST checks typing in with cascade-resolve, four repositories as MOUNT lines resolving to [ OK ], a blinking-cursor READY line, then keyed actions [1] [2] [3].
+		FORM: Power-On Self-Test, 7th of my grounded directions, seed key 7386437a.
+		FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+		-->
+
+		<!-- CRT frame -->
+		<div class="crt" aria-hidden="true"></div>
+
 		<slot />
 		
 		<!-- Toast Notification Container -->
@@ -57,5 +69,15 @@ const {
 		vertical-align: middle;
 		display: inline-block;
 		user-select: none;
+	}
+
+	::selection {
+		background: rgba(168, 85, 247, 0.35);
+		color: #f0dbff;
+	}
+
+	/* Tabular numerals: status data lines up like a real console column. */
+	.tnum {
+		font-variant-numeric: tabular-nums;
 	}
 </style>

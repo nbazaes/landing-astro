@@ -1,0 +1,165 @@
+{
+  "title": "Choose the visual world",
+  "question": "The roll assigned the Power-On Self-Test. Keep it, take an alternate, re-roll, or play the category standard straight.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Power-On Self-Test",
+      "kicker": "THE ROLL",
+      "lineage": "The BIOS boot screen every machine passes before it can work",
+      "thesis": "The resume as a machine booting: every check resolves to [ OK ] and the page ends READY.",
+      "palette": ["#050505", "#f2ece0", "#ffb000", "#3ddc84", "#6e6e64"],
+      "materials": ["CRT phosphor", "text-mode glyphs", "scanlines"],
+      "viewport": "One black screen: a BIOS-style header, then the POST sequence typing in — MEMORY OK, NIC DETECTED, each repository mounting as a detected device — closing on a blinking-cursor READY line and two keyed actions.",
+      "risk": "Text-only purity can read sparse if the cell-grid discipline is not strict; the mono voice must carry everything.",
+      "raised": [
+        { "from": "challenger-splitflap", "raise": "Status lines resolve character-by-character in a mechanical cascade, never instantly." },
+        { "from": "challenger-riso", "raise": "The ground is real CRT: scanline grain and faint phosphor bloom, never flat black." },
+        { "from": "challenger-daylight", "raise": "Every check line carries a tabular timestamp and a pinned annotation, ruler-precise." },
+        { "from": "challenger-moonshadow", "raise": "Every project carries a visible tag of origin — repository and date — auditable proof on the surface." },
+        { "from": "challenger-dongho", "raise": "Content prints in boot order; the frame and typography settle last." }
+      ],
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "x": 0, "y": 0, "w": 12, "h": 1, "label": "BIOS header" },
+          { "x": 0, "y": 1, "w": 12, "h": 6, "label": "POST sequence [ OK ]", "accent": true },
+          { "x": 0, "y": 7, "w": 12, "h": 2, "label": "detected devices / repositories" },
+          { "x": 0, "y": 9, "w": 12, "h": 1, "label": "READY line + keyed actions", "accent": true }
+        ]
+      }
+    },
+    {
+      "id": "model-pick",
+      "label": "Boot Journal",
+      "kicker": "IMPECCABLE'S PICK",
+      "lineage": "The systemd journal every Linux admin reads first",
+      "thesis": "The resume as a boot journal: services (projects) reach active (running) one line at a time.",
+      "palette": ["#0b0d0f", "#e6e6de", "#a8f0b0", "#4db8ff", "#7d7d74"],
+      "materials": ["journal log", "service units", "tabular status"],
+      "viewport": "A journal header, then service lines: featured projects as units reaching active (running), stack as resolved dependencies, ending on a status line for the engineer himself.",
+      "risk": "The closest relative of the incumbent world (its sys.status() card); risks reading as a refinement of the old look rather than a new world.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "x": 0, "y": 0, "w": 12, "h": 1, "label": "journal header" },
+          { "x": 0, "y": 1, "w": 12, "h": 6, "label": "service bring-up [ OK ]", "accent": true },
+          { "x": 0, "y": 7, "w": 12, "h": 2, "label": "units table: projects" },
+          { "x": 0, "y": 9, "w": 12, "h": 1, "label": "Reached target: hire-ready", "accent": true }
+        ]
+      }
+    },
+    {
+      "id": "challenger-pc98",
+      "label": "Sixteen-Color Machine",
+      "verdict": "competitive",
+      "lineage": "The PC-98: sixteen locked colors, dithered gradients, a bordered window docked low",
+      "thesis": "The whole resume as one fixed-frame retro computer: artwork right, text window low, menu rows as navigation.",
+      "palette": ["#000080", "#00c000", "#ffcc00", "#ffffff", "#ff6600"],
+      "materials": ["16-color palette", "dithered fields", "beveled windows", "integer pixel grid"],
+      "viewport": "A fixed frame that never moves: a bordered menu row for nav, a full-height portrait holding the right, a beveled text window docked low carrying the bio.",
+      "case": "Fuses cleanly: the fixed-region frame is a genuinely scannable resume. Loses narrowly to the assigned screen's universal 'machine passing its checks' story.",
+      "risk": "Retro-novelty for a job-seeking audience if the pixel grid is not strict.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "x": 0, "y": 0, "w": 12, "h": 1, "label": "bordered menu row", "accent": true },
+          { "x": 0, "y": 1, "w": 7, "h": 8, "label": "dithered main field" },
+          { "x": 7, "y": 1, "w": 5, "h": 8, "label": "full-height portrait", "accent": true },
+          { "x": 0, "y": 9, "w": 12, "h": 1, "label": "docked text window", "accent": true }
+        ]
+      }
+    },
+    {
+      "id": "challenger-splitflap",
+      "label": "Split-Flap Departures",
+      "verdict": "declined",
+      "lineage": "The rail concourse board at rush hour",
+      "thesis": "Projects as departures: destinations, platforms, and a status column that flaps.",
+      "palette": ["#141414", "#f2f2f0", "#ffb000", "#c03535", "#3a3a3a"],
+      "materials": ["matte black flaps", "white letter cells", "amber delay lamps"],
+      "viewport": "A departure board: each project a destination row with a flap status (on time / delayed / boarding).",
+      "case": "Fuses poorly: destination-and-gate grammar does not serve a 15-second resume scan.",
+      "kept": "The character-by-character cascade that resolves a status change.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-split-flap-concourse.webp"
+    },
+    {
+      "id": "challenger-riso",
+      "label": "Risograph System",
+      "verdict": "declined",
+      "lineage": "Two fluorescent inks, misregistered on warm paper",
+      "thesis": "The resume printed as a risograph sheet: cut shapes, spot inks, deliberate misregister.",
+      "palette": ["#f4ecd8", "#ff5bb0", "#2b4bd8", "#ffc400", "#d8d0c0"],
+      "materials": ["warm paper", "fluoro inks", "halftone grain", "misregistration"],
+      "viewport": "One warm sheet: ink layers that shift a hair out of register on hover, a keyline settling last.",
+      "case": "Fuses poorly: the handmade print register fights the 'reliable infrastructure' story head-on.",
+      "kept": "Physical texture under the surface — the ground is never flat.",
+      "hero": "https://impeccable.style/worlds/cards/risograph-web-system.webp"
+    },
+    {
+      "id": "challenger-daylight",
+      "label": "Daylight Section",
+      "verdict": "declined",
+      "lineage": "An architectural section cut through a lit building",
+      "thesis": "The resume as one continuous section, a traveling beam marking the active room.",
+      "palette": ["#f5efe4", "#2b2b30", "#ffcf5e", "#5a6b8c", "#8c8378"],
+      "materials": ["limewash", "section poche", "solar paths", "tabular stamps"],
+      "viewport": "One long ruled section: rooms as sections, a gold band marking where the visitor is, sun-angle annotations.",
+      "case": "Fuses poorly: architectural space communicates craft, not engineering competence in a scan.",
+      "kept": "Precise tabular annotations pinned to a ruler-true field.",
+      "hero": "https://impeccable.style/worlds/cards/architecture-inhabitable-space-daylight-section.webp"
+    },
+    {
+      "id": "challenger-moonshadow",
+      "label": "Moon-Shadow Bazaar",
+      "verdict": "declined",
+      "lineage": "A market where merchants trade shadows by length and memory",
+      "thesis": "Projects as shadow goods, each tagged with a ticket of origin and length.",
+      "palette": ["#101828", "#1b2440", "#e8c257", "#eef2ff", "#2c3550"],
+      "materials": ["moonlit lane", "shadow goods", "saffron stalls", "tickets"],
+      "viewport": "A lane of stalls: each project a shadow tagged with its ticket; the moon sets the mood of the market.",
+      "case": "Fuses poorly: surreal commerce confuses a recruiter looking for verified proof.",
+      "kept": "Every item carries a visible ticket of origin — auditable provenance on the surface.",
+      "hero": "https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-moon-shadow-bazaar.webp"
+    },
+    {
+      "id": "challenger-dongho",
+      "label": "Shell-Ground Woodblock",
+      "verdict": "declined",
+      "lineage": "A folk woodblock print on crushed-shell paper",
+      "thesis": "The resume printed block by block, each colour its own pass, a black keyblock last.",
+      "palette": ["#f2e8d8", "#d83a2e", "#2d6b4f", "#24407a", "#111111"],
+      "materials": ["shell ground", "flat mineral inks", "keyblock", "print order"],
+      "viewport": "One centred subject, colour blocks registering in order, the black keyline printing last over everything.",
+      "case": "Fuses poorly: a folk-print register is off-home for a sysadmin's resume.",
+      "kept": "The strict reveal order — content registers in sequence, the frame settles last.",
+      "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-dong-ho-shell-ground.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "What this category ships: a dark developer portfolio with a terminal card, executed impeccably.",
+    "palette": ["#111319", "#a855f7", "#ddb7ff", "#0c0e14", "#fabc4e"],
+    "materials": ["dark surfaces", "violet accent", "terminal card"],
+    "viewport": "The arrangement a visitor expects — hero with terminal card, project grid, stack matrix, principles — at full craft.",
+    "risk": "Indistinguishable from the competition by design.",
+    "wireframe": {
+      "cols": 12,
+      "rows": 10,
+      "regions": [
+        { "x": 0, "y": 0, "w": 12, "h": 1, "label": "nav bar" },
+        { "x": 0, "y": 1, "w": 8, "h": 5, "label": "headline + CTAs", "accent": true },
+        { "x": 8, "y": 1, "w": 4, "h": 5, "label": "terminal card" },
+        { "x": 0, "y": 6, "w": 12, "h": 2, "label": "project cards" },
+        { "x": 0, "y": 8, "w": 12, "h": 2, "label": "stack + footer" }
+      ]
+    }
+  },
+  "steer": true,
+  "buildPath": { "value": "comp", "toggle": true }
+}

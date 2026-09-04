@@ -63,46 +63,61 @@ body {
   background: #a855f7;
 }
 
-/* Tiling Layout Grid */
-.tiling-layout {
-  display: grid;
-  grid-template-columns: 270px 1fr;
-  grid-template-rows: 48px minmax(calc(100vh - 84px), 1fr) 36px;
-  gap: 1px;
-  background-color: #2d3139;
-  min-height: 100vh;
+/* ---------------------------------------------------------------------------
+   CRT ground: the world's texture. A fine scanline field over the whole page
+   so the ground is never flat black — the Riso donation realized as phosphor.
+--------------------------------------------------------------------------- */
+.crt {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.12) 0px,
+      rgba(0, 0, 0, 0.12) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.4;
 }
 
-@media (max-width: 1024px) {
-  .tiling-layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
+/* ---------------------------------------------------------------------------
+   POST check lines: cascade-resolve. Each line is hidden until its timestamp
+   is reached; the [ OK ] token resolves with a per-character reveal rather
+   than an instant swap, so status changes read as a mechanical cascade.
+--------------------------------------------------------------------------- */
+.post-line {
+  opacity: 0;
+  transform: translateY(2px);
 }
 
-/* Pane styling */
-.console-pane {
-  background-color: #111319;
-  overflow: auto;
+.post-line.lit {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.12s ease-out,
+    transform 0.12s ease-out;
 }
 
-.pane-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  background-color: #191b22;
-  border-bottom: 1px solid #2d3139;
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-  text-transform: uppercase;
+.ok-token {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: bottom;
+  max-width: 0;
+  transition: max-width 0.24s ease-out;
 }
 
-/* Terminal Cursor */
+.post-line.ok .ok-token {
+  max-width: 6rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Terminal cursor (persistent caret on the READY line)
+--------------------------------------------------------------------------- */
 .terminal-cursor {
   display: inline-block;
   width: 9px;
@@ -118,7 +133,31 @@ body {
   50% { opacity: 0; }
 }
 
-/* Toast animations */
+/* ---------------------------------------------------------------------------
+   Blinking status dot (badge + READY line)
+--------------------------------------------------------------------------- */
+.status-dot {
+  animation: statusPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ---------------------------------------------------------------------------
+   Keyboard focus: the console world's focus ring is a violet underline glow
+--------------------------------------------------------------------------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   Toast animations
+--------------------------------------------------------------------------- */
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translateY(10px); }
   15% { opacity: 1; transform: translateY(0); }
@@ -128,4 +167,23 @@ body {
 
 .animate-toast {
   animation: fadeInOut 2.2s ease-in-out forwards;
+}
+
+/* Accessible: respect reduced motion for the boot cascade and cursor */
+@media (prefers-reduced-motion: reduce) {
+  .post-line {
+    opacity: 1;
+    transform: none;
+  }
+  .post-line.ok .ok-token {
+    max-width: 6rem;
+    transition: none;
+  }
+  .terminal-cursor,
+  .status-dot {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

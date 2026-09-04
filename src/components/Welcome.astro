@@ -1,15 +1,18 @@
 ---
-//import background from "../assets/background.svg";
+import { getCollection } from 'astro:content';
 
-const name = "Nicolás Bazaes";
-const profession = "Fullstack developer and sysadmin";
-const introCommand = "login guest";
-const email = "nbazaes@bazaes.cl";
-const infoLines = [
-    "Welcome to nbazaes.dev v1.0",
-    `This is ${name}'s website`,
-    `Role: ${profession}`,
-];
+const profile = (await getCollection('profile'))[0];
+const siteEntries = await getCollection('site');
+const projects = await getCollection('projects');
+
+const tData = {
+    en: siteEntries.find((s) => s.id === 'en')!.data,
+    es: siteEntries.find((s) => s.id === 'es')!.data,
+};
+
+const name = profile.data.name;
+const introCommand = profile.data.introCommand;
+const infoLines = tData[profile.data.defaultLocale].terminal.infoLines;
 
 // Timing constants (all in seconds)
 const typingDuration = 0.9; // how long "login guest" takes to type
@@ -61,7 +64,7 @@ const promptDelay =
                 class="command-line"
                 style={`--prompt-delay: ${promptDelay.toFixed(2)}s;`}
             >
-                <span class="prompt-prefix">guest@nbazaes:~$</span>
+                <span class="prompt-prefix">{profile.data.terminalPrompt}</span>
                 <input
                     type="text"
                     id="terminal-input"
@@ -74,7 +77,26 @@ const promptDelay =
     </main>
 </div>
 
+<script
+    type="application/json"
+    id="__terminal-data"
+    set:html={JSON.stringify({
+        t: { en: tData.en.terminal, es: tData.es.terminal },
+        profile: profile.data,
+        projects: projects.map((p) => ({
+            id: p.id,
+            name: p.data.name,
+            githubUrl: p.data.githubUrl,
+            description: p.data.description,
+        })),
+    }).replace(/</g, '\\u003c')}
+></script>
+
 <script>
+    const siteData = JSON.parse(
+        document.getElementById("__terminal-data")!.textContent!,
+    );
+
     const input = document.querySelector<HTMLInputElement>("#terminal-input");
     const commandLine = document.querySelector<HTMLElement>(".command-line");
     const output = document.querySelector<HTMLElement>("#terminal-output");
@@ -82,103 +104,10 @@ const promptDelay =
         commandLine?.style.getPropertyValue("--prompt-delay") ?? "0",
     );
 
-    const promptText = "guest@nbazaes:~$";
+    const promptText = siteData.profile.terminalPrompt;
     const localeStorageKey = "nbazaes-locale";
 
     type Locale = "en" | "es";
-
-    const i18n = {
-        en: {
-            placeholder: "type 'help' to see available commands",
-            infoLines: [
-                "Welcome to nbazaes.dev v1.0",
-                "This is Nicolás Bazaes's website",
-                "Role: Fullstack developer and sysadmin",
-            ],
-            availableCommands: "Available commands:",
-            helpLines: [
-                "- help: see available commands",
-                "- clear: clear the terminal output",
-                "- readme: display information about me",
-                "- github: view my GitHub portfolio",
-                "- contact: view contact information",
-                "- gui: switch to the traditional GUI version of the site",
-            ],
-            aboutMe: "About me:",
-            readmeLines: [
-                "My name is Nicolás Bazaes, and I'm a fullstack developer and sysadmin based in Chile, with a passion for technology and problem-solving.",
-                "I build fullstack products in frameworks like React, Astro, Django, and more.",
-                "However, my true passion lies in backend development and system administration where I enjoy optimizing server performance and ensuring robust infrastructure.",
-                "I like to use Docker to deploy my projects, and I love to host my own servers to tinker with different setups and configurations.",
-                "Also, I am a full Linux user and enthusiast, and I enjoy exploring the command line and all the powerful tools it offers.",
-            ],
-            githubPortfolio: "GitHub portfolio:",
-            githubLandingDescription:
-                "The source code for this very website, built with Astro and vanilla JS.",
-            githubDiscursantesDescription:
-                "A fullstack web app built with React, Django, and Docker, built for the management of a local church's speakers.",
-            githubWebconstDescription:
-                "A full-stack Django prototype for a local artist to showcase and sell digital art.",
-            githubBazposDescription:
-                "A full point-of-sale system built with Django and Bootstrap including inventory management, reports, user management, supplier management and invoicing.",
-            emailLabel: "email:",
-            linkedin: "LinkedIn profile:",
-            openingGui: "Opening GUI view...",
-            sudoMessage:
-                "guest is not in the sudoers file. This incident will be reported.",
-            rmRootLines: [
-                "rm: it is dangerous to operate recursively on '/'.",
-                "By default, rm uses --preserve-root to prevent deleting the system root.",
-            ],
-            commandNotFound: "Command not found:",
-            typeHelp: "Type 'help' to see available commands.",
-        },
-        es: {
-            placeholder: "escribe 'help' para ver los comandos disponibles",
-            infoLines: [
-                "Bienvenido a nbazaes.dev v1.0",
-                "Este es el sitio web de Nicolás Bazaes",
-                "Rol: Desarrollador fullstack y administrador de sistemas",
-            ],
-            availableCommands: "Comandos disponibles:",
-            helpLines: [
-                "- help: ver los comandos disponibles",
-                "- clear: limpiar la salida del terminal",
-                "- readme: mostrar información sobre mí",
-                "- github: ver mi portafolio de GitHub",
-                "- contact: ver información de contacto",
-                "- gui: cambiar a la versión GUI tradicional del sitio",
-            ],
-            aboutMe: "Sobre mí:",
-            readmeLines: [
-                "Mi nombre es Nicolás Bazaes y soy desarrollador fullstack y administrador de sistemas en Chile, con pasión por la tecnología y la resolución de problemas.",
-                "Construyo productos fullstack con frameworks como React, Astro, Django y más.",
-                "Sin embargo, mi verdadera pasión está en el desarrollo backend y la administración de sistemas, donde disfruto optimizando el rendimiento de servidores y asegurando una infraestructura robusta.",
-                "Me gusta usar Docker para desplegar mis proyectos, y me encanta alojar mis propios servidores para experimentar con distintas configuraciones.",
-                "También soy usuario y entusiasta de Linux, y disfruto explorar la línea de comandos y todas las herramientas poderosas que ofrece.",
-            ],
-            githubPortfolio: "Portafolio de GitHub:",
-            githubLandingDescription:
-                "El código fuente de este mismo sitio, construido con Astro y JavaScript vanilla.",
-            githubDiscursantesDescription:
-                "Una aplicación web fullstack construida con React, Django y Docker para la gestión de predicadores de una iglesia local.",
-            githubWebconstDescription:
-                "Un prototipo full-stack en Django para que un artista local muestre y venda arte digital.",
-            githubBazposDescription:
-                "Un sistema de punto de venta completo construido con Django y Bootstrap, con inventario, reportes, gestión de usuarios, proveedores y facturación.",
-            emailLabel: "correo:",
-            linkedin: "Perfil de LinkedIn:",
-            openingGui: "Abriendo vista GUI...",
-            sudoMessage:
-                "guest no está en el archivo sudoers. Este incidente será reportado.",
-            rmRootLines: [
-                "rm: es peligroso operar de forma recursiva sobre '/'.",
-                "Por defecto, rm usa --preserve-root para evitar borrar la raíz del sistema.",
-            ],
-            commandNotFound: "Comando no encontrado:",
-            typeHelp: "Escribe 'help' para ver los comandos disponibles.",
-        },
-    } as const;
 
     const detectLocale = (): Locale => {
         try {
@@ -213,17 +142,25 @@ const promptDelay =
     };
 
     const locale = detectLocale();
-    const t = i18n[locale];
+    const t = siteData.t[locale];
 
     if (input) {
         input.placeholder = t.placeholder;
     }
+
+    document.documentElement.lang = locale;
 
     const infoLineElements = document.querySelectorAll<HTMLElement>(
         ".terminal-body .info-line",
     );
     infoLineElements.forEach((lineElement, index) => {
         lineElement.textContent = t.infoLines[index] ?? lineElement.textContent;
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((el) => {
+        if (el.getAttribute("data-i18n") === "terminalBackButton") {
+            el.textContent = t.backButton;
+        }
     });
 
     type OutputItem = string | HTMLElement;
@@ -250,25 +187,21 @@ const promptDelay =
             return [];
         },
         readme: () => [t.aboutMe, ...t.readmeLines],
-        github: () => [
-            link(t.githubPortfolio, "https://github.com/nbazaes"),
-            link("landing-astro:", "https://github.com/nbazaes/landing-astro"),
-            t.githubLandingDescription,
-            link(
-                "discursantes_react:",
-                "https://github.com/nbazaes/discursantes_react",
-            ),
-            t.githubDiscursantesDescription,
-            link("webconstAD:", "https://github.com/nbazaes/webconstAD"),
-            t.githubWebconstDescription,
-            link("django-bazpos:", "https://github.com/nbazaes/django-bazpos"),
-            t.githubBazposDescription,
-        ],
+        github: () => {
+            const lines: OutputItem[] = [
+                link(t.githubPortfolio, siteData.profile.githubUrl),
+            ];
+            siteData.projects.forEach((proj: { name: string; githubUrl: string; description: { en: string; es: string } }) => {
+                lines.push(link(`${proj.name}:`, proj.githubUrl));
+                lines.push(proj.description[locale]);
+            });
+            return lines;
+        },
         contact: () => [
             t.emailLabel,
-        link("nbazaes@bazaes.cl","mailto:nbazaes@bazaes.cl"),
+            link(siteData.profile.email, `mailto:${siteData.profile.email}`),
             t.linkedin,
-            link("linkedin.com/in/nicolas-bazaes", "https://www.linkedin.com/in/nicolas-bazaes"),
+            link(siteData.profile.linkedinUrl, siteData.profile.linkedinUrl),
         ],
         gui: () => {
             window.location.href = "/";

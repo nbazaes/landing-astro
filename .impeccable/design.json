@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-29T19:30:00Z",
+  "title": "Design System: Power-On Self-Test",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Deep Violet", "canonical": "#9333ea" },
+      "primary-hover": { "role": "primary", "displayName": "Primary Violet", "canonical": "#a855f7" },
+      "primary-light": { "role": "primary", "displayName": "Light Violet", "canonical": "#ddb7ff" },
+      "tertiary": { "role": "tertiary", "displayName": "System Amber", "canonical": "#fabc4e" },
+      "status-ok": { "role": "tertiary", "displayName": "Health Emerald", "canonical": "#34d399" },
+      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#111319" },
+      "surface-card": { "role": "neutral", "displayName": "Card Surface", "canonical": "#0c0e14" },
+      "surface-dim": { "role": "neutral", "displayName": "Surface Dim", "canonical": "#191b22" },
+      "border-subtle": { "role": "neutral", "displayName": "Subtle Border", "canonical": "#2d3139" },
+      "text-primary": { "role": "neutral", "displayName": "Text Primary", "canonical": "#ffffff" },
+      "text-muted": { "role": "neutral", "displayName": "Text Muted", "canonical": "#94a3b8" },
+      "text-variant": { "role": "neutral", "displayName": "Text Variant", "canonical": "#cfc2d6" }
+    },
+    "typographyMeta": {
+      "headline-xl": { "displayName": "Display", "purpose": "Hero headline, the system's stated purpose on the boot screen." },
+      "headline-lg": { "displayName": "Headline", "purpose": "Section titles and terminal promo title." },
+      "body-md": { "displayName": "Body", "purpose": "Value proposition and project descriptions." },
+      "code-sm": { "displayName": "Console", "purpose": "Default machine voice for dense content: stack rows, metrics, tags, footer." },
+      "console-sm": { "displayName": "Console", "purpose": "Boot lines and status rows." },
+      "console-xs": { "displayName": "Console Micro", "purpose": "BIOS instructions and footer status line." },
+      "label-caps": { "displayName": "Label Caps", "purpose": "Section mono labels like DIRECTORY_LISTING." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "cascade-resolve", "value": "opacity 0.12s ease-out + translateY 2px; .ok-token max-width 0.24s ease-out; 420ms line stagger", "purpose": "The single authored moment: POST lines resolve sequentially, each [ OK ] cascades open." },
+      { "name": "blink-cursor", "value": "1s step-end infinite opacity", "purpose": "Blinking violet cursor block on the READY line." },
+      { "name": "status-pulse", "value": "1.6s ease-in-out opacity 1 to 0.35", "purpose": "Pulsing availability and health dots." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The keyed primary action; solid Deep Violet fill with white text at ≥4.5:1.",
+      "html": "<button class=\"ds-btn-primary\"><span>[1]</span> View Projects</button>",
+      "css": ".ds-btn-primary { background: #9333ea; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s ease; } .ds-btn-primary:hover { background: #a855f7; } .ds-btn-primary:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary keyed action; dim surface fill with a hairline rule that turns violet on hover.",
+      "html": "<button class=\"ds-btn-ghost\"><span>[2]</span> Open Terminal</button>",
+      "css": ".ds-btn-ghost { background: #191b22; color: #ddb7ff; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; padding: 12px 20px; border: 1px solid #2d3139; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: border-color 0.2s, color 0.2s; } .ds-btn-ghost:hover { border-color: #a855f7; color: #ffffff; } .ds-btn-ghost:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; }"
+    },
+    {
+      "name": "Boot Line",
+      "kind": "custom",
+      "refersTo": "boot-line",
+      "description": "A POST check row: amber tabular timestamp, label, violet value, dotted leader, cascading emerald [ OK ].",
+      "html": "<p class=\"ds-boot-line\"><span class=\"ts\">t=0.06s</span> CPU [ Junior Fullstack &amp; Sysadmin ] <span class=\"ok\">[ OK ]</span></p>",
+      "css": ".ds-boot-line { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; line-height: 1.5; color: #cfc2d6; display: flex; align-items: baseline; gap: 12px; } .ds-boot-line .ts { color: #fabc4e; font-variant-numeric: tabular-nums; } .ds-boot-line .ok { color: #34d399; font-weight: 700; white-space: nowrap; } .ds-boot-line .ok { animation: ds-ok 0.24s ease-out; } @keyframes ds-ok { from { max-width: 0; opacity: 0; } to { max-width: 6rem; opacity: 1; } }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card-project",
+      "description": "A detected device: repo name, category badge, description, metrics, provenance origin ticket, tags and actions.",
+      "html": "<article class=\"ds-card\"><h3>django-bazpos</h3><p class=\"origin\"><span>origin:</span> github.com/nbazaes/django-bazpos</p><div><span class=\"tag\">Django</span><span class=\"tag\">Python</span></div></article>",
+      "css": ".ds-card { background: #0c0e14; border: 1px solid #2d3139; border-radius: 12px; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px; font-family: 'JetBrains Mono', monospace; } .ds-card h3 { color: #ffffff; font-size: 1rem; font-weight: 700; margin: 0; } .ds-card .origin { color: #94a3b8; font-size: 0.75rem; margin: 0; } .ds-card .origin span { color: #fabc4e; } .ds-card .tag { background: #191b22; border: 1px solid rgba(45,49,57,0.6); color: #cfc2d6; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px; margin-right: 6px; } .ds-card:hover { border-color: rgba(168,85,247,0.6); }"
+    },
+    {
+      "name": "Console Navigation",
+      "kind": "nav",
+      "refersTo": "button-ghost",
+      "description": "The fixed status-line header: keyed anchors [1]-[4], terminal launcher, ES/EN toggle, copy email.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#overview\">[1] Overview</a><a href=\"#projects\">[2] Projects</a><a href=\"#stack\">[3] Stack</a></nav>",
+      "css": ".ds-nav { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; display: flex; gap: 20px; } .ds-nav a { color: #94a3b8; text-decoration: none; transition: color 0.2s; } .ds-nav a:hover { color: #ddb7ff; } .ds-nav a:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; }"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "boot-line",
+      "description": "Monospace tech tags and category badges on dim surface fill.",
+      "html": "<span class=\"ds-chip\">Docker</span>",
+      "css": ".ds-chip { background: #191b22; border: 1px solid rgba(45,49,57,0.6); color: #cfc2d6; font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Power-On Self-Test",
+    "overview": "The portfolio is a machine booting in front of the visitor. The first viewport is a single full-width text-mode screen: a BIOS-style header, the headline and value proposition as the system's stated purpose, then a POST sequence — CPU, MEM, NIC checks and each real repository mounting as a detected device — every check resolving to an emerald [ OK ] with a character-by-character cascade. The sequence closes on a blinking-cursor READY — available for hire line and three keyed actions. The whole page keeps the console grammar: keyed navigation, tabular timestamps, provenance tickets, config-file section headers, and a footer of keyed links. This world refuses the hero-plus-floating-terminal-card scaffold; the page itself is the terminal.",
+    "keyCharacteristics": [
+      "One authored moment: the boot cascade resolving line by line, not scattered hover effects",
+      "Console grammar throughout: tabular numerals, dotted leaders, keyed [n] actions, provenance tickets",
+      "The Engineered Dark palette preserved: deep charcoal surfaces, violet primary, amber tertiary, emerald OK",
+      "Generous breathing room: one clean screen first, dense-but-airy sections after",
+      "Bilingual ES/EN with localStorage memory; single-click email copy with toast"
+    ],
+    "rules": [
+      { "name": "The One Health Signal Rule", "body": "Emerald appears only as [ OK ], status dots, and verified/ready markers. Any other green reads as the system lying.", "section": "colors" },
+      { "name": "The Provenance Rule", "body": "Every project card carries a visible origin: ticket naming its repository. Proof is on the surface, never implied.", "section": "colors" },
+      { "name": "The Tabular Numeral Rule", "body": "All timestamps and status data use font-variant-numeric: tabular-nums, so the boot column lines up ruler-true.", "section": "typography" },
+      { "name": "The Console Voice Rule", "body": "Mono is not a costume here — it is the world's native voice. Any element that reports a system state speaks mono.", "section": "typography" }
+    ],
+    "dos": [
+      "Do keep the hero a single full-width boot screen — no floating terminal card, no sidebar.",
+      "Do reserve emerald for [ OK ] and health markers only.",
+      "Do carry a provenance origin: ticket on every project.",
+      "Do use tabular numerals for all timestamps and status columns.",
+      "Do keep violet for focal points and the primary action; let the ground breathe."
+    ],
+    "donts": [
+      "Don't add glow shadows (shadow-[0_0_…]) to buttons, cards, or the logo — the boot cascade is the one authored moment.",
+      "Don't round the boot screen; it is the machine's screen, not a card.",
+      "Don't use the muted text color below 4.5:1 on dark surfaces (avoid opacity-* on small text).",
+      "Don't return to the card-heavy 60/40 hero or a grid of same-size icon+text cards as the page structure.",
+      "Don't truncate repo names on mobile — let them wrap (break-words)."
+    ]
+  }
+}
