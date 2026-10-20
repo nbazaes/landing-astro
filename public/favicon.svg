@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Nicolás Bazaes — NB_</title>
+  <!-- Header brand mark, JetBrains Mono SemiBold converted to paths; Engineered Dark palette. -->
+  <rect width="64" height="64" rx="12" fill="#111319"/>
+  <path fill="#f4f3f7" transform="translate(4.16 41) scale(0.032 -0.032)" d="M81 0V730H218L430 123Q428 151 425.0 191.0Q422 231 420.5 274.0Q419 317 419 353V730H519V0H383L171 607Q173 580 175.5 541.5Q178 503 180.0 461.0Q182 419 182 383V0Z"/>
+  <path fill="#f4f3f7" transform="translate(22.40 41) scale(0.032 -0.032)" d="M85 0V730H300Q403 730 462.5 679.5Q522 629 522 541Q522 483 487.0 439.5Q452 396 396 386V383Q438 378 470.5 353.0Q503 328 521.0 290.0Q539 252 539 205Q539 111 478.0 55.5Q417 0 314 0ZM190 424H299Q352 424 383.5 452.5Q415 481 415 531Q415 580 384.0 608.5Q353 637 300 637H190ZM190 93H305Q364 93 398.0 124.5Q432 156 432 210Q432 266 398.0 300.0Q364 334 305 334H190Z"/>
+  <path fill="#ddb7ff" transform="translate(40.64 41) scale(0.032 -0.032)" d="M60 -119V-25H540V-119Z"/>
+</svg>
