@@ -1,0 +1,67 @@
+---
+import type { Locale, ProfileData } from '../../data/translations';
+import { ui } from '../../lib/site';
+import Icon from '../Icon.astro';
+interface Props {
+  locale: Locale;
+  profile: ProfileData;
+}
+const { locale, profile } = Astro.props;
+const c = ui[locale];
+---
+
+<section id="contact" class="contact section" aria-labelledby="contact-title">
+  <div class="container contact-layout">
+    <div>
+      <h2 id="contact-title">{c.contactTitle}</h2>
+      <p>{c.contactBody}</p>
+    </div>
+    <div class="contact-actions">
+      <a class="contact-email" href={`mailto:${profile.email}`}>
+        {profile.email}
+        <Icon name="arrow" />
+      </a>
+      <button
+        class="button quiet copy-email"
+        type="button"
+        data-email={profile.email}
+        data-success={c.copied}
+        data-error={c.copyFailed}
+        hidden
+      >
+        <Icon name="copy" />
+        {c.copy}
+      </button>
+      <div class="contact-links">
+        <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer">
+          GitHub
+          <Icon name="external" />
+        </a>
+        <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer">
+          LinkedIn
+          <Icon name="external" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.copy-email').forEach((button) => {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      const status = document.getElementById('site-status');
+      button.disabled = true;
+      let message = button.dataset.success ?? '';
+      try {
+        await navigator.clipboard.writeText(button.dataset.email ?? '');
+      } catch {
+        message = button.dataset.error ?? '';
+      }
+      if (status) {
+        status.textContent = message;
+        status.hidden = false;
+      }
+      button.disabled = false;
+    });
+  });
+</script>

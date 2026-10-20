@@ -1,83 +1,135 @@
 ---
 import '../styles/global.css';
-
+import type { Locale } from '../data/translations';
+import { localePath, ui, getSiteData } from '../lib/site';
 interface Props {
-	title?: string;
-	description?: string;
+  title?: string;
+  description?: string;
+  locale?: Locale;
+  terminal?: boolean;
+  projectPage?: boolean;
 }
-
-const {
-	title = "Nicolás Bazaes | Fullstack Developer & Sysadmin",
-	description = "Fullstack developer and sysadmin based in Chile. Specializing in Python/Django, React, Astro, Docker containerization, and Linux server infrastructure."
-} = Astro.props;
+const { locale = 'es', terminal = false, projectPage = false } = Astro.props;
+const { profile } = await getSiteData(locale);
+const { title = profile.meta.title, description = ui[locale].description } = Astro.props;
+const page = projectPage
+  ? locale === 'es'
+    ? 'proyectos/bazpos/'
+    : 'projects/bazpos/'
+  : terminal
+    ? 'terminal/'
+    : '';
+const alternatePage = (lang: Locale) =>
+  projectPage ? (lang === 'es' ? 'proyectos/bazpos/' : 'projects/bazpos/') : page;
+const canonical = new URL(localePath(locale, page), profile.meta.ogUrl);
+const socialImage = new URL('/social-card.png', profile.meta.ogUrl);
 ---
 
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/logonb.svg" />
-		<link rel="icon" href="/logonb.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<meta name="author" content="Nicolás Bazaes" />
-		
-		<!-- Open Graph / Meta -->
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:url" content="https://nbazaes.dev" />
-		
-		<title>{title}</title>
-		
-		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-			rel="stylesheet"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-			rel="stylesheet"
-		/>
-	</head>
-	<body class="bg-[#111319] text-[#e2e2ea] antialiased selection:bg-[#a855f7]/30 selection:text-[#f0dbff] overflow-x-hidden min-h-screen">
-		<!--
-		THESIS: The resume as a machine booting — the visitor watches the portfolio pass its own Power-On Self-Test, every check resolving to [ OK ], ending READY for hire; it refuses the hero-plus-floating-terminal-card scaffold.
-		OWN-WORLD: One full-width text-mode screen over Engineered Dark (#111319 ground, #0c0e14 recess, #2d3139 rules, #a855f7 violet accents, #ddb7ff highlights, #fabc4e amber, emerald OK), JetBrains Mono throughout, CRT scanline grain, tabular timestamp columns, character-by-character cascade resolves.
-		STORY: A recruiter, technical or not, sees the system prove itself — memory, stack, each repository mounting as a detected device — reads READY / OPEN FOR HIRE, and acts with one keyed action: copy email, open projects, or launch the interactive terminal.
-		FIRST VIEWPORT: A single boot screen. BIOS header line, status badge, headline, POST checks typing in with cascade-resolve, four repositories as MOUNT lines resolving to [ OK ], a blinking-cursor READY line, then keyed actions [1] [2] [3].
-		FORM: Power-On Self-Test, 7th of my grounded directions, seed key 7386437a.
-		FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
-		-->
-
-		<!-- CRT frame -->
-		<div class="crt" aria-hidden="true"></div>
-
-		<slot />
-		
-		<!-- Toast Notification Container -->
-		<div id="toast-container" class="fixed bottom-12 right-6 z-50 pointer-events-none flex flex-col gap-2"></div>
-	</body>
+<html lang={locale} class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111319" />
+    <link rel="icon" type="image/svg+xml" href="/logonb.svg" />
+    <meta name="description" content={description} />
+    <meta name="author" content={profile.name} />
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      hreflang="es"
+      href={new URL(localePath('es', alternatePage('es')), profile.meta.ogUrl)}
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={new URL(localePath('en', alternatePage('en')), profile.meta.ogUrl)}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(localePath('es', alternatePage('es')), profile.meta.ogUrl)}
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === 'es' ? 'es_CL' : 'en_US'} />
+    <meta property="og:locale:alternate" content={locale === 'es' ? 'en_US' : 'es_CL'} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Nicolás Bazaes — Fullstack Developer & Sysadmin. BazPOS · React · Django · Linux."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+    <script is:inline>
+      try {
+        const preferred =
+          localStorage.getItem('nbazaes-locale') ?? localStorage.getItem('nb_portfolio_lang');
+        if (
+          preferred === 'en' &&
+          ['/', '/terminal', '/terminal/', '/proyectos/bazpos', '/proyectos/bazpos/'].includes(
+            location.pathname,
+          )
+        ) {
+          location.replace(
+            '/en' +
+              (location.pathname.startsWith('/proyectos/bazpos')
+                ? '/projects/bazpos/'
+                : location.pathname === '/'
+                  ? '/'
+                  : '/terminal/') +
+              location.search +
+              location.hash,
+          );
+        }
+      } catch {
+        /* The complete Spanish page remains available without storage. */
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- BAZPOS PRESENTATION CONTRACT: On project routes, demonstrate the real workflow inside Engineered Dark.
+    OWN-WORLD: Incumbent charcoal surfaces, violet actions, Inter reading and JetBrains Mono architecture notation.
+    STORY: Understand the automotive counter workflow, watch a real sale, inspect stock and reports, then explore the live demo.
+    FIRST VIEWPORT: Project title, two-column introduction, sole external demo CTA and the beginning of a native walkthrough player.
+    FORM: Adapt the existing BazPOS presentation into the portfolio; authentic recording, three screenshots, then architecture.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance. -->
+    <!-- THESIS: A developer's work earns the first impression. BazPOS is the featured proof, with a compact console signature.
+    OWN-WORLD: Engineered Dark; charcoal, violet actions, emerald status, Inter for reading and JetBrains Mono for system notation.
+    STORY: Identify Nicolás, understand React frontend and Django backend through BazPOS, inspect code, make contact.
+    FIRST VIEWPORT: Clear name and role, short proposition, two immediate actions and one settled console line; BazPOS follows.
+    FORM: User-selected BazPOS project emphasis, extending the established Power-On Self-Test identity (7386437a).
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance. -->
+    <a class="skip-link" href="#main-content">
+      {ui[locale].skip}
+    </a>
+    <slot />
+    <div
+      id="site-status"
+      class="site-status"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      hidden
+    ></div>
+  </body>
 </html>
-
-<style is:global>
-	.material-symbols-outlined {
-		font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-		vertical-align: middle;
-		display: inline-block;
-		user-select: none;
-	}
-
-	::selection {
-		background: rgba(168, 85, 247, 0.35);
-		color: #f0dbff;
-	}
-
-	/* Tabular numerals: status data lines up like a real console column. */
-	.tnum {
-		font-variant-numeric: tabular-nums;
-	}
-</style>
+<script>
+  import { saveLocale } from '../lib/locale';
+  // The URL is the source of truth; saving the choice never blocks navigation.
+  const locale = document.documentElement.lang === 'en' ? 'en' : 'es';
+  saveLocale(locale);
+  document.querySelectorAll<HTMLAnchorElement>('[data-locale]').forEach((link) => {
+    link.addEventListener('click', () => saveLocale(link.dataset.locale === 'en' ? 'en' : 'es'));
+  });
+</script>

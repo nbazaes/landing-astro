@@ -1,0 +1,373 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../landing/Header.astro';
+import Icon from '../Icon.astro';
+import { getSiteData, localePath } from '../../lib/site';
+import type { Locale } from '../../data/translations';
+import { bazposContent } from './content';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = bazposContent[locale];
+const { featured } = await getSiteData(locale);
+---
+
+<Layout
+  locale={locale}
+  projectPage
+  title={`${c.title} | Nicolás Bazaes`}
+  description={c.description}
+>
+  <Header locale={locale} projectPage />
+  <main id="main-content" class="bazpos-project">
+    <section class="container project-hero">
+      <a class="back-link" href={`${localePath(locale)}#bazpos`}>
+        <Icon name="arrow" />
+        {c.back}
+      </a>
+      <h1>
+        {c.title}
+        <span>{c.intro}</span>
+      </h1>
+      <div class="project-introduction">
+        <p>{c.description}</p>
+        <div>
+          <div class="actions">
+            <a
+              class="button primary"
+              href="https://bazpos.nbazaes.app/presentacion#probar"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {c.demo}
+              <Icon name="external" />
+            </a>
+            <a class="button quiet" href="#recorrido">
+              {c.watch}
+              <Icon name="arrow" />
+            </a>
+          </div>
+          <p class="demo-note">{c.note}</p>
+        </div>
+      </div>
+    </section>
+    <section id="recorrido" class="container project-video" aria-labelledby="video-title">
+      <div class="media-heading">
+        <h2 id="video-title">{c.videoTitle}</h2>
+        <p>{c.videoDescription}</p>
+      </div>
+      <video
+        controls
+        playsinline
+        preload="none"
+        poster="/bazpos/portada.webp"
+        aria-label={c.videoTitle}
+        aria-describedby="video-description"
+        width="1440"
+        height="900"
+      >
+        <source src="/bazpos/recorrido.mp4" type="video/mp4" />
+        <track
+          kind="captions"
+          src={`/bazpos/recorrido-${locale}.vtt`}
+          srclang={locale}
+          label={locale === 'es' ? 'Español' : 'English'}
+          default
+        />
+        {c.videoFallback} <a href="/bazpos/recorrido.mp4">{c.download}</a>
+      </video>
+      <p id="video-description" class="media-caption">
+        {c.original}
+      </p>
+      <details class="video-summary">
+        <summary>{c.transcript}</summary>
+        <p>{c.transcriptBody}</p>
+      </details>
+    </section>
+    <section class="container section project-tour" aria-labelledby="tour-title">
+      <h2 id="tour-title">{c.tourTitle}</h2>
+      {c.steps.map((step) => (
+        <article class="tour-step">
+          <div class="tour-copy">
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+          <figure>
+            <a
+              href={`/bazpos/${step.image}.webp`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${locale === 'es' ? 'Ampliar captura' : 'Enlarge screenshot'}: ${step.title}`}
+            >
+              <img
+                src={`/bazpos/${step.image}.webp`}
+                width="1440"
+                height="900"
+                loading="lazy"
+                decoding="async"
+                alt={step.alt}
+              />
+            </a>
+            <figcaption>{c.original}</figcaption>
+          </figure>
+        </article>
+      ))}
+    </section>
+    <section class="project-engineering section" aria-labelledby="engineering-title">
+      <div class="container">
+        <h2 id="engineering-title">{c.technicalTitle}</h2>
+        <p class="engineering-intro">{c.technicalIntro}</p>
+        <ol class="project-layers">
+          {c.layers.map(([name, role]) => (
+            <li>
+              <strong>{name}</strong>
+              <span>{role}</span>
+            </li>
+          ))}
+        </ol>
+        <dl class="engineering-decisions">
+          {c.decisions.map(([title, text]) => (
+            <div>
+              <dt>{title}</dt>
+              <dd>{text}</dd>
+            </div>
+          ))}
+        </dl>
+        <a class="source-link" href={featured.githubUrl} target="_blank" rel="noopener noreferrer">
+          {c.source}
+          <Icon name="external" />
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="container site-footer">
+    <span>{c.footer}</span>
+    <a href={localePath(locale)}>
+      {c.back}
+      <Icon name="arrow" />
+    </a>
+  </footer>
+</Layout>
+<style>
+  .project-hero {
+    padding-block: 40px 56px;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+  .back-link :global(svg) {
+    transform: rotate(180deg);
+  }
+  h1 {
+    margin-top: 36px;
+    max-width: 18ch;
+    font-size: clamp(2.5rem, 6.2vw, 4.6rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+  h1 span {
+    display: block;
+    color: var(--color-primary-light);
+  }
+  .project-introduction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 32px;
+    align-items: start;
+  }
+  .project-introduction > p {
+    font-size: 1.125rem;
+    max-width: 50ch;
+  }
+  .demo-note {
+    font-size: 0.8125rem;
+    margin-top: 16px;
+    max-width: 54ch;
+  }
+  .media-heading {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-bottom: 26px;
+  }
+  .media-heading h2 {
+    font-size: clamp(1.4rem, 3vw, 2.125rem);
+  }
+  .media-heading p {
+    font-size: 0.875rem;
+  }
+  video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 12px;
+    background: var(--color-surface-card);
+  }
+  video:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--color-primary-light);
+    outline-offset: 5px;
+  }
+  .media-caption,
+  figcaption {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+  .video-summary {
+    margin-top: 24px;
+    border-bottom: 1px solid var(--color-border-primary);
+    padding-bottom: 20px;
+  }
+  summary {
+    cursor: pointer;
+    color: var(--color-primary-light);
+    padding-block: 10px;
+    font-size: 0.875rem;
+  }
+  .video-summary p {
+    margin-top: 12px;
+    max-width: 74ch;
+    font-size: 0.9375rem;
+  }
+  .tour-step {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 48px;
+    align-items: center;
+    margin-top: 64px;
+  }
+  .tour-copy h3 {
+    font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+  }
+  .tour-copy p {
+    margin-top: 18px;
+    max-width: 46ch;
+    font-size: 0.9375rem;
+  }
+  figure {
+    margin: 0;
+    min-width: 0;
+  }
+  figure a {
+    display: block;
+    border-radius: 8px;
+  }
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-primary);
+  }
+  .project-engineering {
+    background: var(--color-surface-card);
+    border-block: 1px solid var(--color-border-primary);
+  }
+  .engineering-intro {
+    max-width: 70ch;
+    margin-top: 24px;
+  }
+  .project-layers {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 40px 0;
+    border-block: 1px solid var(--color-border-primary);
+  }
+  .project-layers li {
+    padding: 24px 16px 24px 0;
+  }
+  .project-layers strong {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 500;
+  }
+  .project-layers span {
+    display: block;
+    font: 0.75rem var(--font-mono);
+    color: var(--color-text-muted);
+    margin-top: 10px;
+  }
+  .engineering-decisions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 64px;
+    margin: 0;
+  }
+  dt {
+    font-weight: 600;
+  }
+  dd {
+    margin: 12px 0 0;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    font-size: 0.9375rem;
+  }
+  .source-link {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-primary-light);
+    margin-top: 36px;
+    font-size: 0.875rem;
+  }
+  @media (max-width: 767px) {
+    .project-hero {
+      padding-block: 24px 40px;
+    }
+    h1 {
+      margin-top: 24px;
+    }
+    .project-introduction,
+    .media-heading,
+    .tour-step,
+    .engineering-decisions {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .project-introduction {
+      margin-top: 24px;
+    }
+    .project-introduction > p {
+      font-size: 1rem;
+    }
+    .tour-step {
+      margin-top: 40px;
+    }
+    .project-layers {
+      grid-template-columns: 1fr;
+    }
+    .project-layers li + li {
+      border-top: 1px solid var(--color-border-primary);
+    }
+    .project-layers li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-block: 20px;
+    }
+    .project-layers span {
+      margin: 0;
+      text-align: right;
+    }
+    .project-layers strong {
+      font-size: 1.125rem;
+    }
+  }
+</style>

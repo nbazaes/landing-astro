@@ -1,0 +1,55 @@
+---
+import type { Locale, ProjectData, TranslationData } from '../../data/translations';
+import Icon from '../Icon.astro';
+interface Props {
+  locale: Locale;
+  projects: ProjectData[];
+  t: TranslationData;
+}
+const { locale, projects, t } = Astro.props;
+---
+
+<section id="projects" class="section container" aria-labelledby="projects-title">
+  <div class="section-heading">
+    <h2 id="projects-title">{t.projects.subtitle}</h2>
+    <p>
+      {locale === 'es'
+        ? 'Interfaces, aplicaciones y experimentación.'
+        : 'Interfaces, applications, and experiments.'}
+    </p>
+  </div>
+  <div class="projects-list">
+    {projects
+      .filter((project) => !project.featured)
+      .map((project) => (
+        <article class="project-row">
+          <div class="project-summary">
+            <h3>{project.displayName ?? project.name}</h3>
+            <p class="project-category">{project.category[locale]}</p>
+            <p>{project.description[locale]}</p>
+          </div>
+          <div class="project-detail">
+            <ul class="tags" aria-label={locale === 'es' ? 'Tecnologías' : 'Technologies'}>
+              {project.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+            <div class="project-links">
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                {t.projects.viewCode}
+                <Icon name="external" />
+                <span class="sr-only"> — {project.name}</span>
+              </a>
+              {project.demoUrl && (
+                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                  {t.projects.liveDemo}
+                  <Icon name="arrow" />
+                  <span class="sr-only"> — {project.name}</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+  </div>
+</section>

@@ -22,8 +22,8 @@ A passionate Junior Fullstack Developer, Sysadmin, and DevOps practitioner who b
 
 ## Capabilities and Constraints
 - **Dual Experience**: Clean visual landing page on `/` with a dedicated interactive CLI terminal emulator at `/terminal`.
-- **Bilingual Localization**: Seamless Spanish (ES) and English (EN) toggle with `localStorage` memory.
-- **Single-Click Contact**: Instant email copy pill (`nbazaes@bazaes.cl`) with toast notification.
+- **Bilingual Localization**: Complete static Spanish (`/`) and English (`/en/`) pages, with equivalent terminal routes and a resilient shared locale preference.
+- **Single-Click Contact**: Direct email link (`nbazaes@bazaes.cl`) and optional clipboard copy with accessible feedback.
 - **Real Evidence Only**: Strict rule against fabricated metrics or dummy projects; only verified repositories (`django-bazpos`, `discursantes_react`, `webconstAD`, `landing-astro`).
 
 ## Brand Commitments
@@ -36,8 +36,8 @@ A passionate Junior Fullstack Developer, Sysadmin, and DevOps practitioner who b
 
 ## Evidence on Hand
 - **Active Repositories**:
-  - `django-bazpos`: Full point of sale & invoicing system (Django, Python, Bootstrap).
-  - `discursantes_react`: Production fullstack speaker scheduling platform (React, Django, Docker).
+  - `django-bazpos`: Point of sale & business management application in production (React SPA frontend, Django/Python backend, MariaDB, CI/CD).
+  - `discursantes_react`: Fullstack speaker scheduling platform (React, Cloudflare Pages & Workers, Supabase/PostgreSQL, Clerk).
   - `webconstAD`: Art showcase, portfolio & inquiry system (Django, Python, JavaScript).
   - `landing-astro`: This developer portfolio & terminal emulator (Astro 7, TypeScript, Tailwind CSS).
 
@@ -46,3 +46,8 @@ A passionate Junior Fullstack Developer, Sysadmin, and DevOps practitioner who b
 2. **Zero Bloat & High Signal**: Every section, card, and paragraph must serve a clear purpose with generous breathing room and zero visual clutter.
 3. **Pragmatic Craft**: Prioritize readable code, Linux-native workflows, and robust fundamentals over obscure complexity.
 4. **Authenticity Over Hype**: Accurately showcase real achievements, passion for systems engineering, and readiness to learn and contribute.
+
+## Confirmed portfolio emphasis
+- BazPOS is the featured project. React is its frontend; Django is its backend, not a server-rendered fullstack description. MariaDB stores its data.
+- Human identity and immediate project/contact actions precede the compact console signature.
+- Preserve the established dark palette and technical character while prioritizing project evidence and readability.

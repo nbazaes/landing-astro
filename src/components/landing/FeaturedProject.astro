@@ -1,0 +1,74 @@
+---
+import type { Locale, ProjectData } from '../../data/translations';
+import { ui, localePath } from '../../lib/site';
+import Icon from '../Icon.astro';
+interface Props {
+  locale: Locale;
+  project: ProjectData;
+}
+const { locale, project } = Astro.props;
+const c = ui[locale];
+---
+
+<section id="bazpos" class="featured section" aria-labelledby="bazpos-title">
+  <div class="container featured-heading">
+    <h2 id="bazpos-title">{c.featureTitle}</h2>
+    <p>{c.featureIntro}</p>
+  </div>
+  <div class="container feature-layout">
+    <div class="feature-story">
+      <span class="production-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        {c.production}
+      </span>
+      <p class="feature-description">{project.description[locale]}</p>
+      <h3>{c.scope}</h3>
+      <ul class="feature-list">
+        {project.metrics[locale].map((metric) => (
+          <li>{metric}</li>
+        ))}
+      </ul>
+      <div class="actions">
+        <a
+          class="button primary"
+          href={localePath(locale, locale === 'es' ? 'proyectos/bazpos/' : 'projects/bazpos/')}
+        >
+          {locale === 'es' ? 'Conocer el proyecto' : 'Explore the project'}
+          <Icon name="arrow" />
+        </a>
+        <a class="button quiet" href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+          {c.repo}
+          <Icon name="external" />
+        </a>
+      </div>
+      <p class="repo-origin">
+        <span>origin:</span> github.com/nbazaes/{project.name}
+      </p>
+    </div>
+    <div class="architecture" role="group" aria-labelledby="architecture-title">
+      <div class="architecture-header">
+        <span aria-hidden="true">&gt;_</span>
+        <h3 id="architecture-title">{c.architecture}</h3>
+      </div>
+      <ol class="architecture-layers">
+        {project.architecture?.map((layer) => (
+          <li>
+            <span class="layer-role">{layer.role[locale]}</span>
+            <strong>{layer.name}</strong>
+            <span class="layer-check" aria-hidden="true">
+              [ OK ]
+            </span>
+          </li>
+        ))}
+      </ol>
+      <div class="architecture-note">
+        <code>bazpos / stack</code>
+        <p>
+          {locale === 'es'
+            ? 'Una interfaz independiente y un backend centrado en la operación comercial.'
+            : 'An independent interface and a backend focused on business operations.'}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

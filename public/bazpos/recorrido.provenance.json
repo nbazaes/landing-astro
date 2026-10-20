@@ -1,0 +1,31 @@
+{
+  "source": "https://bazpos.nbazaes.app/presentacion",
+  "capturedAt": "2026-10-20",
+  "method": "Continuous Playwright browser recording, public Manager demo; actual fictional sale recorded through the UI, inventory and reports visited. H.264 MP4 encoding with ffmpeg. No narration or generated UI.",
+  "timeline": [
+    {
+      "seconds": 2,
+      "label": "access"
+    },
+    {
+      "seconds": 10,
+      "label": "search"
+    },
+    {
+      "seconds": 19,
+      "label": "sale"
+    },
+    {
+      "seconds": 25,
+      "label": "saved"
+    },
+    {
+      "seconds": 33,
+      "label": "inventory"
+    },
+    {
+      "seconds": 46,
+      "label": "reports"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Welcome from './Welcome.astro';
+import Icon from './Icon.astro';
+import { getSiteData, localePath, ui } from '../lib/site';
+import type { Locale } from '../data/translations';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const { t } = await getSiteData(locale);
+const otherLocale = locale === 'es' ? 'en' : 'es';
+---
+
+<Layout
+  locale={locale}
+  terminal
+  title="Nicolás Bazaes | Terminal"
+  description={ui[locale].terminalDescription}
+>
+  <header class="container terminal-header">
+    <a href={localePath(locale)}>
+      <Icon name="arrow" />
+      {t.terminal.backButton}
+    </a>
+    <a
+      href={localePath(otherLocale, 'terminal/')}
+      data-locale={otherLocale}
+      aria-label={ui[locale].language}
+      lang={otherLocale}
+    >
+      {otherLocale.toUpperCase()}
+    </a>
+  </header>
+  <Welcome locale={locale} />
+</Layout>
+<style>
+  .terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding-block: 16px;
+    font-size: 0.8125rem;
+  }
+  .terminal-header a {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    min-height: 44px;
+    color: var(--color-primary-light);
+  }
+  .terminal-header a:first-child :global(svg) {
+    transform: rotate(180deg);
+  }
+</style>

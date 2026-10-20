@@ -1,41 +1,418 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-29T19:30:00Z",
-  "title": "Design System: Power-On Self-Test",
+  "generatedAt": "2026-10-20T17:41:11.255637+00:00",
+  "title": "Design System: Engineered Dark",
   "extensions": {
     "colorMeta": {
-      "primary": { "role": "primary", "displayName": "Deep Violet", "canonical": "#9333ea" },
-      "primary-hover": { "role": "primary", "displayName": "Primary Violet", "canonical": "#a855f7" },
-      "primary-light": { "role": "primary", "displayName": "Light Violet", "canonical": "#ddb7ff" },
-      "tertiary": { "role": "tertiary", "displayName": "System Amber", "canonical": "#fabc4e" },
-      "status-ok": { "role": "tertiary", "displayName": "Health Emerald", "canonical": "#34d399" },
-      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#111319" },
-      "surface-card": { "role": "neutral", "displayName": "Card Surface", "canonical": "#0c0e14" },
-      "surface-dim": { "role": "neutral", "displayName": "Surface Dim", "canonical": "#191b22" },
-      "border-subtle": { "role": "neutral", "displayName": "Subtle Border", "canonical": "#2d3139" },
-      "text-primary": { "role": "neutral", "displayName": "Text Primary", "canonical": "#ffffff" },
-      "text-muted": { "role": "neutral", "displayName": "Text Muted", "canonical": "#94a3b8" },
-      "text-variant": { "role": "neutral", "displayName": "Text Variant", "canonical": "#cfc2d6" }
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#111319",
+        "tonalRamp": [
+          "oklch(15% 0.0126 270.66)",
+          "oklch(26% 0.0126 270.66)",
+          "oklch(38% 0.0126 270.66)",
+          "oklch(49% 0.0126 270.66)",
+          "oklch(61% 0.0126 270.66)",
+          "oklch(72% 0.0126 270.66)",
+          "oklch(84% 0.0126 270.66)",
+          "oklch(95% 0.0126 270.66)"
+        ]
+      },
+      "surface-card": {
+        "role": "neutral",
+        "displayName": "Surface Card",
+        "canonical": "#0c0e14",
+        "tonalRamp": [
+          "oklch(15% 0.0131 270.50)",
+          "oklch(26% 0.0131 270.50)",
+          "oklch(38% 0.0131 270.50)",
+          "oklch(49% 0.0131 270.50)",
+          "oklch(61% 0.0131 270.50)",
+          "oklch(72% 0.0131 270.50)",
+          "oklch(84% 0.0131 270.50)",
+          "oklch(95% 0.0131 270.50)"
+        ]
+      },
+      "surface-dim": {
+        "role": "neutral",
+        "displayName": "Surface Dim",
+        "canonical": "#191b22",
+        "tonalRamp": [
+          "oklch(15% 0.0140 272.68)",
+          "oklch(26% 0.0140 272.68)",
+          "oklch(38% 0.0140 272.68)",
+          "oklch(49% 0.0140 272.68)",
+          "oklch(61% 0.0140 272.68)",
+          "oklch(72% 0.0140 272.68)",
+          "oklch(84% 0.0140 272.68)",
+          "oklch(95% 0.0140 272.68)"
+        ]
+      },
+      "border-primary": {
+        "role": "neutral",
+        "displayName": "Border Primary",
+        "canonical": "#2d3139",
+        "tonalRamp": [
+          "oklch(15% 0.0154 264.32)",
+          "oklch(26% 0.0154 264.32)",
+          "oklch(38% 0.0154 264.32)",
+          "oklch(49% 0.0154 264.32)",
+          "oklch(61% 0.0154 264.32)",
+          "oklch(72% 0.0154 264.32)",
+          "oklch(84% 0.0154 264.32)",
+          "oklch(95% 0.0154 264.32)"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Primary",
+        "canonical": "#9333ea",
+        "tonalRamp": [
+          "oklch(15% 0.2525 302.32)",
+          "oklch(26% 0.2525 302.32)",
+          "oklch(38% 0.2525 302.32)",
+          "oklch(49% 0.2525 302.32)",
+          "oklch(61% 0.2525 302.32)",
+          "oklch(72% 0.2525 302.32)",
+          "oklch(84% 0.2525 302.32)",
+          "oklch(95% 0.2525 302.32)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Primary Hover",
+        "canonical": "#a855f7",
+        "tonalRamp": [
+          "oklch(15% 0.2325 303.90)",
+          "oklch(26% 0.2325 303.90)",
+          "oklch(38% 0.2325 303.90)",
+          "oklch(49% 0.2325 303.90)",
+          "oklch(61% 0.2325 303.90)",
+          "oklch(72% 0.2325 303.90)",
+          "oklch(84% 0.2325 303.90)",
+          "oklch(95% 0.2325 303.90)"
+        ]
+      },
+      "primary-light": {
+        "role": "primary",
+        "displayName": "Primary Light",
+        "canonical": "#ddb7ff",
+        "tonalRamp": [
+          "oklch(15% 0.1062 308.27)",
+          "oklch(26% 0.1062 308.27)",
+          "oklch(38% 0.1062 308.27)",
+          "oklch(49% 0.1062 308.27)",
+          "oklch(61% 0.1062 308.27)",
+          "oklch(72% 0.1062 308.27)",
+          "oklch(84% 0.1062 308.27)",
+          "oklch(95% 0.1062 308.27)"
+        ]
+      },
+      "primary-action-hover": {
+        "role": "primary",
+        "displayName": "Primary Action Hover",
+        "canonical": "#7e22ce",
+        "tonalRamp": [
+          "oklch(15% 0.2369 301.92)",
+          "oklch(26% 0.2369 301.92)",
+          "oklch(38% 0.2369 301.92)",
+          "oklch(49% 0.2369 301.92)",
+          "oklch(61% 0.2369 301.92)",
+          "oklch(72% 0.2369 301.92)",
+          "oklch(84% 0.2369 301.92)",
+          "oklch(95% 0.2369 301.92)"
+        ]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Text Muted",
+        "canonical": "#a2adbd",
+        "tonalRamp": [
+          "oklch(15% 0.0262 257.66)",
+          "oklch(26% 0.0262 257.66)",
+          "oklch(38% 0.0262 257.66)",
+          "oklch(49% 0.0262 257.66)",
+          "oklch(61% 0.0262 257.66)",
+          "oklch(72% 0.0262 257.66)",
+          "oklch(84% 0.0262 257.66)",
+          "oklch(95% 0.0262 257.66)"
+        ]
+      },
+      "text-bright": {
+        "role": "neutral",
+        "displayName": "Text Bright",
+        "canonical": "#f4f3f7",
+        "tonalRamp": [
+          "oklch(15% 0.0054 297.73)",
+          "oklch(26% 0.0054 297.73)",
+          "oklch(38% 0.0054 297.73)",
+          "oklch(49% 0.0054 297.73)",
+          "oklch(61% 0.0054 297.73)",
+          "oklch(72% 0.0054 297.73)",
+          "oklch(84% 0.0054 297.73)",
+          "oklch(95% 0.0054 297.73)"
+        ]
+      },
+      "text-white": {
+        "role": "neutral",
+        "displayName": "Text White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "text-variant": {
+        "role": "neutral",
+        "displayName": "Text Variant",
+        "canonical": "#cfc2d6",
+        "tonalRamp": [
+          "oklch(15% 0.0309 314.02)",
+          "oklch(26% 0.0309 314.02)",
+          "oklch(38% 0.0309 314.02)",
+          "oklch(49% 0.0309 314.02)",
+          "oklch(61% 0.0309 314.02)",
+          "oklch(72% 0.0309 314.02)",
+          "oklch(84% 0.0309 314.02)",
+          "oklch(95% 0.0309 314.02)"
+        ]
+      },
+      "status": {
+        "role": "tertiary",
+        "displayName": "Status",
+        "canonical": "#34d399",
+        "tonalRamp": [
+          "oklch(15% 0.1535 163.22)",
+          "oklch(26% 0.1535 163.22)",
+          "oklch(38% 0.1535 163.22)",
+          "oklch(49% 0.1535 163.22)",
+          "oklch(61% 0.1535 163.22)",
+          "oklch(72% 0.1535 163.22)",
+          "oklch(84% 0.1535 163.22)",
+          "oklch(95% 0.1535 163.22)"
+        ]
+      },
+      "tertiary": {
+        "role": "tertiary",
+        "displayName": "Tertiary",
+        "canonical": "#fabc4e",
+        "tonalRamp": [
+          "oklch(15% 0.1427 78.67)",
+          "oklch(26% 0.1427 78.67)",
+          "oklch(38% 0.1427 78.67)",
+          "oklch(49% 0.1427 78.67)",
+          "oklch(61% 0.1427 78.67)",
+          "oklch(72% 0.1427 78.67)",
+          "oklch(84% 0.1427 78.67)",
+          "oklch(95% 0.1427 78.67)"
+        ]
+      },
+      "selection": {
+        "role": "primary",
+        "displayName": "Selection",
+        "canonical": "#6832a3",
+        "tonalRamp": [
+          "oklch(15% 0.1735 301.61)",
+          "oklch(26% 0.1735 301.61)",
+          "oklch(38% 0.1735 301.61)",
+          "oklch(49% 0.1735 301.61)",
+          "oklch(61% 0.1735 301.61)",
+          "oklch(72% 0.1735 301.61)",
+          "oklch(84% 0.1735 301.61)",
+          "oklch(95% 0.1735 301.61)"
+        ]
+      },
+      "scrollbar": {
+        "role": "neutral",
+        "displayName": "Scrollbar",
+        "canonical": "#525661",
+        "tonalRamp": [
+          "oklch(15% 0.0186 269.74)",
+          "oklch(26% 0.0186 269.74)",
+          "oklch(38% 0.0186 269.74)",
+          "oklch(49% 0.0186 269.74)",
+          "oklch(61% 0.0186 269.74)",
+          "oklch(72% 0.0186 269.74)",
+          "oklch(84% 0.0186 269.74)",
+          "oklch(95% 0.0186 269.74)"
+        ]
+      },
+      "border-action": {
+        "role": "neutral",
+        "displayName": "Border Action",
+        "canonical": "#515663",
+        "tonalRamp": [
+          "oklch(15% 0.0221 268.81)",
+          "oklch(26% 0.0221 268.81)",
+          "oklch(38% 0.0221 268.81)",
+          "oklch(49% 0.0221 268.81)",
+          "oklch(61% 0.0221 268.81)",
+          "oklch(72% 0.0221 268.81)",
+          "oklch(84% 0.0221 268.81)",
+          "oklch(95% 0.0221 268.81)"
+        ]
+      },
+      "console-separator": {
+        "role": "neutral",
+        "displayName": "Console Separator",
+        "canonical": "#666e7d",
+        "tonalRamp": [
+          "oklch(15% 0.0254 263.09)",
+          "oklch(26% 0.0254 263.09)",
+          "oklch(38% 0.0254 263.09)",
+          "oklch(49% 0.0254 263.09)",
+          "oklch(61% 0.0254 263.09)",
+          "oklch(72% 0.0254 263.09)",
+          "oklch(84% 0.0254 263.09)",
+          "oklch(95% 0.0254 263.09)"
+        ]
+      },
+      "border-feedback": {
+        "role": "neutral",
+        "displayName": "Border Feedback",
+        "canonical": "#616776",
+        "tonalRamp": [
+          "oklch(15% 0.0249 268.20)",
+          "oklch(26% 0.0249 268.20)",
+          "oklch(38% 0.0249 268.20)",
+          "oklch(49% 0.0249 268.20)",
+          "oklch(61% 0.0249 268.20)",
+          "oklch(72% 0.0249 268.20)",
+          "oklch(84% 0.0249 268.20)",
+          "oklch(95% 0.0249 268.20)"
+        ]
+      },
+      "feedback-shadow": {
+        "role": "neutral",
+        "displayName": "Feedback Shadow",
+        "canonical": "#0004"
+      },
+      "transparent": {
+        "role": "neutral",
+        "displayName": "Transparent",
+        "canonical": "transparent"
+      }
     },
     "typographyMeta": {
-      "headline-xl": { "displayName": "Display", "purpose": "Hero headline, the system's stated purpose on the boot screen." },
-      "headline-lg": { "displayName": "Headline", "purpose": "Section titles and terminal promo title." },
-      "body-md": { "displayName": "Body", "purpose": "Value proposition and project descriptions." },
-      "code-sm": { "displayName": "Console", "purpose": "Default machine voice for dense content: stack rows, metrics, tags, footer." },
-      "console-sm": { "displayName": "Console", "purpose": "Boot lines and status rows." },
-      "console-xs": { "displayName": "Console Micro", "purpose": "BIOS instructions and footer status line." },
-      "label-caps": { "displayName": "Label Caps", "purpose": "Section mono labels like DIRECTORY_LISTING." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Human identity."
+      },
+      "role": {
+        "displayName": "Role",
+        "purpose": "Implemented role role; see Typography."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "Implemented statement role; see Typography."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Implemented headline role; see Typography."
+      },
+      "architecture-value": {
+        "displayName": "Architecture Value",
+        "purpose": "Implemented architecture value role; see Typography."
+      },
+      "project-title": {
+        "displayName": "Project Title",
+        "purpose": "Implemented project title role; see Typography."
+      },
+      "brand-mark": {
+        "displayName": "Brand Mark",
+        "purpose": "Implemented brand mark role; see Typography."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Implemented body role; see Typography."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Implemented body small role; see Typography."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Implemented button role; see Typography."
+      },
+      "body-compact": {
+        "displayName": "Body Compact",
+        "purpose": "Implemented body compact role; see Typography."
+      },
+      "link": {
+        "displayName": "Link",
+        "purpose": "Implemented link role; see Typography."
+      },
+      "console": {
+        "displayName": "Console",
+        "purpose": "Implemented console role; see Typography."
+      },
+      "language": {
+        "displayName": "Language",
+        "purpose": "Implemented language role; see Typography."
+      },
+      "console-micro": {
+        "displayName": "Console Micro",
+        "purpose": "Compact mobile location and ready text."
+      },
+      "contact": {
+        "displayName": "Contact",
+        "purpose": "Implemented contact role; see Typography."
+      },
+      "command": {
+        "displayName": "Command",
+        "purpose": "Terminal prompt, input, and output."
+      }
     },
-    "shadows": [],
+    "shadows": [
+      {
+        "name": "feedback-ambient",
+        "value": "0 8px 30px #0004",
+        "purpose": "Temporary clipboard feedback only."
+      }
+    ],
     "motion": [
-      { "name": "cascade-resolve", "value": "opacity 0.12s ease-out + translateY 2px; .ok-token max-width 0.24s ease-out; 420ms line stagger", "purpose": "The single authored moment: POST lines resolve sequentially, each [ OK ] cascades open." },
-      { "name": "blink-cursor", "value": "1s step-end infinite opacity", "purpose": "Blinking violet cursor block on the READY line." },
-      { "name": "status-pulse", "value": "1.6s ease-in-out opacity 1 to 0.35", "purpose": "Pulsing availability and health dots." }
+      {
+        "name": "control-state",
+        "value": "background-color 160ms, border-color 160ms",
+        "purpose": "Button hover feedback."
+      },
+      {
+        "name": "boot-settle",
+        "value": "600ms ease-out clip-path inset(0 100% 0 0) to inset(0)",
+        "purpose": "Single ready-marker reveal when motion is allowed."
+      },
+      {
+        "name": "terminal-typing",
+        "value": "0.9s steps(var(--chars), end)",
+        "purpose": "Introductory terminal command."
+      },
+      {
+        "name": "terminal-lines",
+        "value": "0.15s ease-out; 0.18s line stagger after 0.4s pause",
+        "purpose": "Terminal information and prompt."
+      },
+      {
+        "name": "caret",
+        "value": "1.05s steps(1, end) infinite",
+        "purpose": "Terminal input caret."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "768px" },
-      { "name": "lg", "value": "1024px" }
+      {
+        "name": "landing-mobile",
+        "value": "767px"
+      },
+      {
+        "name": "terminal-mobile",
+        "value": "768px"
+      }
     ]
   },
   "components": [
@@ -43,80 +420,98 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The keyed primary action; solid Deep Violet fill with white text at ≥4.5:1.",
-      "html": "<button class=\"ds-btn-primary\"><span>[1]</span> View Projects</button>",
-      "css": ".ds-btn-primary { background: #9333ea; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s ease; } .ds-btn-primary:hover { background: #a855f7; } .ds-btn-primary:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; }"
+      "description": "Solid violet action with darker hover.",
+      "html": "<button class=\"ds-primary\">Ver BazPOS</button>",
+      "css": ".ds-primary{font-family:var(--font-sans);font-size:.875rem;font-weight:600;padding:12px 20px;min-height:48px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:14px;cursor:pointer;transition:background-color 160ms,border-color 160ms;background:var(--color-primary);color:#fff;border:1px solid transparent}.ds-primary:hover{background:#7e22ce}.ds-primary:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:5px;border-radius:4px;}"
     },
     {
-      "name": "Ghost Button",
+      "name": "Quiet Button",
       "kind": "button",
-      "refersTo": "button-ghost",
-      "description": "Secondary keyed action; dim surface fill with a hairline rule that turns violet on hover.",
-      "html": "<button class=\"ds-btn-ghost\"><span>[2]</span> Open Terminal</button>",
-      "css": ".ds-btn-ghost { background: #191b22; color: #ddb7ff; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; padding: 12px 20px; border: 1px solid #2d3139; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: border-color 0.2s, color 0.2s; } .ds-btn-ghost:hover { border-color: #a855f7; color: #ffffff; } .ds-btn-ghost:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; }"
+      "refersTo": "button-quiet",
+      "description": "Outlined secondary action.",
+      "html": "<button class=\"ds-quiet\">Contacto</button>",
+      "css": ".ds-quiet{font-family:var(--font-sans);font-size:.875rem;font-weight:600;padding:12px 20px;min-height:48px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:14px;cursor:pointer;transition:background-color 160ms,border-color 160ms;background:transparent;color:var(--color-text-bright);border:1px solid #515663}.ds-quiet:hover{border-color:var(--color-primary-light);background:var(--color-surface-dim)}.ds-quiet:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:5px;border-radius:4px;}"
     },
     {
-      "name": "Boot Line",
-      "kind": "custom",
-      "refersTo": "boot-line",
-      "description": "A POST check row: amber tabular timestamp, label, violet value, dotted leader, cascading emerald [ OK ].",
-      "html": "<p class=\"ds-boot-line\"><span class=\"ts\">t=0.06s</span> CPU [ Junior Fullstack &amp; Sysadmin ] <span class=\"ok\">[ OK ]</span></p>",
-      "css": ".ds-boot-line { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; line-height: 1.5; color: #cfc2d6; display: flex; align-items: baseline; gap: 12px; } .ds-boot-line .ts { color: #fabc4e; font-variant-numeric: tabular-nums; } .ds-boot-line .ok { color: #34d399; font-weight: 700; white-space: nowrap; } .ds-boot-line .ok { animation: ds-ok 0.24s ease-out; } @keyframes ds-ok { from { max-width: 0; opacity: 0; } to { max-width: 6rem; opacity: 1; } }"
-    },
-    {
-      "name": "Project Card",
-      "kind": "card",
-      "refersTo": "card-project",
-      "description": "A detected device: repo name, category badge, description, metrics, provenance origin ticket, tags and actions.",
-      "html": "<article class=\"ds-card\"><h3>django-bazpos</h3><p class=\"origin\"><span>origin:</span> github.com/nbazaes/django-bazpos</p><div><span class=\"tag\">Django</span><span class=\"tag\">Python</span></div></article>",
-      "css": ".ds-card { background: #0c0e14; border: 1px solid #2d3139; border-radius: 12px; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px; font-family: 'JetBrains Mono', monospace; } .ds-card h3 { color: #ffffff; font-size: 1rem; font-weight: 700; margin: 0; } .ds-card .origin { color: #94a3b8; font-size: 0.75rem; margin: 0; } .ds-card .origin span { color: #fabc4e; } .ds-card .tag { background: #191b22; border: 1px solid rgba(45,49,57,0.6); color: #cfc2d6; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px; margin-right: 6px; } .ds-card:hover { border-color: rgba(168,85,247,0.6); }"
-    },
-    {
-      "name": "Console Navigation",
-      "kind": "nav",
-      "refersTo": "button-ghost",
-      "description": "The fixed status-line header: keyed anchors [1]-[4], terminal launcher, ES/EN toggle, copy email.",
-      "html": "<nav class=\"ds-nav\"><a href=\"#overview\">[1] Overview</a><a href=\"#projects\">[2] Projects</a><a href=\"#stack\">[3] Stack</a></nav>",
-      "css": ".ds-nav { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; display: flex; gap: 20px; } .ds-nav a { color: #94a3b8; text-decoration: none; transition: color 0.2s; } .ds-nav a:hover { color: #ddb7ff; } .ds-nav a:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; }"
-    },
-    {
-      "name": "Tag Chip",
+      "name": "Technology Tag",
       "kind": "chip",
-      "refersTo": "boot-line",
-      "description": "Monospace tech tags and category badges on dim surface fill.",
-      "html": "<span class=\"ds-chip\">Docker</span>",
-      "css": ".ds-chip { background: #191b22; border: 1px solid rgba(45,49,57,0.6); color: #cfc2d6; font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }"
+      "refersTo": "tag",
+      "description": "Noninteractive technical metadata.",
+      "html": "<span class=\"ds-tag\">React</span>",
+      "css": ".ds-tag{display:inline-block;background:var(--color-surface-dim);color:#cfc2d6;font:0.75rem/1.5 var(--font-mono);padding:4px 8px;border-radius:4px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Compact sticky-header link grammar.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#bazpos\">BazPOS</a><a href=\"#projects\">Proyectos</a><a href=\"#contact\">Contacto</a></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;background:var(--color-surface);font:.875rem var(--font-sans);color:var(--color-text-muted)}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:inherit}.ds-nav a:hover{color:var(--color-primary-light)}.ds-nav a:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:5px;border-radius:4px;}@media(max-width:767px){.ds-nav{gap:16px;font-size:.75rem}}"
+    },
+    {
+      "name": "Architecture Panel",
+      "kind": "card",
+      "refersTo": "architecture",
+      "description": "Recessed panel that distinguishes frontend, backend, and storage.",
+      "html": "<section class=\"ds-architecture\"><h3>Arquitectura</h3><dl><div><dt>Frontend</dt><dd>React</dd></div><div><dt>Backend</dt><dd>Django</dd></div><div><dt>Base de datos</dt><dd>MariaDB</dd></div></dl></section>",
+      "css": ".ds-architecture{background:var(--color-surface-card);border:1px solid var(--color-border-primary);border-radius:12px;overflow:hidden;color:var(--color-text-bright);font-family:var(--font-sans)}.ds-architecture h3{margin:0;padding:20px 24px;font-size:.8125rem;font-weight:400;color:var(--color-text-muted);border-bottom:1px solid var(--color-border-primary)}.ds-architecture dl{margin:0;padding:8px 24px}.ds-architecture dl div{padding:24px 0;border-bottom:1px solid var(--color-border-primary)}.ds-architecture dl div:last-child{border:0}.ds-architecture dt{font:.75rem var(--font-mono);color:var(--color-text-muted)}.ds-architecture dd{margin:8px 0 0;font-size:1.75rem;font-weight:500;letter-spacing:-.02em}"
+    },
+    {
+      "name": "Terminal Input",
+      "kind": "input",
+      "refersTo": "terminal-input",
+      "description": "Borderless mono command field with global focus outline.",
+      "html": "<input class=\"ds-command\" aria-label=\"Comando\" placeholder=\"help\" spellcheck=\"false\">",
+      "css": ".ds-command{width:min(100%,32rem);min-width:0;background:transparent;border:none;color:var(--color-text-bright);caret-color:var(--color-text-bright);font-family:var(--font-mono);font-size:clamp(1rem,1.9vw,1.25rem);line-height:1.7;letter-spacing:.02em}.ds-command::placeholder{color:var(--color-text-muted)}.ds-command:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:5px;border-radius:4px;}"
+    },
+    {
+      "name": "Console Summary",
+      "kind": "custom",
+      "refersTo": "console-summary",
+      "description": "Settled technical signature below immediate actions.",
+      "html": "<div class=\"ds-console\"><code>React / Django / Linux</code><span>[ OK ] Listo para construir</span></div>",
+      "css": ".ds-console{display:flex;flex-wrap:wrap;gap:20px;padding:18px 0;border-block:1px solid var(--color-border-primary);font:.75rem var(--font-mono)}.ds-console code{color:var(--color-primary-light)}.ds-console span{color:var(--color-status)}"
     }
   ],
   "narrative": {
-    "northStar": "The Power-On Self-Test",
-    "overview": "The portfolio is a machine booting in front of the visitor. The first viewport is a single full-width text-mode screen: a BIOS-style header, the headline and value proposition as the system's stated purpose, then a POST sequence — CPU, MEM, NIC checks and each real repository mounting as a detected device — every check resolving to an emerald [ OK ] with a character-by-character cascade. The sequence closes on a blinking-cursor READY — available for hire line and three keyed actions. The whole page keeps the console grammar: keyed navigation, tabular timestamps, provenance tickets, config-file section headers, and a footer of keyed links. This world refuses the hero-plus-floating-terminal-card scaffold; the page itself is the terminal.",
+    "northStar": "Engineered Dark",
+    "overview": "Engineered Dark combines charcoal grounds, violet interaction, emerald health signals, and restrained console notation. Inter carries human identity and explanatory reading; JetBrains Mono marks commands, roles, provenance, and technology data. The result is direct, technical, and accessible to a fast reader.\n\nThe Power-On Self-Test remains an identity reference through settled readiness markers and the dedicated terminal. It no longer requires every surface to simulate a boot screen. Space, ruled structure, and deliberate typographic hierarchy carry the interface.",
     "keyCharacteristics": [
-      "One authored moment: the boot cascade resolving line by line, not scattered hover effects",
-      "Console grammar throughout: tabular numerals, dotted leaders, keyed [n] actions, provenance tickets",
-      "The Engineered Dark palette preserved: deep charcoal surfaces, violet primary, amber tertiary, emerald OK",
-      "Generous breathing room: one clean screen first, dense-but-airy sections after",
-      "Bilingual ES/EN with localStorage memory; single-click email copy with toast"
+      "Charcoal tonal layers with fine structural rules",
+      "Inter for reading; JetBrains Mono for system notation",
+      "Violet actions, emerald health, amber provenance",
+      "Responsive columns with generous section spacing",
+      "Settled content and reduced-motion support"
     ],
     "rules": [
-      { "name": "The One Health Signal Rule", "body": "Emerald appears only as [ OK ], status dots, and verified/ready markers. Any other green reads as the system lying.", "section": "colors" },
-      { "name": "The Provenance Rule", "body": "Every project card carries a visible origin: ticket naming its repository. Proof is on the surface, never implied.", "section": "colors" },
-      { "name": "The Tabular Numeral Rule", "body": "All timestamps and status data use font-variant-numeric: tabular-nums, so the boot column lines up ruler-true.", "section": "typography" },
-      { "name": "The Console Voice Rule", "body": "Mono is not a costume here — it is the world's native voice. Any element that reports a system state speaks mono.", "section": "typography" }
+      {
+        "name": "The Health Signal Rule",
+        "body": "Reserve emerald for availability, production status, and ready/check markers.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Use Inter for reading and hierarchy; use JetBrains Mono for commands, roles, tags, and technical notation.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled Structure Rule",
+        "body": "Separate sections and rows with hairline rules and tonal changes; keep persistent content flat.",
+        "section": "elevation"
+      }
     ],
     "dos": [
-      "Do keep the hero a single full-width boot screen — no floating terminal card, no sidebar.",
-      "Do reserve emerald for [ OK ] and health markers only.",
-      "Do carry a provenance origin: ticket on every project.",
-      "Do use tabular numerals for all timestamps and status columns.",
-      "Do keep violet for focal points and the primary action; let the ground breathe."
+      "Do preserve the distinction between reading text and system notation.",
+      "Do keep health markers semantic and primary actions violet.",
+      "Do show genuine code destinations and allow long repository names to wrap.",
+      "Do keep direct contact and locale navigation available without JavaScript.",
+      "Do honor reduced motion and visible keyboard focus."
     ],
     "donts": [
-      "Don't add glow shadows (shadow-[0_0_…]) to buttons, cards, or the logo — the boot cascade is the one authored moment.",
-      "Don't round the boot screen; it is the machine's screen, not a card.",
-      "Don't use the muted text color below 4.5:1 on dark surfaces (avoid opacity-* on small text).",
-      "Don't return to the card-heavy 60/40 hero or a grid of same-size icon+text cards as the page structure.",
-      "Don't truncate repo names on mobile — let them wrap (break-words)."
+      "Don't turn ordinary reading copy into a wall of console text.",
+      "Don't add decorative glow or hard offset shadows to persistent content.",
+      "Don't fabricate project evidence or metrics.",
+      "Don't replace SVG interface icons with Unicode arrow glyphs."
     ]
   }
 }

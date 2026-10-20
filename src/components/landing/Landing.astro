@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import FeaturedProject from './FeaturedProject.astro';
+import Projects from './Projects.astro';
+import Stack from './Stack.astro';
+import Contact from './Contact.astro';
+import Icon from '../Icon.astro';
+import { getSiteData, localePath, ui } from '../../lib/site';
+import type { Locale } from '../../data/translations';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const { t, profile, projects, featured } = await getSiteData(locale);
+---
+
+<Layout locale={locale} title={profile.meta.title} description={ui[locale].description}>
+  <Header locale={locale} />
+  <main id="main-content">
+    <Hero locale={locale} t={t} />
+    <FeaturedProject locale={locale} project={featured} />
+    <Projects locale={locale} projects={projects} t={t} />
+    <Stack t={t} />
+    <Contact locale={locale} profile={profile} />
+  </main>
+  <footer class="container site-footer">
+    <span>
+      © {new Date().getFullYear()} Nicolás Bazaes · {profile.location}
+    </span>
+    <a href={localePath(locale, 'terminal/')}>
+      <Icon name="terminal" />
+      {ui[locale].terminal}
+    </a>
+  </footer>
+</Layout>

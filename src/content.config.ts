@@ -1,13 +1,14 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const localeSchema = z.enum(['en', 'es']);
 
-const profileSchema = z.object({
+export const profileSchema = z.object({
   name: z.string(),
-  email: z.string(),
-  githubUrl: z.string().url(),
-  linkedinUrl: z.string().url(),
+  email: z.email(),
+  githubUrl: z.url(),
+  linkedinUrl: z.url(),
   location: z.string(),
   defaultLocale: localeSchema,
   introCommand: z.string(),
@@ -15,7 +16,7 @@ const profileSchema = z.object({
   meta: z.object({
     title: z.string(),
     description: z.string(),
-    ogUrl: z.string().url(),
+    ogUrl: z.url(),
   }),
 });
 
@@ -32,7 +33,7 @@ const stackGroupSchema = z.object({
   ),
 });
 
-const siteSchema = z.object({
+export const siteSchema = z.object({
   nav: z.object({
     overview: z.string(),
     projects: z.string(),
@@ -113,11 +114,17 @@ const siteSchema = z.object({
   }),
 });
 
-const projectSchema = z.object({
+export const projectSchema = z.object({
   name: z.string(),
+  displayName: z.string().optional(),
+  featured: z.boolean().default(false),
+  order: z.number().default(99),
+  architecture: z
+    .array(z.object({ name: z.string(), role: z.object({ en: z.string(), es: z.string() }) }))
+    .optional(),
   iconName: z.string(),
-  githubUrl: z.string().url(),
-  demoUrl: z.string().url().optional(),
+  githubUrl: z.url(),
+  demoUrl: z.url().optional(),
   tags: z.array(z.string()),
   category: z.object({ en: z.string(), es: z.string() }),
   description: z.object({ en: z.string(), es: z.string() }),

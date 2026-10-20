@@ -1,0 +1,45 @@
+---
+import type { TranslationData } from '../../data/translations';
+interface Props {
+  t: TranslationData;
+}
+const { t } = Astro.props;
+const principles = [
+  { title: t.philosophy.item1Title, description: t.philosophy.item1Desc },
+  { title: t.philosophy.item2Title, description: t.philosophy.item2Desc },
+  { title: t.philosophy.item3Title, description: t.philosophy.item3Desc },
+];
+---
+
+<section id="stack" class="section container" aria-labelledby="stack-title">
+  <div class="section-heading">
+    <h2 id="stack-title">{t.stack.subtitle}</h2>
+    <p>{t.stack.statusBadge}</p>
+  </div>
+  <div class="stack-grid">
+    {t.stack.groups.map((group) => (
+      <div class="stack-group">
+        <h3>{group.title}</h3>
+        <ul>
+          {group.items.map((item) => (
+            <li>
+              <span>{item.name}</span>
+              <span class="stack-label">{item.label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <div class="principles">
+    <h3>{t.philosophy.subtitle}</h3>
+    <div>
+      {principles.map((item) => (
+        <div>
+          <h4>{item.title}</h4>
+          <p>{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

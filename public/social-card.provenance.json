@@ -1,0 +1,6 @@
+{
+  "asset": "social-card.png",
+  "source": "social-card.svg",
+  "origin": "Original code-native SVG authored for Nicolás Bazaes portfolio; rendered to PNG with sharp. Typography and factual project names only; not a product screenshot or generated product UI.",
+  "dimensions": [1200, 630]
+}

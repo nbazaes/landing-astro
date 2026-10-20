@@ -1,3 +1,15 @@
 {
-  "buildPath": "comp"
+  "buildPath": "comp",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-10-20T17:45:00.942Z",
+        "reason": "Agent decision: retained the incumbent Inter/JetBrains Mono pairing during the authorized BazPOS refinement; current DESIGN.md documents Inter for readable body and headings, with JetBrains Mono for technical notation."
+      }
+    ]
+  }
 }

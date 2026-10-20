@@ -1,0 +1,42 @@
+---
+import type { Locale } from '../../data/translations';
+import { localePath, ui } from '../../lib/site';
+import Icon from '../Icon.astro';
+interface Props {
+  locale: Locale;
+  projectPage?: boolean;
+}
+const { locale, projectPage = false } = Astro.props;
+const c = ui[locale];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={localePath(locale)} aria-label="Nicolás Bazaes">
+      <span class="brand-mark" aria-hidden="true">
+        NB<span>_</span>
+      </span>
+      <span class="brand-name">Nicolás Bazaes</span>
+    </a>
+    <nav aria-label={locale === 'es' ? 'Navegación principal' : 'Main navigation'}>
+      <a href={projectPage ? '#main-content' : '#bazpos'}>BazPOS</a>
+      <a href={projectPage ? `${localePath(locale)}#projects` : '#projects'}>
+        {locale === 'es' ? 'Proyectos' : 'Projects'}
+      </a>
+      <a href={projectPage ? `${localePath(locale)}#contact` : '#contact'}>{c.contact}</a>
+    </nav>
+    <a
+      class="language-link"
+      href={localePath(
+        locale === 'es' ? 'en' : 'es',
+        projectPage ? (locale === 'es' ? 'projects/bazpos/' : 'proyectos/bazpos/') : '',
+      )}
+      data-locale={locale === 'es' ? 'en' : 'es'}
+      lang={locale === 'es' ? 'en' : 'es'}
+      aria-label={c.language}
+    >
+      {locale === 'es' ? 'EN' : 'ES'}
+      <Icon name="external" />
+    </a>
+  </div>
+</header>
