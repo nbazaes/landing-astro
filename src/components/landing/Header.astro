@@ -1,7 +1,7 @@
 ---
 import type { Locale } from '../../data/translations';
 import { localePath, ui } from '../../lib/site';
-import Icon from '../Icon.astro';
+import ThemeToggle from '../ThemeToggle.astro';
 interface Props {
   locale: Locale;
   projectPage?: boolean;
@@ -14,7 +14,7 @@ const c = ui[locale];
   <div class="container header-inner">
     <a class="brand" href={localePath(locale)} aria-label="Nicolás Bazaes">
       <span class="brand-mark" aria-hidden="true">
-        NB<span>_</span>
+        nb<span>_</span>
       </span>
       <span class="brand-name">Nicolás Bazaes</span>
     </a>
@@ -36,7 +36,7 @@ const c = ui[locale];
       aria-label={c.language}
     >
       {locale === 'es' ? 'EN' : 'ES'}
-      <Icon name="external" />
     </a>
+    <ThemeToggle locale={locale} />
   </div>
 </header>

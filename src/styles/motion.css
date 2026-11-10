@@ -1,0 +1,233 @@
+/* Portfolio choreography: CSS timelines and state transitions; no scroll listeners.
+ * Keep timeline declarations important so the optimizer cannot fold them into
+ * the newer animation shorthand syntax, which our target browsers reject.
+ */
+.hero-heading {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+.hero-terminal,
+.terminal-stage {
+  min-width: 0;
+}
+
+@keyframes portfolio-title-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(var(--motion-distance-title));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes portfolio-intro-in {
+  from {
+    opacity: 0.6;
+    transform: translateY(var(--motion-distance-intro));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes portfolio-section-in {
+  from {
+    opacity: 0.6;
+    transform: translateY(var(--motion-distance-section));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes portfolio-media-in {
+  from {
+    opacity: 0.6;
+    transform: translateY(var(--motion-distance-media)) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bazpos-scroll-entry {
+  from {
+    opacity: 0.35;
+    transform: translateY(var(--motion-distance-feature)) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes portfolio-name-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0.35;
+    transform: translateY(calc(-1 * var(--motion-distance-title)));
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion-intro='title'] {
+    animation: portfolio-title-in var(--motion-duration-title) var(--ease-out) both;
+  }
+  [data-motion-intro='content'],
+  [data-motion-intro='terminal'] {
+    animation: portfolio-intro-in var(--motion-duration-intro) var(--ease-out) both;
+    animation-delay: var(--motion-delay-content);
+  }
+  [data-motion-intro='terminal'] {
+    animation-delay: var(--motion-delay-terminal);
+  }
+
+  @supports (animation-timeline: view()) {
+    .hero {
+      view-timeline: --portfolio-hero block !important;
+    }
+    .hero-heading {
+      animation: portfolio-name-out linear both;
+      animation-timeline: --portfolio-hero !important;
+      animation-range: exit 0% exit 80%;
+    }
+    [data-motion='enter'] {
+      animation: portfolio-section-in linear both;
+      animation-timeline: view() !important;
+      animation-range: entry 0% cover 40%;
+    }
+    [data-motion='media'] {
+      animation: portfolio-media-in linear both;
+      animation-timeline: view() !important;
+      animation-range: entry 0% cover 50%;
+    }
+    .feature-preview {
+      animation: bazpos-scroll-entry linear both;
+      animation-timeline: view() !important;
+      animation-range: entry 0% cover 60%;
+    }
+
+    @media (min-width: 64rem) and (min-height: 36rem) {
+      .feature-layout.feature-scene {
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+        view-timeline: --bazpos-scene block;
+      }
+      .feature-scene .feature-preview {
+        position: sticky;
+        top: var(--space-xl);
+        align-self: start;
+        animation-timeline: --bazpos-scene !important;
+        animation-range: entry 0% entry 100%;
+      }
+      .feature-scene .feature-story {
+        gap: 0;
+      }
+      .feature-scene .feature-chapter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-block-size: clamp(var(--motion-chapter-min), 50svh, var(--motion-chapter-max));
+        padding-block: var(--space-lg);
+      }
+      .feature-scene .feature-chapter + .feature-chapter {
+        border-top: 1px solid var(--color-rule);
+      }
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    :is(
+        .button,
+        .project-links a,
+        .contact-email,
+        .contact-links a,
+        .feature-preview,
+        .enlarge-caption
+      )
+      svg {
+      transition: transform var(--dur-short) var(--ease-out);
+    }
+    :is(.button, .project-links a, .contact-email, .contact-links a, .feature-preview):hover svg,
+    a:hover .enlarge-caption svg {
+      transform: translateX(var(--motion-distance-icon));
+    }
+  }
+  .portfolio-terminal button {
+    transition: transform var(--dur-micro) var(--ease-out);
+  }
+  .portfolio-terminal button:active:not(:disabled):not(:focus-visible) {
+    transform: translateY(1px);
+  }
+}
+
+/* Interactive content settles immediately on keyboard/programmatic focus. */
+[data-motion-intro]:focus-within,
+[data-motion]:focus-within,
+.feature-preview:focus-within,
+.hero-heading:focus-within,
+.hero-heading:has(:focus-visible) [data-motion-intro] {
+  animation: none;
+}
+:focus-visible,
+:focus-visible svg,
+a:focus-visible .enlarge-caption svg {
+  transition: none;
+}
+
+/* The state/announcement lifecycle remains in SiteStatus; CSS only paints it. */
+.site-feedback {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--motion-duration-notice-exit) ease-in,
+    transform var(--motion-duration-notice-exit) ease-in,
+    visibility 0s linear var(--motion-duration-notice-exit);
+}
+.site-feedback[data-js-feedback][data-state='closed'] {
+  opacity: 0;
+  transform: translateY(var(--motion-distance-notice));
+}
+.site-feedback[data-state='open'] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-short) var(--ease-out),
+    transform var(--dur-short) var(--ease-out),
+    visibility 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-motion-intro],
+  [data-motion],
+  .hero-heading,
+  .feature-preview {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+  .button {
+    transition:
+      background-color var(--duration-reduced) ease,
+      border-color var(--duration-reduced) ease;
+  }
+  .portfolio-terminal button {
+    transition: none;
+  }
+  .site-feedback,
+  .site-feedback[data-js-feedback][data-state='closed'],
+  .site-feedback[data-state='open'] {
+    transform: none;
+    transition:
+      opacity var(--duration-reduced) linear,
+      visibility 0s linear var(--duration-reduced);
+  }
+  .site-feedback[data-state='open'] {
+    transition-delay: 0s;
+  }
+}

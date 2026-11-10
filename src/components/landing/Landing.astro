@@ -7,7 +7,7 @@ import Projects from './Projects.astro';
 import Stack from './Stack.astro';
 import Contact from './Contact.astro';
 import Icon from '../Icon.astro';
-import { getSiteData, localePath, ui } from '../../lib/site';
+import { getSiteData, ui } from '../../lib/site';
 import type { Locale } from '../../data/translations';
 interface Props {
   locale: Locale;
@@ -19,17 +19,21 @@ const { t, profile, projects, featured } = await getSiteData(locale);
 <Layout locale={locale} title={profile.meta.title} description={ui[locale].description}>
   <Header locale={locale} />
   <main id="main-content">
-    <Hero locale={locale} t={t} />
+    <div class="hero-surface">
+      <Hero locale={locale} t={t} />
+    </div>
     <FeaturedProject locale={locale} project={featured} />
     <Projects locale={locale} projects={projects} t={t} />
-    <Stack t={t} />
+    <div class="stack-surface">
+      <Stack t={t} locale={locale} />
+    </div>
     <Contact locale={locale} profile={profile} />
   </main>
   <footer class="container site-footer">
     <span>
-      © {new Date().getFullYear()} Nicolás Bazaes · {profile.location}
+      © {new Date().getFullYear()} Nicolás Bazaes / {profile.location}
     </span>
-    <a href={localePath(locale, 'terminal/')}>
+    <a href="#intro">
       <Icon name="terminal" />
       {ui[locale].terminal}
     </a>

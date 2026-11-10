@@ -1,0 +1,276 @@
+---
+import { getSiteData, localePath } from '../lib/site';
+import { engineeringExamples } from '../lib/engineering';
+import { terminalCopy } from '../lib/terminal/content';
+import type { Locale } from '../data/translations';
+interface Props {
+  locale: Locale;
+  variant?: 'embedded' | 'standalone';
+}
+const { locale, variant = 'embedded' } = Astro.props;
+const { profile, t, projects } = await getSiteData(locale);
+const copy = terminalCopy(locale);
+const TitleTag = variant === 'standalone' ? 'h1' : 'h2';
+const data = {
+  locale,
+  variant,
+  profile,
+  copy,
+  projects,
+  hero: t.hero,
+  stack: t.stack.groups,
+  work: engineeringExamples(locale),
+  home: localePath(locale),
+  bazpos: localePath(locale, locale === 'es' ? 'proyectos/bazpos/' : 'projects/bazpos/'),
+};
+---
+
+<section
+  class:list={['portfolio-terminal', variant]}
+  data-portfolio-terminal
+  aria-label={copy.title}
+>
+  <div class="terminal-heading">
+    <span>
+      <span aria-hidden="true">&gt;_</span> nbazaes / portfolio
+    </span>
+    <span class="terminal-session">{locale === 'es' ? 'sesión local' : 'local session'}</span>
+  </div>
+  <div class="terminal-screen" tabindex="0" role="region" aria-label={copy.output}>
+    <div class="terminal-welcome">
+      <TitleTag class="terminal-title">{copy.title}</TitleTag>
+      <p>{copy.welcome}</p>
+      <p>{copy.hint}</p>
+    </div>
+    <div
+      class="terminal-output"
+      role="log"
+      aria-live="polite"
+      aria-relevant="additions"
+      aria-label={copy.output}
+    ></div>
+  </div>
+  <form class="terminal-form" hidden>
+    <label>
+      <span class="terminal-prompt" aria-hidden="true">
+        guest:~$
+      </span>
+      <span class="sr-only">{copy.input}</span>
+      <input
+        aria-label={copy.input}
+        type="text"
+        placeholder="help"
+        autocomplete="off"
+        spellcheck="false"
+        autocapitalize="off"
+      />
+    </label>
+    <button type="submit">
+      {copy.submit}
+      <span aria-hidden="true"> ↵</span>
+    </button>
+  </form>
+  <div class="terminal-toolbar" hidden>
+    <div class="terminal-suggestions" role="group" aria-label={copy.suggestions}>
+      {['help', 'bazpos', 'projects', 'contact'].map((command) => (
+        <button type="button" data-command={command}>
+          {command}
+        </button>
+      ))}
+    </div>
+    <span class="terminal-keyboard">{copy.keyboard}</span>
+  </div>
+  <noscript>
+    <p class="terminal-fallback">
+      {copy.nojs} <a href={`${localePath(locale)}#projects`}>{t.nav.projects}</a>
+    </p>
+  </noscript>
+  <script
+    type="application/json"
+    data-terminal-data
+    set:html={JSON.stringify(data).replace(/</g, '\u003c')}
+  />
+</section>
+<script>
+  import { initTerminal } from '../lib/terminal/client';
+  document.querySelectorAll<HTMLElement>('[data-portfolio-terminal]').forEach(initTerminal);
+</script>
+<style>
+  .portfolio-terminal {
+    --color-surface-card: var(--color-console);
+    --color-surface-dim: var(--color-console-hover);
+    --color-border-primary: var(--color-console-rule);
+    --color-text-bright: var(--color-console-text);
+    --color-text-muted: var(--color-console-muted);
+    --color-primary-light: var(--color-console-action);
+    --color-focus: var(--color-console-action);
+    min-width: 0;
+    border: 1px solid var(--color-border-primary);
+    background: var(--color-surface-card);
+    font-family: var(--font-body);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .terminal-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--color-border-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+  .terminal-heading > span:first-child {
+    color: var(--color-text-bright);
+  }
+  .terminal-heading > span:first-child > span {
+    color: var(--color-primary-light);
+    margin-right: var(--space-xs);
+  }
+  .terminal-screen {
+    font-family: var(--font-mono);
+    height: 172px;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    padding: var(--space-lg);
+    scrollbar-gutter: stable;
+    font-size: var(--text-xs);
+  }
+  .terminal-screen:focus-visible {
+    outline: 2px solid var(--color-primary-light);
+    outline-offset: -3px;
+  }
+  .terminal-welcome p {
+    margin: 0 0 var(--space-sm);
+    line-height: 1.7;
+  }
+  .terminal-title {
+    font-family: var(--font-body);
+    font-size: var(--text-md);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0;
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary-light);
+  }
+  .terminal-form {
+    display: flex;
+    align-items: center;
+    border-block: 1px solid var(--color-border-primary);
+    padding: var(--space-xs) var(--space-sm) var(--space-xs) var(--space-lg);
+    gap: var(--space-xs);
+  }
+  .terminal-form label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex: 1;
+    min-width: 0;
+  }
+  .terminal-prompt {
+    font-family: var(--font-mono);
+    color: var(--color-primary-light);
+    font-size: var(--text-xs);
+    white-space: nowrap;
+  }
+  input {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    background: var(--color-clear);
+    border: 1px solid var(--color-console-muted);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--color-text-bright);
+    padding: var(--space-xs);
+    border-radius: var(--radius-control);
+  }
+  input::placeholder {
+    color: var(--color-text-muted);
+  }
+  input:focus-visible {
+    outline-offset: 0;
+  }
+  button {
+    color: var(--color-primary-light);
+    background: var(--color-clear);
+    border: 1px solid var(--color-border-primary);
+    font: inherit;
+    font-size: var(--text-xs);
+    min-height: 44px;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-control);
+  }
+  .terminal-toolbar {
+    padding: var(--space-sm) var(--space-md);
+  }
+  .terminal-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+  }
+  .terminal-suggestions button {
+    border-color: var(--color-clear);
+  }
+  .terminal-keyboard {
+    display: block;
+    margin: var(--space-2xs) var(--space-2xs) 0;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+  .terminal-fallback {
+    padding: 0 var(--space-lg) var(--space-lg);
+    font-size: 0.8125rem;
+  }
+  .terminal-fallback a {
+    text-decoration: underline;
+  }
+  [hidden] {
+    display: none;
+  }
+  .portfolio-terminal :global(.terminal-result) {
+    margin: 0 0 var(--space-xs);
+    color: var(--color-text-muted);
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+  }
+  .portfolio-terminal :global(.terminal-result a) {
+    color: var(--color-primary-light);
+    text-decoration: underline;
+  }
+  .portfolio-terminal :global(.terminal-echo) {
+    margin-top: var(--space-md);
+    color: var(--color-text-bright);
+  }
+  .portfolio-terminal :global(.terminal-echo span) {
+    color: var(--color-primary-light);
+  }
+  .standalone .terminal-screen {
+    height: min(60vh, 640px);
+    min-height: 260px;
+    font-size: var(--text-md);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    button:hover {
+      border-color: var(--color-primary-light);
+      background: var(--color-surface-dim);
+    }
+  }
+  @media (max-width: 767px) {
+    .terminal-session {
+      display: none;
+    }
+    .terminal-screen {
+      height: 220px;
+      padding: var(--space-md);
+    }
+    .terminal-form {
+      padding-left: var(--space-sm);
+    }
+    .terminal-heading {
+      padding-inline: var(--space-md);
+    }
+  }
+</style>

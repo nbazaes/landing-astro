@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import '../styles/motion.css';
+import SiteStatus from '../components/SiteStatus.astro';
+import { THEME_STORAGE_KEY } from '../lib/theme';
 import type { Locale } from '../data/translations';
 import { localePath, ui, getSiteData } from '../lib/site';
 interface Props {
@@ -26,11 +29,26 @@ const socialImage = new URL('/social-card.png', profile.meta.ogUrl);
 ---
 
 <!doctype html>
-<html lang={locale} class="dark">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#111319" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="oklch(98% 0.008 300)" />
+    <script is:inline define:vars={{ themeStorageKey: THEME_STORAGE_KEY }}>
+      (() => {
+        let preference;
+        try {
+          preference = localStorage.getItem(themeStorageKey);
+        } catch {}
+        document.documentElement.dataset.theme =
+          preference === 'light' || preference === 'dark'
+            ? preference
+            : matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="/favicon.ico" />
     <meta name="description" content={description} />
@@ -94,39 +112,25 @@ const socialImage = new URL('/social-card.png', profile.meta.ogUrl);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <!-- BAZPOS PRESENTATION CONTRACT: On project routes, demonstrate the real workflow inside Engineered Dark.
-    OWN-WORLD: Incumbent charcoal surfaces, violet actions, Inter reading and JetBrains Mono architecture notation.
-    STORY: Understand the automotive counter workflow, watch a real sale, inspect stock and reports, then explore the live demo.
-    FIRST VIEWPORT: Project title, two-column introduction, sole external demo CTA and the beginning of a native walkthrough player.
-    FORM: Adapt the existing BazPOS presentation into the portfolio; authentic recording, three screenshots, then architecture.
-    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance. -->
-    <!-- THESIS: A developer's work earns the first impression. BazPOS is the featured proof, with a compact console signature.
-    OWN-WORLD: Engineered Dark; charcoal, violet actions, emerald status, Inter for reading and JetBrains Mono for system notation.
-    STORY: Identify Nicolás, understand React frontend and Django backend through BazPOS, inspect code, make contact.
-    FIRST VIEWPORT: Clear name and role, short proposition, two immediate actions and one settled console line; BazPOS follows.
-    FORM: User-selected BazPOS project emphasis, extending the established Power-On Self-Test identity (7386437a).
-    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance. -->
+    <!-- Lavender Working Directory: oversized identity, real interactive terminal and authentic BazPOS evidence.
+    Shared light lavender surfaces, Rethink Sans reading, purple actions and IBM Plex Mono for commands.
+    Preserve bilingual routes, progressive enhancement, project media and direct contact. -->
     <a class="skip-link" href="#main-content">
       {ui[locale].skip}
     </a>
     <slot />
-    <div
-      id="site-status"
-      class="site-status"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-      hidden
-    ></div>
+    <SiteStatus locale={locale} />
   </body>
 </html>
 <script>
   import { saveLocale } from '../lib/locale';
+  import { initThemeControls } from '../lib/theme';
+  initThemeControls();
   // The URL is the source of truth; saving the choice never blocks navigation.
   const locale = document.documentElement.lang === 'en' ? 'en' : 'es';
   saveLocale(locale);

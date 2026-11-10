@@ -1,0 +1,99 @@
+---
+import type { Locale } from '../data/translations';
+import { ui } from '../lib/site';
+import Icon from './Icon.astro';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = ui[locale];
+---
+
+<aside id="site-feedback" class="site-feedback" data-state="closed" aria-label={c.feedback} inert>
+  <div id="site-status" role="status" aria-live="polite" aria-atomic="true"></div>
+  <button class="button feedback-dismiss" type="button" aria-label={c.dismiss}>
+    <Icon name="close" />
+  </button>
+</aside>
+<script>
+  const feedback = document.querySelector<HTMLElement>('#site-feedback');
+  const status = document.querySelector<HTMLElement>('#site-status');
+  const dismiss = feedback?.querySelector<HTMLButtonElement>('.feedback-dismiss');
+  if (feedback && status && dismiss) {
+    feedback.dataset.jsFeedback = 'true';
+    let trigger: HTMLElement | undefined;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let announcement = 0;
+    let remaining = 5000;
+    let started = 0;
+    let autoDismiss = false;
+    let hovered = false;
+    const stopTimer = () => {
+      if (timer !== undefined) {
+        clearTimeout(timer);
+        timer = undefined;
+        remaining = Math.max(0, remaining - (performance.now() - started));
+      }
+    };
+    const close = () => {
+      stopTimer();
+      cancelAnimationFrame(announcement);
+      if (feedback.contains(document.activeElement)) trigger?.focus({ preventScroll: true });
+      feedback.dataset.state = 'closed';
+      feedback.inert = true;
+    };
+    const resume = () => {
+      if (
+        document.hidden ||
+        !autoDismiss ||
+        hovered ||
+        feedback.contains(document.activeElement) ||
+        feedback.dataset.state !== 'open' ||
+        timer !== undefined
+      )
+        return;
+      started = performance.now();
+      timer = setTimeout(close, remaining);
+    };
+    feedback.addEventListener('pointerenter', (event) => {
+      if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
+      hovered = true;
+      stopTimer();
+    });
+    feedback.addEventListener('pointerleave', () => {
+      hovered = false;
+      resume();
+    });
+    feedback.addEventListener('focusin', stopTimer);
+    feedback.addEventListener('focusout', () => queueMicrotask(resume));
+    dismiss.addEventListener('click', close);
+    feedback.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+      }
+    });
+    document.addEventListener('site:status', (event) => {
+      const detail = (
+        event as CustomEvent<{ message: string; kind: 'success' | 'error'; trigger: HTMLElement }>
+      ).detail;
+      stopTimer();
+      cancelAnimationFrame(announcement);
+      trigger = detail.trigger;
+      autoDismiss = detail.kind === 'success';
+      remaining = 5000;
+      feedback.inert = false;
+      feedback.dataset.state = 'open';
+      // Keep the live region mounted; clearing then updating also announces repeated messages.
+      status.textContent = '';
+      announcement = requestAnimationFrame(() => {
+        status.textContent = detail.message;
+        resume();
+      });
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopTimer();
+      else resume();
+    });
+  }
+</script>

@@ -1,0 +1,190 @@
+@theme static {
+  --color-dark-paper: oklch(18% 0.018 300);
+  --color-dark-paper-2: oklch(22% 0.025 300);
+  --color-dark-paper-3: oklch(28% 0.035 300);
+  --color-dark-ink: oklch(94% 0.015 300);
+  --color-dark-ink-2: oklch(86% 0.025 300);
+  --color-dark-muted: oklch(76% 0.03 300);
+  --color-dark-rule: oklch(44% 0.035 300);
+  --color-dark-control-rule: oklch(56% 0.04 300);
+  --color-dark-accent: oklch(72% 0.17 300);
+  --color-dark-accent-hover: oklch(78% 0.155 300);
+  --color-dark-accent-ink: oklch(20% 0.03 300);
+  --color-dark-focus: oklch(78% 0.145 300);
+  --color-dark-success: oklch(79% 0.11 155);
+  --color-dark-error: oklch(77% 0.14 27);
+  --color-dark-console: oklch(17% 0.04 300);
+  --color-dark-console-rule: oklch(51% 0.055 300);
+  --color-dark-console-hover: oklch(29% 0.055 300);
+  --color-dark-contact: oklch(30% 0.105 300);
+  --color-dark-contact-ink: oklch(94% 0.015 300);
+  --color-dark-contact-hover: oklch(35% 0.105 300);
+  --font-display: 'Rethink Sans', sans-serif;
+  --font-body: 'Rethink Sans', sans-serif;
+  --font-sans: 'Rethink Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-outlier: var(--font-mono);
+  --color-paper: oklch(98% 0.008 300);
+  --color-paper-2: oklch(92% 0.035 300);
+  --color-paper-3: oklch(87% 0.055 300);
+  --color-ink: oklch(24% 0.06 300);
+  --color-ink-2: oklch(36% 0.06 300);
+  --color-muted: oklch(47% 0.035 300);
+  --color-rule: oklch(80% 0.025 300);
+  --color-accent: oklch(48% 0.24 300);
+  --color-accent-hover: oklch(40% 0.21 300);
+  --color-accent-ink: oklch(98% 0.008 300);
+  --color-focus: oklch(48% 0.24 300);
+  --color-error: oklch(48% 0.19 27);
+  --color-success: oklch(36% 0.08 155);
+  --color-clear: transparent;
+  --color-shadow: oklch(20% 0.05 300 / 0.12);
+  --color-control-rule: oklch(56% 0.04 300);
+  --color-contact: var(--color-accent);
+  --color-contact-ink: var(--color-accent-ink);
+  --color-contact-hover: var(--color-accent-hover);
+  --color-console-hover: oklch(32% 0.065 300);
+  --color-console: oklch(24% 0.07 300);
+  --color-console-text: oklch(96% 0.02 300);
+  --color-console-muted: oklch(78% 0.045 300);
+  --color-console-rule: oklch(43% 0.065 300);
+  --color-console-action: oklch(84% 0.1 300);
+  --color-surface: var(--color-paper);
+  --color-surface-card: var(--color-paper-2);
+  --color-surface-dim: var(--color-paper-3);
+  --color-border-primary: var(--color-rule);
+  --color-primary: var(--color-accent);
+  --color-primary-hover: var(--color-accent-hover);
+  --color-primary-light: var(--color-accent);
+  --color-text-muted: var(--color-muted);
+  --color-text-bright: var(--color-ink);
+  --color-status: var(--color-success);
+  --color-tertiary: var(--color-ink-2);
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.5rem;
+  --text-display: clamp(3.5rem, 11.2vw, 10rem);
+  --text-section: clamp(2.5rem, 4.5vw, 4.5rem);
+  --text-title: clamp(1.5rem, 2.5vw, 2rem);
+  --text-lead: clamp(1.75rem, 2.6vw, 2.5rem);
+  --radius-card: 12px;
+  --radius-control: 6px;
+  --radius-pill: 999px;
+  --shadow-card: none;
+  --tracking-display: -0.065em;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+:root {
+  --theme-scheme: light;
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 144px;
+  --dur-micro: 100ms;
+  --dur-short: 180ms;
+  --dur-long: 280ms;
+  --duration-press: var(--dur-micro);
+  --duration-return: var(--dur-short);
+  --duration-notice: var(--dur-short);
+  --duration-terminal-line: 150ms;
+  --duration-reduced: 100ms;
+  --motion-distance-title: 48px;
+  --motion-distance-intro: 24px;
+  --motion-distance-section: 32px;
+  --motion-distance-media: 48px;
+  --motion-distance-feature: 64px;
+  --motion-distance-icon: 4px;
+  --motion-distance-notice: 8px;
+  --motion-duration-title: 650ms;
+  --motion-duration-intro: 500ms;
+  --motion-duration-notice-exit: 120ms;
+  --motion-delay-content: 80ms;
+  --motion-delay-terminal: 160ms;
+  --motion-chapter-min: 20rem;
+  --motion-chapter-max: 30rem;
+  --container: 1280px;
+  --gutter: 48px;
+  --gap-columns: 48px;
+  --section-gap-s: 96px;
+  --section-gap: 128px;
+  --section-gap-l: 144px;
+  --z-base: 1;
+  --z-sticky-nav: 30;
+  --z-toast: 50;
+}
+@media (max-width: 60rem) {
+  :root {
+    --gutter: 32px;
+    --gap-columns: 32px;
+    --section-gap: 96px;
+  }
+}
+@media (max-width: 40rem) {
+  :root {
+    --gutter: 20px;
+    --gap-columns: 24px;
+    --section-gap-s: 64px;
+    --section-gap: 80px;
+    --section-gap-l: 96px;
+  }
+}
+
+:root[data-theme='dark'] {
+  --theme-scheme: dark;
+  --color-paper: var(--color-dark-paper);
+  --color-paper-2: var(--color-dark-paper-2);
+  --color-paper-3: var(--color-dark-paper-3);
+  --color-ink: var(--color-dark-ink);
+  --color-ink-2: var(--color-dark-ink-2);
+  --color-muted: var(--color-dark-muted);
+  --color-rule: var(--color-dark-rule);
+  --color-control-rule: var(--color-dark-control-rule);
+  --color-accent: var(--color-dark-accent);
+  --color-accent-hover: var(--color-dark-accent-hover);
+  --color-accent-ink: var(--color-dark-accent-ink);
+  --color-focus: var(--color-dark-focus);
+  --color-success: var(--color-dark-success);
+  --color-error: var(--color-dark-error);
+  --color-console: var(--color-dark-console);
+  --color-console-rule: var(--color-dark-console-rule);
+  --color-console-hover: var(--color-dark-console-hover);
+  --color-contact: var(--color-dark-contact);
+  --color-contact-ink: var(--color-dark-contact-ink);
+  --color-contact-hover: var(--color-dark-contact-hover);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --theme-scheme: dark;
+    --color-paper: var(--color-dark-paper);
+    --color-paper-2: var(--color-dark-paper-2);
+    --color-paper-3: var(--color-dark-paper-3);
+    --color-ink: var(--color-dark-ink);
+    --color-ink-2: var(--color-dark-ink-2);
+    --color-muted: var(--color-dark-muted);
+    --color-rule: var(--color-dark-rule);
+    --color-control-rule: var(--color-dark-control-rule);
+    --color-accent: var(--color-dark-accent);
+    --color-accent-hover: var(--color-dark-accent-hover);
+    --color-accent-ink: var(--color-dark-accent-ink);
+    --color-focus: var(--color-dark-focus);
+    --color-success: var(--color-dark-success);
+    --color-error: var(--color-dark-error);
+    --color-console: var(--color-dark-console);
+    --color-console-rule: var(--color-dark-console-rule);
+    --color-console-hover: var(--color-dark-console-hover);
+    --color-contact: var(--color-dark-contact);
+    --color-contact-ink: var(--color-dark-contact-ink);
+    --color-contact-hover: var(--color-dark-contact-hover);
+  }
+}

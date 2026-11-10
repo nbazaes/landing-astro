@@ -13,7 +13,9 @@ const c = ui[locale];
 <section id="contact" class="contact section" aria-labelledby="contact-title">
   <div class="container contact-layout">
     <div>
-      <h2 id="contact-title">{c.contactTitle}</h2>
+      <h2 id="contact-title" data-motion="enter">
+        {c.contactTitle}
+      </h2>
       <p>{c.contactBody}</p>
     </div>
     <div class="contact-actions">
@@ -49,18 +51,18 @@ const c = ui[locale];
   document.querySelectorAll<HTMLButtonElement>('.copy-email').forEach((button) => {
     button.hidden = false;
     button.addEventListener('click', async () => {
-      const status = document.getElementById('site-status');
       button.disabled = true;
       let message = button.dataset.success ?? '';
+      let kind: 'success' | 'error' = 'success';
       try {
         await navigator.clipboard.writeText(button.dataset.email ?? '');
       } catch {
         message = button.dataset.error ?? '';
+        kind = 'error';
       }
-      if (status) {
-        status.textContent = message;
-        status.hidden = false;
-      }
+      document.dispatchEvent(
+        new CustomEvent('site:status', { detail: { message, kind, trigger: button } }),
+      );
       button.disabled = false;
     });
   });

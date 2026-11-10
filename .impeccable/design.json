@@ -1,517 +1,696 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-20T17:41:11.255637+00:00",
-  "title": "Design System: Engineered Dark",
+  "generatedAt": "2026-11-10T18:18:48.985961+00:00",
+  "title": "Design System: Lavender Working Directory",
   "extensions": {
     "colorMeta": {
-      "surface": {
+      "paper": {
         "role": "neutral",
-        "displayName": "Surface",
-        "canonical": "#111319",
+        "displayName": "Paper",
+        "canonical": "oklch(98% 0.008 300)",
         "tonalRamp": [
-          "oklch(15% 0.0126 270.66)",
-          "oklch(26% 0.0126 270.66)",
-          "oklch(38% 0.0126 270.66)",
-          "oklch(49% 0.0126 270.66)",
-          "oklch(61% 0.0126 270.66)",
-          "oklch(72% 0.0126 270.66)",
-          "oklch(84% 0.0126 270.66)",
-          "oklch(95% 0.0126 270.66)"
+          "oklch(15% 0.008 300)",
+          "oklch(26% 0.008 300)",
+          "oklch(38% 0.008 300)",
+          "oklch(49% 0.008 300)",
+          "oklch(61% 0.008 300)",
+          "oklch(72% 0.008 300)",
+          "oklch(84% 0.008 300)",
+          "oklch(95% 0.008 300)"
         ]
       },
-      "surface-card": {
+      "lavender": {
         "role": "neutral",
-        "displayName": "Surface Card",
-        "canonical": "#0c0e14",
+        "displayName": "Lavender",
+        "canonical": "oklch(92% 0.035 300)",
         "tonalRamp": [
-          "oklch(15% 0.0131 270.50)",
-          "oklch(26% 0.0131 270.50)",
-          "oklch(38% 0.0131 270.50)",
-          "oklch(49% 0.0131 270.50)",
-          "oklch(61% 0.0131 270.50)",
-          "oklch(72% 0.0131 270.50)",
-          "oklch(84% 0.0131 270.50)",
-          "oklch(95% 0.0131 270.50)"
+          "oklch(15% 0.035 300)",
+          "oklch(26% 0.035 300)",
+          "oklch(38% 0.035 300)",
+          "oklch(49% 0.035 300)",
+          "oklch(61% 0.035 300)",
+          "oklch(72% 0.035 300)",
+          "oklch(84% 0.035 300)",
+          "oklch(95% 0.035 300)"
         ]
       },
-      "surface-dim": {
+      "lavender-deep": {
         "role": "neutral",
-        "displayName": "Surface Dim",
-        "canonical": "#191b22",
+        "displayName": "Lavender Deep",
+        "canonical": "oklch(87% 0.055 300)",
         "tonalRamp": [
-          "oklch(15% 0.0140 272.68)",
-          "oklch(26% 0.0140 272.68)",
-          "oklch(38% 0.0140 272.68)",
-          "oklch(49% 0.0140 272.68)",
-          "oklch(61% 0.0140 272.68)",
-          "oklch(72% 0.0140 272.68)",
-          "oklch(84% 0.0140 272.68)",
-          "oklch(95% 0.0140 272.68)"
+          "oklch(15% 0.055 300)",
+          "oklch(26% 0.055 300)",
+          "oklch(38% 0.055 300)",
+          "oklch(49% 0.055 300)",
+          "oklch(61% 0.055 300)",
+          "oklch(72% 0.055 300)",
+          "oklch(84% 0.055 300)",
+          "oklch(95% 0.055 300)"
         ]
       },
-      "border-primary": {
+      "ink": {
         "role": "neutral",
-        "displayName": "Border Primary",
-        "canonical": "#2d3139",
+        "displayName": "Ink",
+        "canonical": "oklch(24% 0.06 300)",
         "tonalRamp": [
-          "oklch(15% 0.0154 264.32)",
-          "oklch(26% 0.0154 264.32)",
-          "oklch(38% 0.0154 264.32)",
-          "oklch(49% 0.0154 264.32)",
-          "oklch(61% 0.0154 264.32)",
-          "oklch(72% 0.0154 264.32)",
-          "oklch(84% 0.0154 264.32)",
-          "oklch(95% 0.0154 264.32)"
+          "oklch(15% 0.06 300)",
+          "oklch(26% 0.06 300)",
+          "oklch(38% 0.06 300)",
+          "oklch(49% 0.06 300)",
+          "oklch(61% 0.06 300)",
+          "oklch(72% 0.06 300)",
+          "oklch(84% 0.06 300)",
+          "oklch(95% 0.06 300)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "oklch(47% 0.035 300)",
+        "tonalRamp": [
+          "oklch(15% 0.035 300)",
+          "oklch(26% 0.035 300)",
+          "oklch(38% 0.035 300)",
+          "oklch(49% 0.035 300)",
+          "oklch(61% 0.035 300)",
+          "oklch(72% 0.035 300)",
+          "oklch(84% 0.035 300)",
+          "oklch(95% 0.035 300)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(80% 0.025 300)",
+        "tonalRamp": [
+          "oklch(15% 0.025 300)",
+          "oklch(26% 0.025 300)",
+          "oklch(38% 0.025 300)",
+          "oklch(49% 0.025 300)",
+          "oklch(61% 0.025 300)",
+          "oklch(72% 0.025 300)",
+          "oklch(84% 0.025 300)",
+          "oklch(95% 0.025 300)"
         ]
       },
       "primary": {
         "role": "primary",
         "displayName": "Primary",
-        "canonical": "#9333ea",
+        "canonical": "oklch(48% 0.24 300)",
         "tonalRamp": [
-          "oklch(15% 0.2525 302.32)",
-          "oklch(26% 0.2525 302.32)",
-          "oklch(38% 0.2525 302.32)",
-          "oklch(49% 0.2525 302.32)",
-          "oklch(61% 0.2525 302.32)",
-          "oklch(72% 0.2525 302.32)",
-          "oklch(84% 0.2525 302.32)",
-          "oklch(95% 0.2525 302.32)"
+          "oklch(15% 0.24 300)",
+          "oklch(26% 0.24 300)",
+          "oklch(38% 0.24 300)",
+          "oklch(49% 0.24 300)",
+          "oklch(61% 0.24 300)",
+          "oklch(72% 0.24 300)",
+          "oklch(84% 0.24 300)",
+          "oklch(95% 0.24 300)"
         ]
       },
       "primary-hover": {
         "role": "primary",
         "displayName": "Primary Hover",
-        "canonical": "#a855f7",
+        "canonical": "oklch(40% 0.21 300)",
         "tonalRamp": [
-          "oklch(15% 0.2325 303.90)",
-          "oklch(26% 0.2325 303.90)",
-          "oklch(38% 0.2325 303.90)",
-          "oklch(49% 0.2325 303.90)",
-          "oklch(61% 0.2325 303.90)",
-          "oklch(72% 0.2325 303.90)",
-          "oklch(84% 0.2325 303.90)",
-          "oklch(95% 0.2325 303.90)"
+          "oklch(15% 0.21 300)",
+          "oklch(26% 0.21 300)",
+          "oklch(38% 0.21 300)",
+          "oklch(49% 0.21 300)",
+          "oklch(61% 0.21 300)",
+          "oklch(72% 0.21 300)",
+          "oklch(84% 0.21 300)",
+          "oklch(95% 0.21 300)"
         ]
       },
-      "primary-light": {
+      "console": {
+        "role": "neutral",
+        "displayName": "Console",
+        "canonical": "oklch(24% 0.07 300)",
+        "tonalRamp": [
+          "oklch(15% 0.07 300)",
+          "oklch(26% 0.07 300)",
+          "oklch(38% 0.07 300)",
+          "oklch(49% 0.07 300)",
+          "oklch(61% 0.07 300)",
+          "oklch(72% 0.07 300)",
+          "oklch(84% 0.07 300)",
+          "oklch(95% 0.07 300)"
+        ]
+      },
+      "console-text": {
+        "role": "neutral",
+        "displayName": "Console Text",
+        "canonical": "oklch(96% 0.02 300)",
+        "tonalRamp": [
+          "oklch(15% 0.02 300)",
+          "oklch(26% 0.02 300)",
+          "oklch(38% 0.02 300)",
+          "oklch(49% 0.02 300)",
+          "oklch(61% 0.02 300)",
+          "oklch(72% 0.02 300)",
+          "oklch(84% 0.02 300)",
+          "oklch(95% 0.02 300)"
+        ]
+      },
+      "console-muted": {
+        "role": "neutral",
+        "displayName": "Console Muted",
+        "canonical": "oklch(78% 0.045 300)",
+        "tonalRamp": [
+          "oklch(15% 0.045 300)",
+          "oklch(26% 0.045 300)",
+          "oklch(38% 0.045 300)",
+          "oklch(49% 0.045 300)",
+          "oklch(61% 0.045 300)",
+          "oklch(72% 0.045 300)",
+          "oklch(84% 0.045 300)",
+          "oklch(95% 0.045 300)"
+        ]
+      },
+      "console-action": {
+        "role": "neutral",
+        "displayName": "Console Action",
+        "canonical": "oklch(84% 0.1 300)",
+        "tonalRamp": [
+          "oklch(15% 0.1 300)",
+          "oklch(26% 0.1 300)",
+          "oklch(38% 0.1 300)",
+          "oklch(49% 0.1 300)",
+          "oklch(61% 0.1 300)",
+          "oklch(72% 0.1 300)",
+          "oklch(84% 0.1 300)",
+          "oklch(95% 0.1 300)"
+        ]
+      },
+      "dark-paper": {
+        "role": "neutral",
+        "displayName": "Dark Paper",
+        "canonical": "oklch(18% 0.018 300)",
+        "tonalRamp": [
+          "oklch(15% 0.018 300)",
+          "oklch(26% 0.018 300)",
+          "oklch(38% 0.018 300)",
+          "oklch(49% 0.018 300)",
+          "oklch(61% 0.018 300)",
+          "oklch(72% 0.018 300)",
+          "oklch(84% 0.018 300)",
+          "oklch(95% 0.018 300)"
+        ]
+      },
+      "dark-paper-2": {
+        "role": "neutral",
+        "displayName": "Dark Paper 2",
+        "canonical": "oklch(22% 0.025 300)",
+        "tonalRamp": [
+          "oklch(15% 0.025 300)",
+          "oklch(26% 0.025 300)",
+          "oklch(38% 0.025 300)",
+          "oklch(49% 0.025 300)",
+          "oklch(61% 0.025 300)",
+          "oklch(72% 0.025 300)",
+          "oklch(84% 0.025 300)",
+          "oklch(95% 0.025 300)"
+        ]
+      },
+      "dark-paper-3": {
+        "role": "neutral",
+        "displayName": "Dark Paper 3",
+        "canonical": "oklch(28% 0.035 300)",
+        "tonalRamp": [
+          "oklch(15% 0.035 300)",
+          "oklch(26% 0.035 300)",
+          "oklch(38% 0.035 300)",
+          "oklch(49% 0.035 300)",
+          "oklch(61% 0.035 300)",
+          "oklch(72% 0.035 300)",
+          "oklch(84% 0.035 300)",
+          "oklch(95% 0.035 300)"
+        ]
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "Dark Ink",
+        "canonical": "oklch(94% 0.015 300)",
+        "tonalRamp": [
+          "oklch(15% 0.015 300)",
+          "oklch(26% 0.015 300)",
+          "oklch(38% 0.015 300)",
+          "oklch(49% 0.015 300)",
+          "oklch(61% 0.015 300)",
+          "oklch(72% 0.015 300)",
+          "oklch(84% 0.015 300)",
+          "oklch(95% 0.015 300)"
+        ]
+      },
+      "dark-ink-2": {
+        "role": "neutral",
+        "displayName": "Dark Ink 2",
+        "canonical": "oklch(86% 0.025 300)",
+        "tonalRamp": [
+          "oklch(15% 0.025 300)",
+          "oklch(26% 0.025 300)",
+          "oklch(38% 0.025 300)",
+          "oklch(49% 0.025 300)",
+          "oklch(61% 0.025 300)",
+          "oklch(72% 0.025 300)",
+          "oklch(84% 0.025 300)",
+          "oklch(95% 0.025 300)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Dark Muted",
+        "canonical": "oklch(76% 0.03 300)",
+        "tonalRamp": [
+          "oklch(15% 0.03 300)",
+          "oklch(26% 0.03 300)",
+          "oklch(38% 0.03 300)",
+          "oklch(49% 0.03 300)",
+          "oklch(61% 0.03 300)",
+          "oklch(72% 0.03 300)",
+          "oklch(84% 0.03 300)",
+          "oklch(95% 0.03 300)"
+        ]
+      },
+      "dark-rule": {
+        "role": "neutral",
+        "displayName": "Dark Rule",
+        "canonical": "oklch(44% 0.035 300)",
+        "tonalRamp": [
+          "oklch(15% 0.035 300)",
+          "oklch(26% 0.035 300)",
+          "oklch(38% 0.035 300)",
+          "oklch(49% 0.035 300)",
+          "oklch(61% 0.035 300)",
+          "oklch(72% 0.035 300)",
+          "oklch(84% 0.035 300)",
+          "oklch(95% 0.035 300)"
+        ]
+      },
+      "dark-control-rule": {
+        "role": "neutral",
+        "displayName": "Dark Control Rule",
+        "canonical": "oklch(56% 0.04 300)",
+        "tonalRamp": [
+          "oklch(15% 0.04 300)",
+          "oklch(26% 0.04 300)",
+          "oklch(38% 0.04 300)",
+          "oklch(49% 0.04 300)",
+          "oklch(61% 0.04 300)",
+          "oklch(72% 0.04 300)",
+          "oklch(84% 0.04 300)",
+          "oklch(95% 0.04 300)"
+        ]
+      },
+      "dark-accent": {
         "role": "primary",
-        "displayName": "Primary Light",
-        "canonical": "#ddb7ff",
+        "displayName": "Dark Accent",
+        "canonical": "oklch(72% 0.17 300)",
         "tonalRamp": [
-          "oklch(15% 0.1062 308.27)",
-          "oklch(26% 0.1062 308.27)",
-          "oklch(38% 0.1062 308.27)",
-          "oklch(49% 0.1062 308.27)",
-          "oklch(61% 0.1062 308.27)",
-          "oklch(72% 0.1062 308.27)",
-          "oklch(84% 0.1062 308.27)",
-          "oklch(95% 0.1062 308.27)"
+          "oklch(15% 0.17 300)",
+          "oklch(26% 0.17 300)",
+          "oklch(38% 0.17 300)",
+          "oklch(49% 0.17 300)",
+          "oklch(61% 0.17 300)",
+          "oklch(72% 0.17 300)",
+          "oklch(84% 0.17 300)",
+          "oklch(95% 0.17 300)"
         ]
       },
-      "primary-action-hover": {
+      "dark-accent-hover": {
         "role": "primary",
-        "displayName": "Primary Action Hover",
-        "canonical": "#7e22ce",
+        "displayName": "Dark Accent Hover",
+        "canonical": "oklch(78% 0.155 300)",
         "tonalRamp": [
-          "oklch(15% 0.2369 301.92)",
-          "oklch(26% 0.2369 301.92)",
-          "oklch(38% 0.2369 301.92)",
-          "oklch(49% 0.2369 301.92)",
-          "oklch(61% 0.2369 301.92)",
-          "oklch(72% 0.2369 301.92)",
-          "oklch(84% 0.2369 301.92)",
-          "oklch(95% 0.2369 301.92)"
+          "oklch(15% 0.155 300)",
+          "oklch(26% 0.155 300)",
+          "oklch(38% 0.155 300)",
+          "oklch(49% 0.155 300)",
+          "oklch(61% 0.155 300)",
+          "oklch(72% 0.155 300)",
+          "oklch(84% 0.155 300)",
+          "oklch(95% 0.155 300)"
         ]
       },
-      "text-muted": {
-        "role": "neutral",
-        "displayName": "Text Muted",
-        "canonical": "#a2adbd",
-        "tonalRamp": [
-          "oklch(15% 0.0262 257.66)",
-          "oklch(26% 0.0262 257.66)",
-          "oklch(38% 0.0262 257.66)",
-          "oklch(49% 0.0262 257.66)",
-          "oklch(61% 0.0262 257.66)",
-          "oklch(72% 0.0262 257.66)",
-          "oklch(84% 0.0262 257.66)",
-          "oklch(95% 0.0262 257.66)"
-        ]
-      },
-      "text-bright": {
-        "role": "neutral",
-        "displayName": "Text Bright",
-        "canonical": "#f4f3f7",
-        "tonalRamp": [
-          "oklch(15% 0.0054 297.73)",
-          "oklch(26% 0.0054 297.73)",
-          "oklch(38% 0.0054 297.73)",
-          "oklch(49% 0.0054 297.73)",
-          "oklch(61% 0.0054 297.73)",
-          "oklch(72% 0.0054 297.73)",
-          "oklch(84% 0.0054 297.73)",
-          "oklch(95% 0.0054 297.73)"
-        ]
-      },
-      "text-white": {
-        "role": "neutral",
-        "displayName": "Text White",
-        "canonical": "#ffffff",
-        "tonalRamp": [
-          "oklch(15% 0.0000 89.88)",
-          "oklch(26% 0.0000 89.88)",
-          "oklch(38% 0.0000 89.88)",
-          "oklch(49% 0.0000 89.88)",
-          "oklch(61% 0.0000 89.88)",
-          "oklch(72% 0.0000 89.88)",
-          "oklch(84% 0.0000 89.88)",
-          "oklch(95% 0.0000 89.88)"
-        ]
-      },
-      "text-variant": {
-        "role": "neutral",
-        "displayName": "Text Variant",
-        "canonical": "#cfc2d6",
-        "tonalRamp": [
-          "oklch(15% 0.0309 314.02)",
-          "oklch(26% 0.0309 314.02)",
-          "oklch(38% 0.0309 314.02)",
-          "oklch(49% 0.0309 314.02)",
-          "oklch(61% 0.0309 314.02)",
-          "oklch(72% 0.0309 314.02)",
-          "oklch(84% 0.0309 314.02)",
-          "oklch(95% 0.0309 314.02)"
-        ]
-      },
-      "status": {
-        "role": "tertiary",
-        "displayName": "Status",
-        "canonical": "#34d399",
-        "tonalRamp": [
-          "oklch(15% 0.1535 163.22)",
-          "oklch(26% 0.1535 163.22)",
-          "oklch(38% 0.1535 163.22)",
-          "oklch(49% 0.1535 163.22)",
-          "oklch(61% 0.1535 163.22)",
-          "oklch(72% 0.1535 163.22)",
-          "oklch(84% 0.1535 163.22)",
-          "oklch(95% 0.1535 163.22)"
-        ]
-      },
-      "tertiary": {
-        "role": "tertiary",
-        "displayName": "Tertiary",
-        "canonical": "#fabc4e",
-        "tonalRamp": [
-          "oklch(15% 0.1427 78.67)",
-          "oklch(26% 0.1427 78.67)",
-          "oklch(38% 0.1427 78.67)",
-          "oklch(49% 0.1427 78.67)",
-          "oklch(61% 0.1427 78.67)",
-          "oklch(72% 0.1427 78.67)",
-          "oklch(84% 0.1427 78.67)",
-          "oklch(95% 0.1427 78.67)"
-        ]
-      },
-      "selection": {
+      "dark-accent-ink": {
         "role": "primary",
-        "displayName": "Selection",
-        "canonical": "#6832a3",
+        "displayName": "Dark Accent Ink",
+        "canonical": "oklch(20% 0.03 300)",
         "tonalRamp": [
-          "oklch(15% 0.1735 301.61)",
-          "oklch(26% 0.1735 301.61)",
-          "oklch(38% 0.1735 301.61)",
-          "oklch(49% 0.1735 301.61)",
-          "oklch(61% 0.1735 301.61)",
-          "oklch(72% 0.1735 301.61)",
-          "oklch(84% 0.1735 301.61)",
-          "oklch(95% 0.1735 301.61)"
+          "oklch(15% 0.03 300)",
+          "oklch(26% 0.03 300)",
+          "oklch(38% 0.03 300)",
+          "oklch(49% 0.03 300)",
+          "oklch(61% 0.03 300)",
+          "oklch(72% 0.03 300)",
+          "oklch(84% 0.03 300)",
+          "oklch(95% 0.03 300)"
         ]
       },
-      "scrollbar": {
-        "role": "neutral",
-        "displayName": "Scrollbar",
-        "canonical": "#525661",
+      "dark-focus": {
+        "role": "primary",
+        "displayName": "Dark Focus",
+        "canonical": "oklch(78% 0.145 300)",
         "tonalRamp": [
-          "oklch(15% 0.0186 269.74)",
-          "oklch(26% 0.0186 269.74)",
-          "oklch(38% 0.0186 269.74)",
-          "oklch(49% 0.0186 269.74)",
-          "oklch(61% 0.0186 269.74)",
-          "oklch(72% 0.0186 269.74)",
-          "oklch(84% 0.0186 269.74)",
-          "oklch(95% 0.0186 269.74)"
+          "oklch(15% 0.145 300)",
+          "oklch(26% 0.145 300)",
+          "oklch(38% 0.145 300)",
+          "oklch(49% 0.145 300)",
+          "oklch(61% 0.145 300)",
+          "oklch(72% 0.145 300)",
+          "oklch(84% 0.145 300)",
+          "oklch(95% 0.145 300)"
         ]
       },
-      "border-action": {
+      "dark-success": {
         "role": "neutral",
-        "displayName": "Border Action",
-        "canonical": "#515663",
+        "displayName": "Dark Success",
+        "canonical": "oklch(79% 0.11 155)",
         "tonalRamp": [
-          "oklch(15% 0.0221 268.81)",
-          "oklch(26% 0.0221 268.81)",
-          "oklch(38% 0.0221 268.81)",
-          "oklch(49% 0.0221 268.81)",
-          "oklch(61% 0.0221 268.81)",
-          "oklch(72% 0.0221 268.81)",
-          "oklch(84% 0.0221 268.81)",
-          "oklch(95% 0.0221 268.81)"
+          "oklch(15% 0.11 155)",
+          "oklch(26% 0.11 155)",
+          "oklch(38% 0.11 155)",
+          "oklch(49% 0.11 155)",
+          "oklch(61% 0.11 155)",
+          "oklch(72% 0.11 155)",
+          "oklch(84% 0.11 155)",
+          "oklch(95% 0.11 155)"
         ]
       },
-      "console-separator": {
+      "dark-error": {
         "role": "neutral",
-        "displayName": "Console Separator",
-        "canonical": "#666e7d",
+        "displayName": "Dark Error",
+        "canonical": "oklch(77% 0.14 27)",
         "tonalRamp": [
-          "oklch(15% 0.0254 263.09)",
-          "oklch(26% 0.0254 263.09)",
-          "oklch(38% 0.0254 263.09)",
-          "oklch(49% 0.0254 263.09)",
-          "oklch(61% 0.0254 263.09)",
-          "oklch(72% 0.0254 263.09)",
-          "oklch(84% 0.0254 263.09)",
-          "oklch(95% 0.0254 263.09)"
+          "oklch(15% 0.14 27)",
+          "oklch(26% 0.14 27)",
+          "oklch(38% 0.14 27)",
+          "oklch(49% 0.14 27)",
+          "oklch(61% 0.14 27)",
+          "oklch(72% 0.14 27)",
+          "oklch(84% 0.14 27)",
+          "oklch(95% 0.14 27)"
         ]
       },
-      "border-feedback": {
+      "dark-console": {
         "role": "neutral",
-        "displayName": "Border Feedback",
-        "canonical": "#616776",
+        "displayName": "Dark Console",
+        "canonical": "oklch(17% 0.04 300)",
         "tonalRamp": [
-          "oklch(15% 0.0249 268.20)",
-          "oklch(26% 0.0249 268.20)",
-          "oklch(38% 0.0249 268.20)",
-          "oklch(49% 0.0249 268.20)",
-          "oklch(61% 0.0249 268.20)",
-          "oklch(72% 0.0249 268.20)",
-          "oklch(84% 0.0249 268.20)",
-          "oklch(95% 0.0249 268.20)"
+          "oklch(15% 0.04 300)",
+          "oklch(26% 0.04 300)",
+          "oklch(38% 0.04 300)",
+          "oklch(49% 0.04 300)",
+          "oklch(61% 0.04 300)",
+          "oklch(72% 0.04 300)",
+          "oklch(84% 0.04 300)",
+          "oklch(95% 0.04 300)"
         ]
       },
-      "feedback-shadow": {
+      "dark-console-rule": {
         "role": "neutral",
-        "displayName": "Feedback Shadow",
-        "canonical": "#0004"
+        "displayName": "Dark Console Rule",
+        "canonical": "oklch(51% 0.055 300)",
+        "tonalRamp": [
+          "oklch(15% 0.055 300)",
+          "oklch(26% 0.055 300)",
+          "oklch(38% 0.055 300)",
+          "oklch(49% 0.055 300)",
+          "oklch(61% 0.055 300)",
+          "oklch(72% 0.055 300)",
+          "oklch(84% 0.055 300)",
+          "oklch(95% 0.055 300)"
+        ]
       },
-      "transparent": {
+      "dark-console-hover": {
         "role": "neutral",
-        "displayName": "Transparent",
-        "canonical": "transparent"
+        "displayName": "Dark Console Hover",
+        "canonical": "oklch(29% 0.055 300)",
+        "tonalRamp": [
+          "oklch(15% 0.055 300)",
+          "oklch(26% 0.055 300)",
+          "oklch(38% 0.055 300)",
+          "oklch(49% 0.055 300)",
+          "oklch(61% 0.055 300)",
+          "oklch(72% 0.055 300)",
+          "oklch(84% 0.055 300)",
+          "oklch(95% 0.055 300)"
+        ]
+      },
+      "dark-contact": {
+        "role": "primary",
+        "displayName": "Dark Contact",
+        "canonical": "oklch(30% 0.105 300)",
+        "tonalRamp": [
+          "oklch(15% 0.105 300)",
+          "oklch(26% 0.105 300)",
+          "oklch(38% 0.105 300)",
+          "oklch(49% 0.105 300)",
+          "oklch(61% 0.105 300)",
+          "oklch(72% 0.105 300)",
+          "oklch(84% 0.105 300)",
+          "oklch(95% 0.105 300)"
+        ]
+      },
+      "dark-contact-ink": {
+        "role": "primary",
+        "displayName": "Dark Contact Ink",
+        "canonical": "oklch(94% 0.015 300)",
+        "tonalRamp": [
+          "oklch(15% 0.015 300)",
+          "oklch(26% 0.015 300)",
+          "oklch(38% 0.015 300)",
+          "oklch(49% 0.015 300)",
+          "oklch(61% 0.015 300)",
+          "oklch(72% 0.015 300)",
+          "oklch(84% 0.015 300)",
+          "oklch(95% 0.015 300)"
+        ]
+      },
+      "dark-contact-hover": {
+        "role": "primary",
+        "displayName": "Dark Contact Hover",
+        "canonical": "oklch(35% 0.105 300)",
+        "tonalRamp": [
+          "oklch(15% 0.105 300)",
+          "oklch(26% 0.105 300)",
+          "oklch(38% 0.105 300)",
+          "oklch(49% 0.105 300)",
+          "oklch(61% 0.105 300)",
+          "oklch(72% 0.105 300)",
+          "oklch(84% 0.105 300)",
+          "oklch(95% 0.105 300)"
+        ]
+      },
+      "console-hover": {
+        "role": "neutral",
+        "displayName": "Console hover",
+        "canonical": "oklch(32% 0.065 300)",
+        "tonalRamp": [
+          "oklch(15% 0.065 300)",
+          "oklch(26% 0.065 300)",
+          "oklch(38% 0.065 300)",
+          "oklch(49% 0.065 300)",
+          "oklch(61% 0.065 300)",
+          "oklch(72% 0.065 300)",
+          "oklch(84% 0.065 300)",
+          "oklch(95% 0.065 300)"
+        ]
+      },
+      "control-rule": {
+        "role": "neutral",
+        "displayName": "Control boundary",
+        "canonical": "oklch(56% 0.04 300)",
+        "tonalRamp": [
+          "oklch(15% 0.04 300)",
+          "oklch(26% 0.04 300)",
+          "oklch(38% 0.04 300)",
+          "oklch(49% 0.04 300)",
+          "oklch(61% 0.04 300)",
+          "oklch(72% 0.04 300)",
+          "oklch(84% 0.04 300)",
+          "oklch(95% 0.04 300)"
+        ]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Display",
-        "purpose": "Human identity."
-      },
-      "role": {
-        "displayName": "Role",
-        "purpose": "Implemented role role; see Typography."
-      },
-      "statement": {
-        "displayName": "Statement",
-        "purpose": "Implemented statement role; see Typography."
-      },
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "Implemented headline role; see Typography."
-      },
-      "architecture-value": {
-        "displayName": "Architecture Value",
-        "purpose": "Implemented architecture value role; see Typography."
-      },
-      "project-title": {
-        "displayName": "Project Title",
-        "purpose": "Implemented project title role; see Typography."
-      },
-      "brand-mark": {
-        "displayName": "Brand Mark",
-        "purpose": "Implemented brand mark role; see Typography."
+        "displayName": "Spanning identity",
+        "purpose": "Oversized name above the working terminal."
       },
       "body": {
-        "displayName": "Body",
-        "purpose": "Implemented body role; see Typography."
+        "displayName": "Rethink Sans",
+        "purpose": "Reading, labels and controls."
       },
-      "body-small": {
-        "displayName": "Body Small",
-        "purpose": "Implemented body small role; see Typography."
+      "terminal": {
+        "displayName": "IBM Plex Mono",
+        "purpose": "Real commands and output."
       },
-      "button": {
-        "displayName": "Button",
-        "purpose": "Implemented button role; see Typography."
+      "display-mobile": {
+        "displayName": "Display Mobile",
+        "purpose": "Two-line identity on small screens."
       },
-      "body-compact": {
-        "displayName": "Body Compact",
-        "purpose": "Implemented body compact role; see Typography."
+      "contact-headline": {
+        "displayName": "Contact Headline",
+        "purpose": "Large closing contact heading."
       },
-      "link": {
-        "displayName": "Link",
-        "purpose": "Implemented link role; see Typography."
+      "contact-email": {
+        "displayName": "Contact Email",
+        "purpose": "Responsive direct email link."
       },
-      "console": {
-        "displayName": "Console",
-        "purpose": "Implemented console role; see Typography."
+      "contact-email-mobile": {
+        "displayName": "Contact Email Mobile",
+        "purpose": "Direct email fitting small screens."
       },
-      "language": {
-        "displayName": "Language",
-        "purpose": "Implemented language role; see Typography."
+      "project-display": {
+        "displayName": "Project Display",
+        "purpose": "Existing BazPOS project title."
       },
-      "console-micro": {
-        "displayName": "Console Micro",
-        "purpose": "Compact mobile location and ready text."
+      "project-lead": {
+        "displayName": "Project Lead",
+        "purpose": "Existing project introduction and mobile architecture values."
       },
-      "contact": {
-        "displayName": "Contact",
-        "purpose": "Implemented contact role; see Typography."
+      "project-media-heading": {
+        "displayName": "Project Media Heading",
+        "purpose": "Existing video section heading."
       },
-      "command": {
-        "displayName": "Command",
-        "purpose": "Terminal prompt, input, and output."
+      "project-caption": {
+        "displayName": "Project Caption",
+        "purpose": "Existing source and media provenance captions."
+      },
+      "project-body": {
+        "displayName": "Project Body",
+        "purpose": "Existing project explanatory copy."
+      },
+      "project-step-heading": {
+        "displayName": "Project Step Heading",
+        "purpose": "Existing screenshot workflow headings."
       }
     },
-    "shadows": [
-      {
-        "name": "feedback-ambient",
-        "value": "0 8px 30px #0004",
-        "purpose": "Temporary clipboard feedback only."
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
-        "name": "control-state",
-        "value": "background-color 160ms, border-color 160ms",
-        "purpose": "Button hover feedback."
+        "name": "title-entrance",
+        "value": "650ms; translateY 48px; opacity 0.35 to 1",
+        "purpose": "Spanning name and BazPOS title enter without splitting text."
       },
       {
-        "name": "boot-settle",
-        "value": "600ms ease-out clip-path inset(0 100% 0 0) to inset(0)",
-        "purpose": "Single ready-marker reveal when motion is allowed."
+        "name": "intro-entrance",
+        "value": "500ms; translateY 24px; delays 80ms / 160ms",
+        "purpose": "Introduction and terminal, with immediate controls."
       },
       {
-        "name": "terminal-typing",
-        "value": "0.9s steps(var(--chars), end)",
-        "purpose": "Introductory terminal command."
+        "name": "hero-exit",
+        "value": "--portfolio-hero; exit 0% exit 80%; translateY -48px",
+        "purpose": "Separate heading layer follows scroll without fighting its entrance."
       },
       {
-        "name": "terminal-lines",
-        "value": "0.15s ease-out; 0.18s line stagger after 0.4s pause",
-        "purpose": "Terminal information and prompt."
+        "name": "bazpos-scene",
+        "value": "--bazpos-scene; entry 0% entry 100%; sticky top 40px",
+        "purpose": "Desktop 1.6:1 scene, three chapters, capture from opacity 0.35 and translateY 64px / scale 0.96."
       },
       {
-        "name": "caret",
-        "value": "1.05s steps(1, end) infinite",
-        "purpose": "Terminal input caret."
+        "name": "section-entry",
+        "value": "view(); entry 0% cover 40%; translateY 32px",
+        "purpose": "Project rows, tools group and contact heading."
+      },
+      {
+        "name": "media-entry",
+        "value": "view(); entry 0% cover 50%; translateY 48px / scale 0.98",
+        "purpose": "Real screenshots on the BazPOS detail page, leaving video stable."
+      },
+      {
+        "name": "feedback",
+        "value": "180ms enter; 120ms exit; 100ms reduced",
+        "purpose": "Opacity and 8px travel, with announcements immediate."
+      },
+      {
+        "name": "controls",
+        "value": "180ms icons; 100ms press",
+        "purpose": "4px icon travel on fine pointers and immediate control response."
+      },
+      {
+        "name": "build-compatibility",
+        "value": "separate animation-timeline declarations with targeted !important",
+        "purpose": "Prevents optimizer folding into unsupported timeline-inclusive animation shorthand; verified in built CSS on Chrome and Zen."
       }
     ],
     "breakpoints": [
       {
-        "name": "landing-mobile",
-        "value": "767px"
+        "name": "tablet",
+        "value": "960px"
       },
       {
-        "name": "terminal-mobile",
-        "value": "768px"
+        "name": "stacked",
+        "value": "751px"
+      },
+      {
+        "name": "sticky-scene",
+        "value": "1024px wide and 576px high; normal motion"
+      },
+      {
+        "name": "compact-header",
+        "value": "416px"
       }
     ]
   },
   "components": [
     {
-      "name": "Primary Button",
+      "name": "Primary action",
       "kind": "button",
-      "refersTo": "button-primary",
-      "description": "Solid violet action with darker hover.",
-      "html": "<button class=\"ds-primary\">Ver BazPOS</button>",
-      "css": ".ds-primary{font-family:var(--font-sans);font-size:.875rem;font-weight:600;padding:12px 20px;min-height:48px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:14px;cursor:pointer;transition:background-color 160ms,border-color 160ms;background:var(--color-primary);color:#fff;border:1px solid transparent}.ds-primary:hover{background:#7e22ce}.ds-primary:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:5px;border-radius:4px;}"
+      "description": "Purple filled project action.",
+      "html": "<button class=\"ds-button\">Explorar BazPOS</button>",
+      "css": ".ds-button {font:600 14px var(--font-body);min-height:48px;padding:12px 24px;border:1px solid transparent;border-radius:6px;background:var(--color-accent);color:var(--color-accent-ink)} .ds-button:hover {background:var(--color-accent-hover)} .ds-button:focus-visible {outline:2px solid var(--color-focus);outline-offset:5px}"
     },
     {
-      "name": "Quiet Button",
+      "name": "Quiet action",
       "kind": "button",
-      "refersTo": "button-quiet",
-      "description": "Outlined secondary action.",
-      "html": "<button class=\"ds-quiet\">Contacto</button>",
-      "css": ".ds-quiet{font-family:var(--font-sans);font-size:.875rem;font-weight:600;padding:12px 20px;min-height:48px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:14px;cursor:pointer;transition:background-color 160ms,border-color 160ms;background:transparent;color:var(--color-text-bright);border:1px solid #515663}.ds-quiet:hover{border-color:var(--color-primary-light);background:var(--color-surface-dim)}.ds-quiet:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:5px;border-radius:4px;}"
+      "description": "Secondary navigation or clipboard control.",
+      "html": "<button class=\"ds-quiet\">Hablemos</button>",
+      "css": ".ds-quiet {font:600 14px var(--font-body);min-height:48px;padding:12px 24px;border:1px solid var(--color-rule);border-radius:6px;background:transparent;color:var(--color-ink)} .ds-quiet:hover {background:var(--color-paper-3)} .ds-quiet:focus-visible {outline:2px solid var(--color-focus);outline-offset:5px}"
     },
     {
-      "name": "Technology Tag",
+      "name": "Technology tag",
       "kind": "chip",
-      "refersTo": "tag",
-      "description": "Noninteractive technical metadata.",
-      "html": "<span class=\"ds-tag\">React</span>",
-      "css": ".ds-tag{display:inline-block;background:var(--color-surface-dim);color:#cfc2d6;font:0.75rem/1.5 var(--font-mono);padding:4px 8px;border-radius:4px}"
+      "description": "Descriptive project technology, without interactive behavior.",
+      "html": "<span class=\"ds-tag\">TypeScript</span>",
+      "css": ".ds-tag {display:inline-flex;font:13px var(--font-body);padding:4px 12px;border:1px solid var(--color-rule);border-radius:999px;color:var(--color-ink-2)}"
     },
     {
-      "name": "Navigation",
-      "kind": "nav",
-      "refersTo": "navigation",
-      "description": "Compact sticky-header link grammar.",
-      "html": "<nav class=\"ds-nav\"><a href=\"#bazpos\">BazPOS</a><a href=\"#projects\">Proyectos</a><a href=\"#contact\">Contacto</a></nav>",
-      "css": ".ds-nav{display:flex;gap:28px;background:var(--color-surface);font:.875rem var(--font-sans);color:var(--color-text-muted)}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:inherit}.ds-nav a:hover{color:var(--color-primary-light)}.ds-nav a:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:5px;border-radius:4px;}@media(max-width:767px){.ds-nav{gap:16px;font-size:.75rem}}"
-    },
-    {
-      "name": "Architecture Panel",
-      "kind": "card",
-      "refersTo": "architecture",
-      "description": "Recessed panel that distinguishes frontend, backend, and storage.",
-      "html": "<section class=\"ds-architecture\"><h3>Arquitectura</h3><dl><div><dt>Frontend</dt><dd>React</dd></div><div><dt>Backend</dt><dd>Django</dd></div><div><dt>Base de datos</dt><dd>MariaDB</dd></div></dl></section>",
-      "css": ".ds-architecture{background:var(--color-surface-card);border:1px solid var(--color-border-primary);border-radius:12px;overflow:hidden;color:var(--color-text-bright);font-family:var(--font-sans)}.ds-architecture h3{margin:0;padding:20px 24px;font-size:.8125rem;font-weight:400;color:var(--color-text-muted);border-bottom:1px solid var(--color-border-primary)}.ds-architecture dl{margin:0;padding:8px 24px}.ds-architecture dl div{padding:24px 0;border-bottom:1px solid var(--color-border-primary)}.ds-architecture dl div:last-child{border:0}.ds-architecture dt{font:.75rem var(--font-mono);color:var(--color-text-muted)}.ds-architecture dd{margin:8px 0 0;font-size:1.75rem;font-weight:500;letter-spacing:-.02em}"
-    },
-    {
-      "name": "Terminal Input",
+      "name": "Command input",
       "kind": "input",
-      "refersTo": "terminal-input",
-      "description": "Borderless mono command field with global focus outline.",
-      "html": "<input class=\"ds-command\" aria-label=\"Comando\" placeholder=\"help\" spellcheck=\"false\">",
-      "css": ".ds-command{width:min(100%,32rem);min-width:0;background:transparent;border:none;color:var(--color-text-bright);caret-color:var(--color-text-bright);font-family:var(--font-mono);font-size:clamp(1rem,1.9vw,1.25rem);line-height:1.7;letter-spacing:.02em}.ds-command::placeholder{color:var(--color-text-muted)}.ds-command:focus-visible{outline:2px solid var(--color-primary-light);outline-offset:5px;border-radius:4px;}"
+      "description": "Real terminal command field with a visible boundary and keyboard focus.",
+      "html": "<label class=\"ds-command\">guest:~$ <input aria-label=\"Comando\" placeholder=\"help\"></label>",
+      "css": ".ds-command {display:flex;align-items:center;gap:8px;padding:16px;background:var(--color-console);color:var(--color-console-action);font:13px var(--font-mono)} .ds-command input {font:16px var(--font-mono);min-height:44px;min-width:0;padding:8px;border:1px solid var(--color-console-muted);border-radius:6px;background:transparent;color:var(--color-console-text)} .ds-command input:focus-visible {outline:2px solid var(--color-console-action)}"
     },
     {
-      "name": "Console Summary",
-      "kind": "custom",
-      "refersTo": "console-summary",
-      "description": "Settled technical signature below immediate actions.",
-      "html": "<div class=\"ds-console\"><code>React / Django / Linux</code><span>[ OK ] Listo para construir</span></div>",
-      "css": ".ds-console{display:flex;flex-wrap:wrap;gap:20px;padding:18px 0;border-block:1px solid var(--color-border-primary);font:.75rem var(--font-mono)}.ds-console code{color:var(--color-primary-light)}.ds-console span{color:var(--color-status)}"
+      "name": "Open navigation",
+      "kind": "nav",
+      "description": "Plain project and contact destinations.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#bazpos\">BazPOS</a><a href=\"#projects\">Proyectos</a><a href=\"#contact\">Hablemos</a></nav>",
+      "css": ".ds-nav {display:flex;align-items:center;gap:24px;font:14px var(--font-body)} .ds-nav a {display:inline-flex;align-items:center;min-height:44px;color:var(--color-ink);text-decoration:none} .ds-nav a:hover {color:var(--color-accent)} .ds-nav a:focus-visible {outline:2px solid var(--color-focus);outline-offset:5px}"
+    },
+    {
+      "name": "Theme switch",
+      "kind": "button",
+      "description": "44px sun/moon dark-mode toggle, with persisted preference and system default.",
+      "html": "<button class=\"ds-theme\" aria-label=\"Modo oscuro\" aria-pressed=\"false\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M20.5 13.5A8.5 8.5 0 0 1 10.5 3.5 8.5 8.5 0 1 0 20.5 13.5Z\"/></svg></button>",
+      "css": ".ds-theme {display:inline-flex;align-items:center;justify-content:center;width:44px;min-height:44px;padding:8px;border:1px solid var(--color-control-rule);border-radius:999px;background:transparent;color:var(--color-ink)} .ds-theme:hover {background:var(--color-paper-3)} .ds-theme:focus-visible {outline:2px solid var(--color-focus);outline-offset:5px}"
     }
   ],
   "narrative": {
-    "northStar": "Engineered Dark",
-    "overview": "Engineered Dark combines charcoal grounds, violet interaction, emerald health signals, and restrained console notation. Inter carries human identity and explanatory reading; JetBrains Mono marks commands, roles, provenance, and technology data. The result is direct, technical, and accessible to a fast reader.\n\nThe Power-On Self-Test remains an identity reference through settled readiness markers and the dedicated terminal. It no longer requires every surface to simulate a boot screen. Space, ruled structure, and deliberate typographic hierarchy carry the interface.",
+    "northStar": "Lavender Working Directory",
+    "overview": "The user requested a free redesign preserving purple, superseding the earlier Engineered Dark system. The existing working terminal, project content, routes and contact behavior remain the material of the portfolio.\n\nThe idea is a name opening a working directory. Large Rethink Sans typography establishes the developer's identity; the genuine terminal invites another way to browse; authentic BazPOS screenshots demonstrate the work. No simulated browser window, decorative status dots, invented proof or stock imagery.\n",
     "keyCharacteristics": [
-      "Charcoal tonal layers with fine structural rules",
-      "Inter for reading; JetBrains Mono for system notation",
-      "Violet actions, emerald health, amber provenance",
-      "Responsive columns with generous section spacing",
-      "Settled content and reduced-motion support"
+      "Light lavender surfaces and dark plum ink",
+      "Oversized developer identity",
+      "Real interactive portfolio terminal",
+      "Authentic BazPOS product evidence"
     ],
-    "rules": [
-      {
-        "name": "The Health Signal Rule",
-        "body": "Reserve emerald for availability, production status, and ready/check markers.",
-        "section": "colors"
-      },
-      {
-        "name": "The Two Voices Rule",
-        "body": "Use Inter for reading and hierarchy; use JetBrains Mono for commands, roles, tags, and technical notation.",
-        "section": "typography"
-      },
-      {
-        "name": "The Ruled Structure Rule",
-        "body": "Separate sections and rows with hairline rules and tonal changes; keep persistent content flat.",
-        "section": "elevation"
-      }
-    ],
-    "dos": [
-      "Do preserve the distinction between reading text and system notation.",
-      "Do keep health markers semantic and primary actions violet.",
-      "Do show genuine code destinations and allow long repository names to wrap.",
-      "Do keep direct contact and locale navigation available without JavaScript.",
-      "Do honor reduced motion and visible keyboard focus."
-    ],
-    "donts": [
-      "Don't turn ordinary reading copy into a wall of console text.",
-      "Don't add decorative glow or hard offset shadows to persistent content.",
-      "Don't fabricate project evidence or metrics.",
-      "Don't replace SVG interface icons with Unicode arrow glyphs."
-    ]
+    "rules": [],
+    "dos": [],
+    "donts": []
   }
 }

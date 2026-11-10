@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+import { ui } from '../lib/site';
+import type { Locale } from '../data/translations';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const c = ui[locale];
+---
+
+<div class="theme-control">
+  <button
+    class="theme-toggle"
+    type="button"
+    data-theme-toggle
+    data-label-light={c.switchLight}
+    data-label-dark={c.switchDark}
+    aria-label={c.darkMode}
+    aria-pressed="false"
+    title={c.switchDark}
+    hidden
+  >
+    <span class="theme-icon-moon">
+      <Icon name="moon" />
+    </span>
+    <span class="theme-icon-sun">
+      <Icon name="sun" />
+    </span>
+  </button>
+</div>

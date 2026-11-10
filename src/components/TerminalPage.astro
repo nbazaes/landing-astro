@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Welcome from './Welcome.astro';
 import Icon from './Icon.astro';
+import ThemeToggle from './ThemeToggle.astro';
 import { getSiteData, localePath, ui } from '../lib/site';
 import type { Locale } from '../data/translations';
 interface Props {
@@ -23,21 +24,33 @@ const otherLocale = locale === 'es' ? 'en' : 'es';
       <Icon name="arrow" />
       {t.terminal.backButton}
     </a>
-    <a
-      href={localePath(otherLocale, 'terminal/')}
-      data-locale={otherLocale}
-      aria-label={ui[locale].language}
-      lang={otherLocale}
-    >
-      {otherLocale.toUpperCase()}
-    </a>
+    <div class="terminal-header-tools">
+      <a
+        class="language-link"
+        href={localePath(otherLocale, 'terminal/')}
+        data-locale={otherLocale}
+        aria-label={ui[locale].language}
+        lang={otherLocale}
+      >
+        {otherLocale.toUpperCase()}
+      </a>
+      <ThemeToggle locale={locale} />
+    </div>
   </header>
-  <Welcome locale={locale} />
+  <main id="main-content" class="container terminal-page">
+    <div class="terminal-stage" data-motion-intro="content">
+      <Welcome locale={locale} />
+    </div>
+  </main>
 </Layout>
 <style>
+  .terminal-page {
+    padding-block: 32px 64px;
+    min-height: calc(100svh - 80px);
+  }
   .terminal-header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 24px;
     padding-block: 16px;
@@ -49,6 +62,11 @@ const otherLocale = locale === 'es' ? 'en' : 'es';
     align-items: center;
     min-height: 44px;
     color: var(--color-primary-light);
+  }
+  .terminal-header-tools {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
   }
   .terminal-header a:first-child :global(svg) {
     transform: rotate(180deg);

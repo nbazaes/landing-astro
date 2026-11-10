@@ -2,6 +2,7 @@
 import type { Locale, TranslationData } from '../../data/translations';
 import { ui } from '../../lib/site';
 import Icon from '../Icon.astro';
+import PortfolioTerminal from '../PortfolioTerminal.astro';
 interface Props {
   locale: Locale;
   t: TranslationData;
@@ -10,36 +11,36 @@ const { locale, t } = Astro.props;
 const c = ui[locale];
 ---
 
-<section class="hero container" aria-labelledby="intro-title">
-  <h1 id="intro-title">
-    Nicolás Bazaes<span>{c.role}</span>
-  </h1>
-  <div class="hero-status">
-    <span class="status-dot" aria-hidden="true"></span>
-    {t.hero.statusBadge}
-    <span class="hero-location">Los Ángeles, Chile</span>
+<section id="intro" class="hero container" aria-labelledby="intro-title">
+  <div class="hero-heading">
+    <h1 id="intro-title" data-motion-intro="title">
+      Nicolás Bazaes
+    </h1>
   </div>
-  <p class="hero-statement">{t.hero.headline}</p>
-  <p class="hero-description">{t.hero.subtext}</p>
-  <div class="actions">
-    <a class="button primary" href="#bazpos">
-      {c.featured}
-      <Icon name="arrow" />
-    </a>
-    <a class="button quiet" href="#contact">
-      {c.contact}
-    </a>
+  <div class="hero-copy" data-motion-intro="content">
+    <p class="hero-statement">
+      {locale === 'es'
+        ? 'Desarrollo aplicaciones web y cuido la infraestructura que las mantiene.'
+        : 'I build web applications and care for the infrastructure behind them.'}
+    </p>
+    <div class="actions">
+      <a class="button primary" href="#bazpos">
+        {c.featured}
+        <Icon name="arrow" />
+      </a>
+      <a class="button quiet" href="#contact">
+        {c.contact}
+      </a>
+    </div>
+    <div class="hero-profile">
+      <p class="hero-description">{c.role}</p>
+      <div class="hero-status">
+        <span>{t.hero.statusBadge}</span>
+        <span class="hero-location">Los Ángeles, Chile</span>
+      </div>
+    </div>
   </div>
-  <div class="boot-summary" aria-label={locale === 'es' ? 'Áreas de trabajo' : 'Areas of work'}>
-    <span class="boot-prompt" aria-hidden="true">
-      nb@portfolio:~$
-    </span>
-    <code>
-      React <span>/</span> Django <span>/</span> Linux
-    </code>
-    <span class="boot-ready">
-      <span aria-hidden="true">[ OK ]</span>{' '}
-      {locale === 'es' ? 'Listo para construir' : 'Ready to build'}
-    </span>
+  <div class="hero-terminal" data-motion-intro="terminal">
+    <PortfolioTerminal locale={locale} />
   </div>
 </section>

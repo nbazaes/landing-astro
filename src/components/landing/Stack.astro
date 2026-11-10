@@ -1,14 +1,13 @@
 ---
-import type { TranslationData } from '../../data/translations';
+import Icon from '../Icon.astro';
+import { engineeringExamples } from '../../lib/engineering';
+import type { Locale, TranslationData } from '../../data/translations';
 interface Props {
   t: TranslationData;
+  locale: Locale;
 }
-const { t } = Astro.props;
-const principles = [
-  { title: t.philosophy.item1Title, description: t.philosophy.item1Desc },
-  { title: t.philosophy.item2Title, description: t.philosophy.item2Desc },
-  { title: t.philosophy.item3Title, description: t.philosophy.item3Desc },
-];
+const { t, locale } = Astro.props;
+const examples = engineeringExamples(locale);
 ---
 
 <section id="stack" class="section container" aria-labelledby="stack-title">
@@ -16,7 +15,7 @@ const principles = [
     <h2 id="stack-title">{t.stack.subtitle}</h2>
     <p>{t.stack.statusBadge}</p>
   </div>
-  <div class="stack-grid">
+  <div class="stack-grid" data-motion="enter">
     {t.stack.groups.map((group) => (
       <div class="stack-group">
         <h3>{group.title}</h3>
@@ -31,15 +30,21 @@ const principles = [
       </div>
     ))}
   </div>
-  <div class="principles">
-    <h3>{t.philosophy.subtitle}</h3>
+  <section id="work" class="principles" aria-labelledby="work-title">
+    <h3 id="work-title">
+      {locale === 'es' ? 'Decisiones en proyectos reales' : 'Decisions in real projects'}
+    </h3>
     <div>
-      {principles.map((item) => (
+      {examples.map((item) => (
         <div>
           <h4>{item.title}</h4>
           <p>{item.description}</p>
+          <a href={item.href}>
+            {item.label}
+            <Icon name="external" />
+          </a>
         </div>
       ))}
     </div>
-  </div>
+  </section>
 </section>

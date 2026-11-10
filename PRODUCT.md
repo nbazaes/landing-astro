@@ -21,7 +21,7 @@ A passionate Junior Fullstack Developer, Sysadmin, and DevOps practitioner who b
 - **Devices**: Desktop and mobile web browsers.
 
 ## Capabilities and Constraints
-- **Dual Experience**: Clean visual landing page on `/` with a dedicated interactive CLI terminal emulator at `/terminal`.
+- **Dual Experience**: Visual landing page on `/` with an embedded interactive portfolio terminal beside the introduction; dedicated terminal routes remain available.
 - **Bilingual Localization**: Complete static Spanish (`/`) and English (`/en/`) pages, with equivalent terminal routes and a resilient shared locale preference.
 - **Single-Click Contact**: Direct email link (`nbazaes@bazaes.cl`) and optional clipboard copy with accessible feedback.
 - **Real Evidence Only**: Strict rule against fabricated metrics or dummy projects; only verified repositories (`django-bazpos`, `discursantes_react`, `webconstAD`, `landing-astro`).
@@ -49,5 +49,5 @@ A passionate Junior Fullstack Developer, Sysadmin, and DevOps practitioner who b
 
 ## Confirmed portfolio emphasis
 - BazPOS is the featured project. React is its frontend; Django is its backend, not a server-rendered fullstack description. MariaDB stores its data.
-- Human identity and immediate project/contact actions precede the compact console signature.
-- Preserve the established dark palette and technical character while prioritizing project evidence and readability.
+- Human identity and immediate project/contact actions sit beside the interactive terminal; BazPOS follows with dominant application evidence.
+- Preserve purple as the brand anchor; the user authorized a free visual redesign with light lavender and dark plum themes, real project evidence and a working terminal.

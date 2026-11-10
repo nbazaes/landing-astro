@@ -1,275 +1,182 @@
 ---
-name: Engineered Dark
-description: A readable engineering portfolio with precise console notation.
+name: Lavender Working Directory
+description: A type-led developer portfolio with a real interactive terminal and authentic project evidence.
 colors:
-  surface: "#111319"
-  surface-card: "#0c0e14"
-  surface-dim: "#191b22"
-  border-primary: "#2d3139"
-  primary: "#9333ea"
-  primary-hover: "#a855f7"
-  primary-light: "#ddb7ff"
-  primary-action-hover: "#7e22ce"
-  text-muted: "#a2adbd"
-  text-bright: "#f4f3f7"
-  text-white: "#ffffff"
-  text-variant: "#cfc2d6"
-  status: "#34d399"
-  tertiary: "#fabc4e"
-  selection: "#6832a3"
-  scrollbar: "#525661"
-  border-action: "#515663"
-  console-separator: "#666e7d"
-  border-feedback: "#616776"
-  feedback-shadow: "#0004"
-  transparent: "transparent"
+  paper: 'oklch(98% 0.008 300)'
+  lavender: 'oklch(92% 0.035 300)'
+  lavender-deep: 'oklch(87% 0.055 300)'
+  ink: 'oklch(24% 0.06 300)'
+  muted: 'oklch(47% 0.035 300)'
+  rule: 'oklch(80% 0.025 300)'
+  primary: 'oklch(48% 0.24 300)'
+  primary-hover: 'oklch(40% 0.21 300)'
+  console: 'oklch(24% 0.07 300)'
+  console-text: 'oklch(96% 0.02 300)'
+  console-muted: 'oklch(78% 0.045 300)'
+  console-action: 'oklch(84% 0.1 300)'
+  control-rule: 'oklch(56% 0.04 300)'
+  console-hover: 'oklch(32% 0.065 300)'
+  dark-paper: 'oklch(18% 0.018 300)'
+  dark-paper-2: 'oklch(22% 0.025 300)'
+  dark-paper-3: 'oklch(28% 0.035 300)'
+  dark-ink: 'oklch(94% 0.015 300)'
+  dark-ink-2: 'oklch(86% 0.025 300)'
+  dark-muted: 'oklch(76% 0.03 300)'
+  dark-rule: 'oklch(44% 0.035 300)'
+  dark-control-rule: 'oklch(56% 0.04 300)'
+  dark-accent: 'oklch(72% 0.17 300)'
+  dark-accent-hover: 'oklch(78% 0.155 300)'
+  dark-accent-ink: 'oklch(20% 0.03 300)'
+  dark-focus: 'oklch(78% 0.145 300)'
+  dark-success: 'oklch(79% 0.11 155)'
+  dark-error: 'oklch(77% 0.14 27)'
+  dark-console: 'oklch(17% 0.04 300)'
+  dark-console-rule: 'oklch(51% 0.055 300)'
+  dark-console-hover: 'oklch(29% 0.055 300)'
+  dark-contact: 'oklch(30% 0.105 300)'
+  dark-contact-ink: 'oklch(94% 0.015 300)'
+  dark-contact-hover: 'oklch(35% 0.105 300)'
 typography:
   display:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "clamp(2.5rem, 6.2vw, 4.6rem)"
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(3.5rem, 11.2vw, 10rem)'
     fontWeight: 700
-    lineHeight: 1.08
-    letterSpacing: "-0.035em"
-  role:
-    fontFamily: "'JetBrains Mono', ui-monospace, monospace"
-    fontSize: "clamp(0.875rem, 1.8vw, 1.0625rem)"
-    fontWeight: 400
-    letterSpacing: "0"
-  statement:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "clamp(1.4rem, 3vw, 2.125rem)"
-    lineHeight: 1.4
-    letterSpacing: "-0.02em"
+    lineHeight: 1.05
+    letterSpacing: '-0.065em'
   headline:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)"
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(2.5rem, 4.5vw, 4.5rem)'
     fontWeight: 600
-    lineHeight: 1.2
-    letterSpacing: "-0.03em"
-  architecture-value:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "1.75rem"
-    fontWeight: 500
-    letterSpacing: "-0.02em"
-  project-title:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "1.25rem"
+    lineHeight: 1.08
+  lead:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(1.75rem, 2.6vw, 2.5rem)'
+    lineHeight: 1.25
+  title:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(1.5rem, 2.5vw, 2rem)'
     fontWeight: 600
-  brand-mark:
-    fontFamily: "'JetBrains Mono', ui-monospace, monospace"
-    fontSize: "1.125rem"
-    letterSpacing: "-0.03em"
   body:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: 1.75
-  body-small:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "0.9375rem"
-    fontWeight: 400
-    lineHeight: 1.75
-  button:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "0.875rem"
-    fontWeight: 600
-  body-compact:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "0.875rem"
-    lineHeight: 1.75
-  link:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "0.8125rem"
-  console:
-    fontFamily: "'JetBrains Mono', ui-monospace, monospace"
-    fontSize: "0.75rem"
-    fontWeight: 400
-    lineHeight: 1.5
-  language:
-    fontFamily: "'JetBrains Mono', ui-monospace, monospace"
-    fontSize: "0.8125rem"
-  console-micro:
-    fontFamily: "'JetBrains Mono', ui-monospace, monospace"
-    fontSize: "0.6875rem"
-  contact:
-    fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "clamp(1.1rem, 2.4vw, 1.6rem)"
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: '1rem'
+    lineHeight: 1.65
+  label:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: '0.875rem'
+  caption:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: '0.8125rem'
   command:
-    fontFamily: "'JetBrains Mono', ui-monospace, monospace"
-    fontSize: "clamp(1rem, 1.9vw, 1.25rem)"
-    fontWeight: 400
-    lineHeight: 1.7
-    letterSpacing: "0.02em"
+    fontFamily: 'IBM Plex Mono, monospace'
+    fontSize: '1rem'
+  terminal:
+    fontFamily: 'IBM Plex Mono, monospace'
+    fontSize: '0.8125rem'
+  display-mobile:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(3.5rem, 14vw, 6.5rem)'
+    fontWeight: 700
+    lineHeight: 1.02
+  contact-headline:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(2.5rem, 5.5vw, 5rem)'
+    fontWeight: 600
+    lineHeight: 1.08
+  contact-email:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(1.25rem, 4.2vw, 3.5rem)'
+    lineHeight: 1.2
+  contact-email-mobile:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(1.2rem, 6vw, 2.5rem)'
+    lineHeight: 1.2
+  project-display:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(2.5rem, 6.2vw, 4.6rem)'
+  project-lead:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: '1.125rem'
+  project-media-heading:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(1.4rem, 3vw, 2.125rem)'
+  project-caption:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: '0.75rem'
+  project-body:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: '0.9375rem'
+  project-step-heading:
+    fontFamily: 'Rethink Sans, sans-serif'
+    fontSize: 'clamp(1.4rem, 2.5vw, 1.75rem)'
 rounded:
-  sm: "4px"
-  md: "8px"
-  lg: "12px"
-  status-dot: "50%"
+  media-link: '8px'
+  control: '6px'
+  media: '12px'
+  tag: '999px'
 spacing:
-  container-max: "1120px"
-  section: "88px"
-  section-mobile: "56px"
-  gutter: "32px"
-  gutter-mobile: "20px"
-  xs: "8px"
-  sm: "12px"
-  md: "16px"
-  lg: "24px"
-  xl: "32px"
-  grid: "64px"
-  feature-grid: "72px"
-components:
-  button-primary:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.text-white}"
-    typography: "{typography.button}"
-    rounded: "{rounded.md}"
-    padding: "12px 20px"
-  button-primary-hover:
-    backgroundColor: "{colors.primary-action-hover}"
-  button-quiet:
-    backgroundColor: "{colors.transparent}"
-    textColor: "{colors.text-bright}"
-    typography: "{typography.button}"
-    rounded: "{rounded.md}"
-    padding: "12px 20px"
-  architecture:
-    backgroundColor: "{colors.surface-card}"
-    rounded: "{rounded.lg}"
-  tag:
-    backgroundColor: "{colors.surface-dim}"
-    textColor: "{colors.text-variant}"
-    typography: "{typography.console}"
-    rounded: "{rounded.sm}"
-    padding: "4px 8px"
-  terminal-input:
-    backgroundColor: "{colors.transparent}"
-    textColor: "{colors.text-bright}"
-    typography: "{typography.command}"
-    width: "min(100%, 32rem)"
-  navigation:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.text-muted}"
-  console-summary:
-    typography: "{typography.console}"
-    textColor: "{colors.primary-light}"
-    padding: "18px 0"
+  container-max: '1280px'
+  gutter: '48px'
+  gutter-tablet: '32px'
+  gutter-mobile: '20px'
+  columns: '48px'
+  section: '128px'
+  section-mobile: '80px'
 ---
 
-# Design System: Engineered Dark
+# Design System: Lavender Working Directory
 
 ## Overview
 
-**Creative North Star: "Engineered Dark"**
+**Creative North Star: "Lavender Working Directory"**
 
-Engineered Dark combines charcoal grounds, violet interaction, emerald health signals, and restrained console notation. Inter carries human identity and explanatory reading; JetBrains Mono marks commands, roles, provenance, and technology data. The result is direct, technical, and accessible to a fast reader.
+The user requested a free redesign preserving purple, superseding the earlier Engineered Dark system. The existing working terminal, project content, routes and contact behavior remain the material of the portfolio.
 
-The Power-On Self-Test remains an identity reference through settled readiness markers and the dedicated terminal. It no longer requires every surface to simulate a boot screen. Space, ruled structure, and deliberate typographic hierarchy carry the interface.
-
-**Key Characteristics:**
-- Charcoal tonal layers with fine structural rules
-- Inter for reading; JetBrains Mono for system notation
-- Violet actions, emerald health, amber provenance
-- Responsive columns with generous section spacing
-- Settled content and reduced-motion support
+The idea is a name opening a working directory. Large Rethink Sans typography establishes the developer's identity; the genuine terminal invites another way to browse; authentic BazPOS screenshots demonstrate the work. No simulated browser window, decorative status dots, invented proof or stock imagery.
 
 ## Colors
 
-Charcoal and violet form the persistent visual field; semantic accents identify state and provenance. The frontmatter records the literal source palette, including utility shades used by interaction and feedback.
+`src/styles/tokens.css` holds the palette, fonts, type ramps, spacing, timing and compatibility aliases. `base.css` holds reset and accessibility foundations. `global.css` holds composition and shared components. `motion.css` owns the shared entrance, scroll and interaction choreography. Scoped component styles consume the same tokens.
 
-### Primary
-- **Deep Violet**: primary action fill and skip link.
-- **Primary Violet**: retained theme accent (`primary-hover`); the current primary action instead darkens through `primary-action-hover`.
-- **Light Violet**: role text, links, console values, check-adjacent notation, and focus outlines.
-- **Action Hover Violet**: darker primary button hover.
-- **Selection Violet**: text selection background, paired with white.
+The light canvas is tinted purple. The dark theme uses a charcoal-plum canvas, slightly lighter elevated surfaces, pale lavender text and a lighter violet action color. Contact has a separate dark purple surface so it stays comfortable in dark mode; real images retain their original colors. Dark plum carries headings, muted plum carries prose, and saturated purple marks actions. Lavender surfaces group the introduction and engineering content. The final contact region uses a solid purple surface with light text and a matching light focus outline. The terminal is a functional dark plum surface with its own high-contrast token aliases; it is the single dark frame.
 
-### Tertiary
-- **Health Emerald**: availability, production status, and ready/check markers.
-- **System Amber**: provenance prefix and architecture notation.
-
-### Neutral
-- **Surface / Card / Dim**: page and sticky header / recessed architecture and contact / tags and feedback.
-- **Bright / Muted / Variant / White Text**: titles and major copy / supporting reading / technology tags / solid-button and selection text.
-- **Primary / Action / Feedback Borders**: structural hairlines / secondary action boundaries / toast boundary.
-- **Scrollbar Gray**: scrollbar thumb. **Console Separator Gray**: decorative slashes between technology names, not reading copy.
-- **Feedback Shadow**: translucent black confined to temporary feedback. **Transparent**: quiet buttons and terminal field.
-
-**The Health Signal Rule.** Reserve emerald for availability, production status, and ready/check markers.
+Theme selection is shared by all six localized routes. A sun/moon button in the regular and terminal headers toggles the current theme and exposes its dark state through a stable localized label and aria-pressed. A stored light/dark value in nbazaes-theme takes priority; otherwise the system preference applies and follows live changes. Changes synchronize between tabs. An inline head bootstrap resolves the theme before the first paint; module initialization updates controls and the browser theme-color metadata. Without JavaScript the CSS system preference still works and the inactive control is hidden. Storage errors leave a usable in-memory toggle.
 
 ## Typography
 
-**Display Font:** Inter, system-ui, sans-serif.
-**Body Font:** Inter, system-ui, sans-serif.
-**Label/Mono Font:** JetBrains Mono, ui-monospace, monospace.
+Rethink Sans handles headings, prose, labels, controls and captions. IBM Plex Mono is confined to terminal commands and output, and genuine repository/stack code. Labels use sentence case without tracking. The type steps are 13, 14, 16, 20, 24, 32 and 40px, plus the fluid display, section, project and lead ramps recorded above.
 
-The type scale is role-based rather than a fixed ratio. The frontmatter preserves all recurring sizes and fluid ramps actually used. Display and headline tracking is compact; prose remains open and readable.
-
-### Hierarchy
-- **Display**: name, with the smaller monospaced role nested beneath it.
-- **Statement**: balanced proposition with a 38ch measure.
-- **Headline**: section headings, with context-specific 17–24ch measures.
-- **Architecture value / Project title**: technology names and project names; principles also use the project-title size at weight 500.
-- **Body / Body small**: descriptions, with 52–66ch measures. Mobile hero description uses body-small.
-- **Button / Body compact / Link**: controls, navigation, principles, category text, and supporting architecture copy.
-- **Console / Language / Console micro**: tags, role metadata, provenance, locale links, and compact mobile status. The brand mark has its own established size.
-- **Contact**: fluid email link. **Command**: dedicated terminal output, prompt, and input; output rows use line height 1.65 while input and introduction use 1.7.
-- At mobile widths the role uses line height 1.6; navigation and language use the console size; location and compact ready text use console-micro. Availability uses link size on desktop and console size on mobile, with Inter rather than mono.
-
-**The Two Voices Rule.** Use Inter for reading and hierarchy; use JetBrains Mono for commands, roles, tags, and technical notation.
+At desktop widths the hero name spans both columns above the introduction and terminal. At 751px and below it wraps naturally to two lines, and the terminal follows the introduction. Hero profile details follow the actions. Headlines wrap safely; actual repository names may wrap anywhere where necessary.
 
 ## Layout
 
-Centered content has a maximum width of 1120px and 32px side gutters. Below 768px gutters become 20px and section padding changes from 88px to 56px. The sticky header changes from a 76px to 64px minimum height; its compact navigation remains visible while the spelled-out brand name hides.
+One centered 1280px container, including gutters, serves all routes. The desktop gutter and column gap are 48px; tablet uses 32px; mobile gutters are 20px and column gaps 24px. At 1920px the container holds its size and the outer gutters grow. At 416px and below, the landing header puts navigation on a second row so the locale and 44px theme control keep comfortable targets. The standalone terminal header pairs a wrapping return link with grouped locale/theme controls.
 
-The spacing vocabulary uses 8, 12, 16, 20, 24, 28, and 32px steps with broader 42, 44, 60, 64, 66, 72, and 88px composition intervals in source. Buttons keep a 48px minimum height; navigation and inline action links have 44px targets. Responsive columns collapse to one: feature story/architecture (1.05fr/1fr), project rows (1.25fr/1fr), contact (1.1fr/1fr), two-column stack, and three-column principles. The terminal has its own 920px content measure and fluid 20–60px padding; input wraps beneath the prompt at 768px and below.
+The masthead is open and non-sticky. The landing sequence is identity and terminal, a large BazPOS screenshot with project story and architecture, open project rows, a lavender tools directory with real engineering decisions, contact and a compact location/footer row. Content leads with names and evidence, rather than generic cards or decorative labels.
 
-The landing's particular order and featured-project strategy live in its surface brief, rather than becoming a universal layout requirement.
+BazPOS detail pages inherit the light palette and type, retaining their original recording, captions, screenshots, transcript, architecture and external demo destination. Dedicated terminal routes retain the same command engine and standalone view.
 
 ## Elevation & Depth
 
-Persistent content is flat, separated by hairline borders and tonal recesses. The architecture panel and contact band use the recessed surface. There is no CRT overlay or decorative glow in the current build. Temporary clipboard feedback alone has an ambient shadow (`0 8px 30px #0004`).
-
-**The Ruled Structure Rule.** Separate sections and rows with hairline rules and tonal changes; keep persistent content flat.
+Persistent surfaces are flat. Tonal shifts and thin rules create structure. Product media and the functional terminal use 12px corners; no decorative shadows.
 
 ## Shapes
 
-Subtle corners distinguish controls (8px), tags and focus treatment (4px), and the bounded architecture panel (12px). Structural section bands and project rows remain square and open. Status dots are circular (6px diameter). Borders are 1px; visible keyboard focus uses a 2px light-violet outline offset by 5px. Interface icons are inline SVG; textual console syntax such as `[ OK ]` remains system notation.
+Use 6px corners for controls, 12px for media and the terminal, and fully rounded tags.
 
 ## Components
 
-### Buttons
-Confident filled primary and quiet outlined secondary actions use Inter semibold, 12px 20px padding, 14px icon gaps, and 8px corners. The primary darkens on hover. The quiet variant gains a light-violet border and dim fill. State transitions take 160ms. Disabled copy feedback uses opacity 0.6 and a wait cursor.
+Primary actions have one purple filled recipe; secondary controls have a quiet outline. Buttons have 48px minimum height; navigation, command and inline action targets have 44px minimum height. Keyboard focus appears immediately. Hover colors are limited to fine pointers; pressed controls translate by 1px. Disabled controls change fill, text and cursor. Reduced motion removes spatial animation and sticky scenes while preserving brief color and opacity feedback at 100ms; keyboard focus is always immediate.
 
-### Chips
-Technology tags have dim fill, variant text, mono console type, 4px 8px padding, 4px corners, and 8px gaps. They are descriptive labels, without simulated interactive states.
+The six localized landing, BazPOS and terminal routes share CSS-native choreography. The large name enters from 48px over 650ms; introduction and terminal enter from 24px over 500ms, offset by 80 and 160ms. A separate outer heading layer follows the hero exit timeline up to -48px and opacity 0.35. Name text stays intact, and controls remain usable during entrances.
 
-### Cards / Containers
-The architecture panel uses recessed fill, a primary border, 12px corners, and 24px horizontal insets. Its header and note have 20px vertical padding; the technology rows have 24px vertical padding. Each layer pairs a compact role with a larger technology value and a ready marker. Ordinary projects use open ruled rows rather than matching cards.
+At widths of 1024px and above, with a viewport at least 576px high and motion allowed, BazPOS becomes a sticky scene with columns at 1.6:1. Its genuine capture stays 40px from the top while the existing presentation, scope and architecture flow through three chapters. Chapter minimum height is clamp(20rem, 50svh, 30rem). The scene container supplies a named view timeline so sticky positioning does not stall the image's own entrance. The capture enters from 64px, opacity 0.35 and scale 0.96. In smaller viewports, reduced motion or unsupported browsers, it returns to the full-width flow; supported mobile timelines retain the entry-to-cover-60% reveal.
 
-### Inputs / Fields
-The terminal field is transparent and borderless, with inherited mono command type, a bright caret, and muted placeholder. It retains global keyboard focus treatment. Desktop width is capped at 32rem; mobile input takes a complete row. Output wraps long strings and uses underlined links.
+Project rows, the tools group and contact heading enter from 32px and opacity 0.6. Detail-page screenshots enter from 48px and scale 0.98; the actual video and reading paragraphs remain stable. Unsupported timelines show all content in its final state. Keyboard focus cancels motion on the focused content immediately. No scroll listeners, animation dependencies, autoplay or infinite loops are introduced. The terminal retains instant command output, history, completion, safe links and explicit navigation focus. Action icons move 4px on a fine-pointer hover over 180ms; pressing a terminal control responds in 100ms.
 
-### Navigation
-The opaque sticky header uses a bottom hairline, compact Inter links, a mono brand mark, and a separated mono locale link. Hover changes links to light violet. Locale and page links are real destinations. The footer is an open row with location and a terminal link, wrapping on mobile.
+All spatial movement is opted into with prefers-reduced-motion: no-preference. Reduced motion leaves content settled and removes the sticky reading scene; brief opacity and color feedback remains. Browser-native document navigation and scroll behavior are preserved. Timeline declarations deliberately use a targeted !important to prevent the CSS optimizer from folding them into the newer animation shorthand syntax; that folded syntax was rejected by the tested Chrome and Zen engines. Validate the production build, not only development CSS, when changing these rules.
 
-### Console Signature and Terminal
-The landing signature is one settled, ruled line with technology names and a ready marker; only that marker reveals over 600ms when motion is allowed. The separate terminal types its introductory command over 0.9s, pauses 0.4s, then reveals lines at 0.18s intervals with 0.15s fades. The caret blinks over 1.05s. Reduced motion disables animations, transitions, and smooth scrolling globally.
-
-### Contact Feedback
-The direct email is a fluid light-violet link. Optional clipboard copying reveals a fixed, bounded status message with dim fill, feedback border, 8px corners, and the temporary ambient shadow. It reports success or failure through a live status region.
+Contact uses a direct mailto link and optional clipboard button. The existing status component retains polite announcements, dismissal, timeout pauses and persistent errors. Its resting state is inert; it enters with 8px of movement and an opacity fade over 180ms, then exits in 120ms. Reduced motion keeps only a 100ms opacity fade. Announcements and inert state change immediately, independently of the paint transition. It has a defined edge and no ambient shadow.
 
 ## Do's and Don'ts
 
-### Do:
-- **Do** preserve the distinction between reading text and system notation.
-- **Do** keep health markers semantic and primary actions violet.
-- **Do** show genuine code destinations and allow long repository names to wrap.
-- **Do** keep direct contact and locale navigation available without JavaScript.
-- **Do** honor reduced motion and visible keyboard focus.
-
-### Don't:
-- **Don't** turn ordinary reading copy into a wall of console text.
-- **Don't** add decorative glow or hard offset shadows to persistent content.
-- **Don't** fabricate project evidence or metrics.
-- **Don't** replace SVG interface icons with Unicode arrow glyphs.
+Spanish and English share the same components and design. Keep real links, section IDs, handler hooks and data sources. The page is readable without JavaScript; terminal controls initialize only when available. All product media is existing user material, with no stand-ins. Use `overflow-x: clip` on html and body, safe grid tracks, visible focus, reduced-motion support and sufficient contrast on every surface.

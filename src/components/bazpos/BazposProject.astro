@@ -26,11 +26,11 @@ const { featured } = await getSiteData(locale);
         <Icon name="arrow" />
         {c.back}
       </a>
-      <h1>
+      <h1 data-motion-intro="title">
         {c.title}
         <span>{c.intro}</span>
       </h1>
-      <div class="project-introduction">
+      <div class="project-introduction" data-motion-intro="content">
         <p>{c.description}</p>
         <div>
           <div class="actions">
@@ -93,7 +93,7 @@ const { featured } = await getSiteData(locale);
             <h3>{step.title}</h3>
             <p>{step.text}</p>
           </div>
-          <figure>
+          <figure data-motion="media">
             <a
               href={`/bazpos/${step.image}.webp`}
               target="_blank"
@@ -108,13 +108,21 @@ const { featured } = await getSiteData(locale);
                 decoding="async"
                 alt={step.alt}
               />
+              <span class="enlarge-caption">
+                {locale === 'es' ? 'Ampliar captura' : 'Enlarge screenshot'}
+                <Icon name="external" />
+              </span>
             </a>
             <figcaption>{c.original}</figcaption>
           </figure>
         </article>
       ))}
     </section>
-    <section class="project-engineering section" aria-labelledby="engineering-title">
+    <section
+      id="architecture"
+      class="project-engineering section"
+      aria-labelledby="engineering-title"
+    >
       <div class="container">
         <h2 id="engineering-title">{c.technicalTitle}</h2>
         <p class="engineering-intro">{c.technicalIntro}</p>
@@ -127,8 +135,8 @@ const { featured } = await getSiteData(locale);
           ))}
         </ol>
         <dl class="engineering-decisions">
-          {c.decisions.map(([title, text]) => (
-            <div>
+          {c.decisions.map(([title, text], index) => (
+            <div id={index === 3 ? 'deployment' : undefined}>
               <dt>{title}</dt>
               <dd>{text}</dd>
             </div>
@@ -264,6 +272,19 @@ const { featured } = await getSiteData(locale);
   figure a {
     display: block;
     border-radius: 8px;
+  }
+  .enlarge-caption {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: var(--color-primary-light);
+    font-size: 0.8125rem;
+    text-decoration: underline;
+  }
+  .enlarge-caption :global(svg) {
+    width: 15px;
+    height: 15px;
   }
   figure img {
     display: block;

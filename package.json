@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
+    "test": "node --experimental-strip-types --test src/lib/terminal/commands.test.mjs",
     "validate": "npm run check && npm run build",
     "format": "prettier --write src astro.config.mjs tsconfig.json package.json .github",
     "format:check": "prettier --check src astro.config.mjs tsconfig.json package.json .github",
