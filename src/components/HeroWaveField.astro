@@ -1,0 +1,41 @@
+<!-- Decorative only: the parent supplies a positioned, isolated background surface. -->
+<hero-wave-field aria-hidden="true">
+  <canvas></canvas>
+</hero-wave-field>
+
+<style>
+  hero-wave-field {
+    position: absolute;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    contain: strict;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  import { mountHeroWaveField } from '../lib/hero-wave-field';
+
+  if (!customElements.get('hero-wave-field')) {
+    customElements.define(
+      'hero-wave-field',
+      class extends HTMLElement {
+        private dispose?: () => void;
+        connectedCallback() {
+          this.dispose ??= mountHeroWaveField(this);
+        }
+        disconnectedCallback() {
+          this.dispose?.();
+          this.dispose = undefined;
+        }
+      },
+    );
+  }
+</script>

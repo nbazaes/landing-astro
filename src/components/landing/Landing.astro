@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from './Header.astro';
 import Hero from './Hero.astro';
+import HeroWaveField from '../HeroWaveField.astro';
 import FeaturedProject from './FeaturedProject.astro';
 import Projects from './Projects.astro';
 import Stack from './Stack.astro';
@@ -20,6 +21,7 @@ const { t, profile, projects, featured } = await getSiteData(locale);
   <Header locale={locale} />
   <main id="main-content">
     <div class="hero-surface">
+      <HeroWaveField />
       <Hero locale={locale} t={t} />
     </div>
     <FeaturedProject locale={locale} project={featured} />
@@ -39,3 +41,13 @@ const { t, profile, projects, featured } = await getSiteData(locale);
     </a>
   </footer>
 </Layout>
+
+<style>
+  .hero-surface {
+    position: relative;
+    isolation: isolate;
+  }
+  .hero-surface :global(.hero) {
+    z-index: 1;
+  }
+</style>

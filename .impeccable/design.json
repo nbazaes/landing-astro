@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-10T18:18:48.985961+00:00",
+  "generatedAt": "2026-11-10T20:22:32.084159+00:00",
   "title": "Design System: Lavender Working Directory",
   "extensions": {
     "colorMeta": {
@@ -571,6 +571,11 @@
     },
     "shadows": [],
     "motion": [
+      {
+        "name": "hero-wave-field",
+        "value": "Canvas 2D; 16 lines / 10 mobile; 30fps / 24 mobile; 0.75px; opacity 0.23 dark / 0.07 light",
+        "purpose": "Hero-only ambient interference field with tapered edges and dissipating mouse ripples; static for reduced motion, paused offscreen and in hidden tabs. Uses existing accent/focus colors."
+      },
       {
         "name": "title-entrance",
         "value": "650ms; translateY 48px; opacity 0.35 to 1",
