@@ -1,4 +1,5 @@
 import { completions, isSection, resolveCommand, type SectionName } from './commands';
+import { easterEggReply } from './easter-eggs';
 import type { terminalCopy } from './content';
 import type { ProjectData, ProfileData, StackGroup, Locale } from '../../data/translations';
 import type { engineeringExamples } from '../engineering';
@@ -90,7 +91,9 @@ export function initTerminal(root: HTMLElement) {
     echo.append(prompt, document.createTextNode(value));
     output.append(echo);
     const command = resolveCommand(value);
-    if (!command) append([c.unknown]);
+    const joke = easterEggReply(value, locale);
+    if (joke) append([joke]);
+    else if (!command) append([c.unknown]);
     else {
       switch (command.name) {
         case 'help':
